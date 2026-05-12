@@ -1597,17 +1597,13 @@ table.t tr.total td {
   .kpi-tile .kpi-value { font-size: 22px; }
 }
 
-/* Print: clean up for export PDF */
+/* Print: cleanup base para single-page export (Valuation / Relatorio IA) */
+/* Tema escuro preservado, espaçamentos enxutos, gráficos proporcionais.   */
+/* Regras consolidadas mais abaixo em @media print { body:not(.bi-print-mode) } */
 @media print {
   .sidebar, .sidebar-backdrop, .header { display: none !important; }
   .app { grid-template-columns: 1fr; height: auto; }
   .main { overflow: visible; height: auto; }
-  .page { overflow: visible; padding: 16px; background: white !important; color: black !important; }
-  .page::before { display: none; }
-  .card, .kpi-tile { background: #fafafa !important; box-shadow: none !important; border: 1px solid #ddd !important; color: black !important; break-inside: avoid; }
-  .card-title, .kpi-label, .kpi-stack-label, .ov-bars-tick span, .ov-bars-x span { color: #444 !important; }
-  .kpi-value, .kpi-stack-value, .kpi-stack-pct { color: black !important; }
-  .filters-btn, .btn-ghost, .btn-primary, .ind-pills, .range-pills, .actions { display: none !important; }
 }
 
 /* ===== Pagina Relatorio IA ===== */
@@ -1759,31 +1755,22 @@ table.t tr.total td {
   border-top: 1px solid var(--border);
 }
 
-/* ===== Print rules para o relatorio (Ctrl+P / Save as PDF) ===== */
+/* ===== Print rules para o relatorio (Ctrl+P / Save as PDF) =====
+   Escopado em body:has(.report) pra ativar SÓ no PageRelatorio standalone.
+   Sem isso, o background:white vazava pro Valuation e outras telas. */
 
 @media print {
-  @page {
-    size: A4;
-    margin: 18mm 16mm;
+  body:has(.report) {
+    background: white !important;
+    color: black !important;
+  }
+  body:has(.report) .page {
+    background: white !important;
+    padding: 0 !important;
   }
 
-  /* Esconde tudo da UI, mostra so o relatorio */
-  .sidebar,
-  .sidebar-backdrop,
-  .header,
-  .report-toolbar,
-  .no-print,
-  .drawer-overlay,
-  .drawer { display: none !important; }
-
-  body, html { background: white !important; color: black !important; }
-  .app { display: block !important; height: auto !important; }
-  .main { display: block !important; overflow: visible !important; height: auto !important; }
-  .page { padding: 0 !important; background: white !important; }
-  .page::before { display: none !important; }
-
   /* Relatorio tipografia A4 */
-  .report {
+  body:has(.report) .report {
     background: white !important;
     color: black !important;
     border: 0 !important;
@@ -2699,7 +2686,9 @@ table.t tr.total td {
   .hd-export-bi { padding: 0; width: 38px; justify-content: center; gap: 0; margin-left: 0; }
 }
 
-/* BI Print mode: tema escuro preservado, cada tela vira uma página A4 */
+/* ============== BI PRINT MODE ==============
+   Multi-page export (Header > "Exportar BI"): cada tela vira uma página A4.
+   Tema escuro preservado, layout compactado pra A4, gráficos proporcionais. */
 .bi-print-root {
   display: block;
   background: var(--bg);
@@ -2707,7 +2696,7 @@ table.t tr.total td {
 }
 .bi-print-page {
   background: var(--bg);
-  padding: 20mm 14mm;
+  padding: 10mm 8mm;
   page-break-after: always;
   break-after: page;
 }
@@ -2716,62 +2705,142 @@ table.t tr.total td {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding-bottom: 12px;
-  margin-bottom: 16px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
   border-bottom: 1px solid var(--border);
 }
-.bi-print-logo { height: 28px; }
+.bi-print-logo { height: 22px; }
 .bi-print-pagenum {
-  font-size: 11px;
+  font-size: 9px;
   color: var(--cyan);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 700;
 }
 .bi-print-brand {
-  font-size: 16px;
+  font-size: 13px;
   color: var(--text);
   font-weight: 700;
 }
 
+/* ============== @media print ==============
+   Mixin compartilhado: aplica pro multi-page (bi-print-mode) E
+   pro single-page legado (Valuation / Relatorio IA via window.print()).
+   Tema escuro mantido, paddings/gaps enxutos, charts proporcionais. */
 @media print {
-  body.bi-print-mode {
+  @page { size: A4; margin: 6mm; }
+
+  html, body {
     background: var(--bg) !important;
     color: var(--text) !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-  body.bi-print-mode * {
+  body * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-  body.bi-print-mode .page {
+
+  /* ---- Esconde UI cromada em qualquer modo ---- */
+  .sidebar, .sidebar-backdrop, .header,
+  .actions, .no-print, .report-toolbar,
+  .filters-btn, .btn-ghost, .btn-primary,
+  .ind-pills, .range-pills,
+  .drawer-overlay, .drawer { display: none !important; }
+
+  /* ---- Layout base do .page (single + multi) ---- */
+  .app { display: block !important; height: auto !important; grid-template-columns: 1fr !important; }
+  .main { display: block !important; overflow: visible !important; height: auto !important; }
+  .page {
     background: var(--bg) !important;
     color: var(--text) !important;
     padding: 0 !important;
     overflow: visible !important;
+    gap: 8px !important;
   }
-  body.bi-print-mode .card, body.bi-print-mode .kpi-tile {
+  .page::before { display: none !important; }
+
+  /* ---- Cards compactos, sem blur (que não funciona em print) ---- */
+  .card, .kpi-tile {
     background: var(--surface) !important;
     color: var(--text) !important;
     border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
     box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     break-inside: avoid;
+    page-break-inside: avoid;
   }
-  body.bi-print-mode .card-title, body.bi-print-mode .kpi-label,
-  body.bi-print-mode .kpi-stack-label, body.bi-print-mode .ov-bars-tick span,
-  body.bi-print-mode .ov-bars-x span {
+  .card-title { font-size: 11px !important; margin-bottom: 6px !important; }
+  .card-title, .kpi-label,
+  .kpi-stack-label, .ov-bars-tick span, .ov-bars-x span {
     color: var(--fg-2) !important;
   }
-  body.bi-print-mode .kpi-value, body.bi-print-mode .kpi-stack-value,
-  body.bi-print-mode .kpi-stack-pct {
+  .kpi-value { font-size: 16px !important; }
+  .kpi-value, .kpi-stack-value, .kpi-stack-pct {
     color: var(--text) !important;
   }
-  body.bi-print-mode .actions, body.bi-print-mode .no-print { display: none !important; }
+  .kpi-tile { padding: 8px 12px !important; }
+
+  /* ---- Gaps menores ---- */
+  .kpi-row {
+    gap: 6px !important;
+    margin-bottom: 8px !important;
+  }
+  .row { gap: 8px !important; }
+  .kpi-stack { gap: 8px !important; }
+
+  /* ---- SVGs proporcionais (chave do "gráficos atirados") ---- */
+  /* Antes: width:100% + preserveAspectRatio="none" + height inline grande
+     => esticavam horizontalmente, ficando achatados na A4.
+     Agora: força aspect-ratio fixo e limita altura. */
+  .trend, svg.trend {
+    height: auto !important;
+    max-height: 110px !important;
+    width: 100% !important;
+    aspect-ratio: 1000 / 220 !important;
+  }
+  .vbar-chart { height: 140px !important; }
+  .ov-bars { padding-top: 12px !important; }
+  .ov-bars-axis, .ov-bars-plot { height: 140px !important; }
+  .daily-bars { height: 90px !important; }
+  .spark { max-height: 40px !important; }
+
+  /* ---- Tabelas: thead repete, linhas não quebram ---- */
+  table.t {
+    page-break-inside: auto;
+    break-inside: auto;
+    font-size: 10px;
+  }
+  table.t th {
+    position: static !important;
+    box-shadow: none !important;
+    padding: 4px 6px !important;
+  }
+  table.t td { padding: 4px 6px !important; }
+  table.t thead { display: table-header-group; }
+  table.t tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .t-scroll {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* ---- Page-break helpers ---- */
+  .kpi-row, .row { page-break-inside: avoid; break-inside: avoid; }
+}
+
+/* ============== MULTI-PAGE BI EXPORT ============== */
+/* Extras especifícos do body.bi-print-mode (multi-tela do header). */
+@media print {
   body.bi-print-mode .bi-print-root { display: block !important; }
   body.bi-print-mode .bi-print-page {
     background: var(--bg) !important;
-    padding: 14mm 10mm !important;
+    padding: 10mm 8mm !important;
     page-break-after: always;
     page-break-inside: auto;
   }
@@ -2781,35 +2850,6 @@ table.t tr.total td {
     page-break-after: avoid;
     break-after: avoid;
   }
-  /* Reset sticky thead — em multi-page export sticky vaza pra próxima página */
-  body.bi-print-mode table.t th {
-    position: static !important;
-    box-shadow: none !important;
-  }
-  /* Permite quebra de tabela mas evita quebra DENTRO de uma linha + repete thead */
-  body.bi-print-mode table.t {
-    page-break-inside: auto;
-    break-inside: auto;
-  }
-  body.bi-print-mode table.t thead {
-    display: table-header-group;
-  }
-  body.bi-print-mode table.t tr {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-  /* Libera scroll containers — print precisa ver tudo, não só o viewport visível */
-  body.bi-print-mode .t-scroll {
-    max-height: none !important;
-    overflow: visible !important;
-  }
-  /* Cards não quebram no meio (mas se forem grandes demais, deixa) */
-  body.bi-print-mode .card { break-inside: auto; page-break-inside: auto; }
-  body.bi-print-mode .kpi-row, body.bi-print-mode .row {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-  @page { size: A4; margin: 8mm; }
 }
 
 /* Escopa o @media print legado (Relatório IA standalone) pra não interferir
