@@ -7,8 +7,8 @@
  * Usa DRE_BY_CONTA pré-computado (já tem split custo/imposto/despesa por loja×mês).
  */
 
-const PageLojas = ({ statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = window.BIT || {};
+const PageLojas = ({ filters, statusFilter, drilldown, setDrilldown, year, month }) => {
+  const B = useMemo(() => window.getBit ? window.getBit(statusFilter, drilldown, year, month, filters) : (window.BIT || {}), [statusFilter, drilldown, year, month, filters]);
   const REF_YEAR = window.REF_YEAR || new Date().getFullYear();
   const DBC = B.DRE_BY_CONTA || {};
   const CONTAS = B.CONTAS || [];

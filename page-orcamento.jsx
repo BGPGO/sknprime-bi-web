@@ -305,8 +305,8 @@ const OvCell = ({ real, orcado, isRealized, neg = false }) => {
   );
 };
 
-const PageOrcamento = ({ statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = window.BIT || {};
+const PageOrcamento = ({ filters, statusFilter, drilldown, setDrilldown, year, month }) => {
+  const B = useMemo(() => window.getBit ? window.getBit(statusFilter, drilldown, year, month, filters) : (window.BIT || {}), [statusFilter, drilldown, year, month, filters]);
   const REF_YEAR = window.REF_YEAR || new Date().getFullYear();
   const MONTHS_FULL = B.MONTHS_FULL || ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
 

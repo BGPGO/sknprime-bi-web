@@ -11,8 +11,8 @@
  * + Curva de Pareto top 10 lojas + top 10 fornecedores.
  */
 
-const PageRisco = ({ statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = window.BIT || {};
+const PageRisco = ({ filters, statusFilter, drilldown, setDrilldown, year, month }) => {
+  const B = useMemo(() => window.getBit ? window.getBit(statusFilter, drilldown, year, month, filters) : (window.BIT || {}), [statusFilter, drilldown, year, month, filters]);
   const REF_YEAR = window.REF_YEAR || new Date().getFullYear();
   const DBC = B.DRE_BY_CONTA || {};
   const CONTAS = B.CONTAS || [];

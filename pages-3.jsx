@@ -809,8 +809,8 @@ const PctSlider = ({ label, value, onChange, min = 0, max = 100, step = 0.5 }) =
   );
 };
 
-const PageValuation = () => {
-  const B = window.BIT || {};
+const PageValuation = ({ filters, statusFilter, drilldown, year, month }) => {
+  const B = useMemo(() => window.getBit ? window.getBit(statusFilter, drilldown, year, month, filters) : (window.BIT || {}), [statusFilter, drilldown, year, month, filters]);
   const REF_YEAR = window.REF_YEAR || new Date().getFullYear();
   const fmt = B.fmt || ((n) => "R$ " + formatBR(n || 0));
 

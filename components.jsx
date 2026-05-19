@@ -29,6 +29,8 @@ const Icon = ({ name, ...props }) => {
     cash: <><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></>,
     accrual: <><path d="M4 4h12l4 4v12H4z"/><path d="M4 12h16M12 4v16"/></>,
     filter: <><path d="M3 5h18l-7 9v6l-4-2v-4z"/></>,
+    tag: <><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><circle cx="7" cy="7" r="1"/></>,
+    building: <><path d="M6 22V2h12v20M6 6h2M6 10h2M6 14h2M6 18h2M12 6h2M12 10h2M12 14h2M12 18h2"/></>,
   };
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -386,7 +388,7 @@ const SingleBars = ({ values, labels, color = "green", height = 200, onBarClick,
             style={onBarClick ? { cursor: "pointer" } : undefined}
           >
             <div className="stack">
-              <div className={`bar ${color === "red" ? "red" : ""}`} style={{ height: `${h}%`, width: 22, background: color === "cyan" ? "var(--cyan)" : (color === "red" ? "var(--red)" : "var(--green)") }} title={window.BIT.fmt(v)}>
+              <div className={`bar ${color === "red" ? "red" : ""}`} style={{ height: `${h}%`, width: 24, background: color === "cyan" ? "var(--cyan)" : (color === "red" ? "var(--red)" : "var(--green)") }} title={window.BIT.fmt(v)}>
                 <span className="v">{window.BIT.fmtK(v)}</span>
               </div>
             </div>
@@ -722,13 +724,13 @@ const DivergingBars = ({ values, labels }) => {
 
 // KPI Tile (big numbers + sparkline). `tone` selects gradient: green / red / cyan / amber.
 // `nonMonetary` hides the R$ prefix (for counts: clients, suppliers, etc).
-const KpiTile = ({ label, value, unit, deltaPct, deltaDir, sparkValues, sparkColor, tone, nonMonetary }) => {
+const KpiTile = ({ label, value, unit, deltaPct, deltaDir, sparkValues, sparkColor, tone, nonMonetary, noPrefix }) => {
   return (
     <div className={`kpi-tile ${tone || ""}`}>
       <div>
         <div className="kpi-label">{label}</div>
         <div className="kpi-value">
-          {!nonMonetary && <span className="currency">R$</span>}
+          {!nonMonetary && !noPrefix && <span className="currency">R$</span>}
           {value}
           {unit && <span className="unit">{unit}</span>}
         </div>
@@ -868,6 +870,47 @@ const InlineFilterBar = ({ kindHint, drilldown, setDrilldown }) => {
       {(activeCategoria || (drilldown && drilldown.type !== "categoria")) && (
         <button className="btn-ghost" onClick={() => setDrilldown(null)} title="Limpar filtros">
           Limpar
+        </button>
+      )}
+    </div>
+  );
+};
+
+// Barra global de filtros de Categoria e Centro de Custo — visível em todas as telas
+const GlobalFilterBar = ({ filters, setFilters }) => {
+  const categorias = React.useMemo(() => {
+    const all = window.ALL_TX || [];
+    const set = new Set();
+    for (const row of all) { if (row[3]) set.add(row[3]); }
+    return [...set].sort();
+  }, []);
+  const centrosCusto = React.useMemo(() => {
+    const all = window.ALL_TX || [];
+    const set = new Set();
+    for (const row of all) { if (row[8]) set.add(row[8]); }
+    return [...set].sort();
+  }, []);
+  const hasActive = (filters.categoria && filters.categoria !== "Todas categorias")
+    || (filters.cc && filters.cc !== "Todos centros de custo");
+  return (
+    <div className="global-filterbar">
+      <label className="gfb-item">
+        <Icon name="tag" />
+        <select className="filter-select" value={filters.categoria || "Todas categorias"} onChange={e => setFilters({ ...filters, categoria: e.target.value })}>
+          <option>Todas categorias</option>
+          {categorias.map(c => <option key={c} value={c}>{c}</option>)}
+        </select>
+      </label>
+      <label className="gfb-item">
+        <Icon name="building" />
+        <select className="filter-select" value={filters.cc || "Todos centros de custo"} onChange={e => setFilters({ ...filters, cc: e.target.value })}>
+          <option>Todos centros de custo</option>
+          {centrosCusto.map(c => <option key={c} value={c}>{c}</option>)}
+        </select>
+      </label>
+      {hasActive && (
+        <button className="btn-ghost gfb-clear" onClick={() => setFilters({ ...filters, categoria: "Todas categorias", cc: "Todos centros de custo" })}>
+          × Limpar
         </button>
       )}
     </div>

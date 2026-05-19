@@ -282,6 +282,7 @@ const PAGE_MODE_INJECT = `\n// Injetado por build-jsx.cjs a partir de bi.config.
             drilldown={drilldown}
             setDrilldown={setDrilldown}
           />
+          <GlobalFilterBar filters={filters} setFilters={setFilters} />
           <PageComp {...commonProps} />
         </div>
         <FiltersDrawer open={filtersOpen} onClose={function () { setFiltersOpen(false); }} filters={filters} setFilters={setFilters} />

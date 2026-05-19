@@ -167,7 +167,7 @@ const IndicatorLine = ({ values, labels, height = 240, color = "var(--cyan)", fo
 };
 
 const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month), [statusFilter, drilldown, year, month]);
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
   const [indicator, setIndicator] = useState("Valor líquido");
   const refYear = (B.META && B.META.ref_year) || new Date().getFullYear();
   // descobre o indice ativo se o drilldown for de mes (pra destacar a barra)
@@ -187,12 +187,21 @@ const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilld
   };
 
   // Indicator series for the toggle chart (derived da MONTH_DATA real)
+  const DRE = B.MONTH_DRE || [];
   const margemSeries = B.MONTH_DATA.map(m => m.receita > 0 ? ((m.receita - m.despesa) / m.receita) * 100 : 0);
+  const impostosSeries = DRE.map(m => m.imposto || 0);
+  // EBITDA = valor líquido + impostos (antes de juros e impostos)
+  const ebitdaSeries = B.MONTH_DATA.map((m, i) => (m.receita - m.despesa) + (DRE[i] ? DRE[i].imposto || 0 : 0));
+  // Resultado operacional = valor líquido (depois de juros e impostos)
+  const resOpSeries = B.VALOR_LIQ_SERIES;
   const indicatorSeries = {
     "Valor líquido":          { values: B.VALOR_LIQ_SERIES, color: "var(--cyan)", fmt: (v) => B.fmt(v) },
     "Receita":                { values: B.MONTH_DATA.map(m => m.receita), color: "var(--green)", fmt: (v) => B.fmt(v) },
     "Despesa":                { values: B.MONTH_DATA.map(m => -m.despesa), color: "var(--red)", fmt: (v) => B.fmt(v) },
     "Margem Líquida":         { values: margemSeries, color: "var(--cyan)", fmt: (v) => `${v.toFixed(2).replace(".", ",")}%` },
+    "Impostos":               { values: impostosSeries, color: "var(--red-2)", fmt: (v) => B.fmt(v) },
+    "EBITDA":                 { values: ebitdaSeries, color: "var(--green-2)", fmt: (v) => B.fmt(v) },
+    "Resultado operacional":  { values: resOpSeries, color: "var(--amber)", fmt: (v) => B.fmt(v) },
   };
   const current = indicatorSeries[indicator];
   const monthLabels = B.MONTHS_FULL.map(m => `${m.charAt(0).toUpperCase() + m.slice(1, 3)} ${refYear}`);
@@ -201,6 +210,9 @@ const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilld
     { value: B.TOTAL_RECEITA, label: "Soma de receita",     kind: "receita" },
     { value: B.TOTAL_DESPESA, label: "Soma de despesa",     kind: "despesa" },
     { value: B.VALOR_LIQUIDO, label: "Valor líquido",       kind: B.VALOR_LIQUIDO >= 0 ? "receita" : "despesa" },
+    { value: B.IMPOSTOS,      label: "Impostos",            kind: "despesa" },
+    { value: B.EBITDA,        label: "EBITDA",              kind: B.EBITDA >= 0 ? "receita" : "despesa" },
+    { value: B.RESULTADO_OPERACIONAL, label: "Resultado operacional", kind: B.RESULTADO_OPERACIONAL >= 0 ? "receita" : "despesa" },
   ];
 
   const statusLabel = statusFilter === "realizado" ? "realizado (PAGO)" :
@@ -234,7 +246,7 @@ const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilld
             </div>
           </div>
 
-          <div className="card resultado-card">
+          <div className={`card resultado-card ${B.VALOR_LIQUIDO < 0 ? "negative" : ""}`}>
             <SectionHeading strong="RESULTADO" soft="GERAL" />
             <div className="kpi-stack-value resultado-val">{B.fmt(B.VALOR_LIQUIDO)}</div>
             <div className="kpi-stack-label">Valor líquido</div>
@@ -290,8 +302,8 @@ const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilld
   );
 };
 
-const PageIndicators = ({ statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month), [statusFilter, drilldown, year, month]);
+const PageIndicators = ({ filters, statusFilter, drilldown, setDrilldown, year, month }) => {
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
   const totalReceita = B.TOTAL_RECEITA;
   const totalDespesa = B.TOTAL_DESPESA;
   const valorLiq = B.VALOR_LIQUIDO;
@@ -370,7 +382,7 @@ const PageIndicators = ({ statusFilter, drilldown, setDrilldown, year, month }) 
 };
 
 const PageReceita = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month), [statusFilter, drilldown, year, month]);
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
   const mediaMes = B.TOTAL_RECEITA / 12;
   const numClientes = B.RECEITA_CLIENTES.length;
   const ticket = numClientes > 0 ? B.TOTAL_RECEITA / numClientes : 0;
@@ -415,10 +427,10 @@ const PageReceita = ({ filters, setFilters, onOpenFilters, statusFilter, drilldo
       <DrilldownBadge drilldown={drilldown} onClear={() => setDrilldown(null)} />
 
       <div className="row row-4">
-        <KpiTile label="Receita total" value={(B.TOTAL_RECEITA / 1e6).toFixed(2).replace(".", ",")} unit="M" sparkValues={B.MONTH_DATA.map(m => m.receita)} sparkColor="var(--green)" tone="green" />
-        <KpiTile label="Média por mês" value={(mediaMes / 1e3).toFixed(0)} unit="K" sparkValues={B.MONTH_DATA.map(m => m.receita)} sparkColor="var(--cyan)" tone="cyan" />
+        <KpiTile label="Receita total" value={B.fmt(B.TOTAL_RECEITA)} sparkValues={B.MONTH_DATA.map(m => m.receita)} sparkColor="var(--green)" tone="green" noPrefix />
+        <KpiTile label="Média por mês" value={B.fmt(mediaMes)} sparkValues={B.MONTH_DATA.map(m => m.receita)} sparkColor="var(--cyan)" tone="cyan" noPrefix />
         <KpiTile label="Clientes" value={String(numClientes)} sparkValues={B.MONTH_DATA.map(m => m.receita > 0 ? 1 : 0)} sparkColor="var(--cyan)" tone="cyan" nonMonetary />
-        <KpiTile label="Ticket médio" value={ticket > 0 ? (ticket / 1e3).toFixed(2).replace(".", ",") : "0,00"} unit="K" sparkValues={B.MONTH_DATA.map(m => m.receita / 30)} sparkColor="var(--green)" tone="green" />
+        <KpiTile label="Ticket médio" value={B.fmt(ticket)} sparkValues={B.MONTH_DATA.map(m => m.receita / 30)} sparkColor="var(--green)" tone="green" noPrefix />
       </div>
 
       <div className="card">
@@ -473,7 +485,7 @@ const PageReceita = ({ filters, setFilters, onOpenFilters, statusFilter, drilldo
 };
 
 const PageDespesa = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month), [statusFilter, drilldown, year, month]);
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
   const totalDespesa = B.TOTAL_DESPESA;
   const mediaMes = totalDespesa / 12;
   const numFornec = B.DESPESA_FORNECEDORES.length;
@@ -516,10 +528,10 @@ const PageDespesa = ({ filters, setFilters, onOpenFilters, statusFilter, drilldo
       <DrilldownBadge drilldown={drilldown} onClear={() => setDrilldown(null)} />
 
       <div className="row row-4">
-        <KpiTile label="Despesas totais" value={(totalDespesa / 1e6).toFixed(2).replace(".", ",")} unit="M" sparkValues={B.MONTH_DATA.map(m => m.despesa)} sparkColor="var(--red)" tone="red" />
-        <KpiTile label="Média por mês" value={(mediaMes / 1e3).toFixed(0)} unit="K" sparkValues={B.MONTH_DATA.map(m => m.despesa)} sparkColor="var(--red)" tone="red" />
+        <KpiTile label="Despesas totais" value={B.fmt(totalDespesa)} sparkValues={B.MONTH_DATA.map(m => m.despesa)} sparkColor="var(--red)" tone="red" noPrefix />
+        <KpiTile label="Média por mês" value={B.fmt(mediaMes)} sparkValues={B.MONTH_DATA.map(m => m.despesa)} sparkColor="var(--red)" tone="red" noPrefix />
         <KpiTile label="Fornecedores" value={String(numFornec)} sparkValues={B.MONTH_DATA.map(m => m.despesa > 0 ? 1 : 0)} sparkColor="var(--cyan)" tone="cyan" nonMonetary />
-        <KpiTile label="Média de despesa" value={mediaDesp > 0 ? (mediaDesp / 1e3).toFixed(2).replace(".", ",") : "0,00"} unit="K" sparkValues={B.MONTH_DATA.map(m => m.despesa / 30)} sparkColor="var(--red)" tone="red" />
+        <KpiTile label="Média de despesa" value={B.fmt(mediaDesp)} sparkValues={B.MONTH_DATA.map(m => m.despesa / 30)} sparkColor="var(--red)" tone="red" noPrefix />
       </div>
 
       <div className="card">

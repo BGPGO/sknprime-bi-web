@@ -6,7 +6,7 @@ const { useState, useMemo, useEffect } = React;
 // TrendCharts em mobile.
 
 const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month), [statusFilter, drilldown, year, month]);
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
   const isMobile = useIsMobile();
   const [view, setView] = useState("horizontal");
   const [range, setRange] = useState("12M");
@@ -71,6 +71,12 @@ const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown
     if (drilldown.type === "cliente") return row[0] === "r" && row[4] === drilldown.value;
     if (drilldown.type === "fornecedor") return row[0] === "d" && row[7] === drilldown.value;
     if (drilldown.type === "conta") return row[9] === drilldown.value;
+    if (drilldown.type === "dia") return row[2] === drilldown.value;
+    return true;
+  };
+  const filtersOk = (row) => {
+    if (filters && filters.categoria && filters.categoria !== "Todas categorias" && row[3] !== filters.categoria) return false;
+    if (filters && filters.cc && filters.cc !== "Todos centros de custo" && row[8] !== filters.cc) return false;
     return true;
   };
 
@@ -84,13 +90,14 @@ const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown
       if (parseInt(mes.slice(0, 4), 10) !== refYear) continue;
       if (!statusOk(realizado)) continue;
       if (!drillOk(row)) continue;
+      if (!filtersOk(row)) continue;
       const key = `${kind}::${categoria}`;
       let bucket = idx.get(key);
       if (!bucket) { bucket = []; idx.set(key, bucket); }
       bucket.push(row);
     }
     return idx;
-  }, [refYear, statusFilter, drilldown]);
+  }, [refYear, statusFilter, drilldown, filters]);
 
   // Hash estável para gerar referências fake (doc ref)
   const stringHash = (s) => {
@@ -223,7 +230,7 @@ const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown
 
     return (
       <React.Fragment key={catKey}>
-        <tr className={`fluxo-cat-row ${isCatExpanded ? "expanded" : ""}`} onClick={() => toggleExpand(catKey)}>
+        <tr className={`fluxo-cat-row ${isCatExpanded ? "expanded" : ""}`} onClick={() => toggleExpand(catKey)} title="Clique para ver clientes/fornecedores">
           <td className="fluxo-row-label">
             <span className={`fluxo-chev ${isCatExpanded ? "open" : ""}`}>▸</span>
             {row.cat}
@@ -537,17 +544,19 @@ const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown
 };
 
 const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month), [statusFilter, drilldown, year, month]);
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
   const isMobile = useIsMobile();
   const SEG = window.BIT_SEGMENTS || {};
-  const recebido = (SEG.realizado && SEG.realizado.KPIS && SEG.realizado.KPIS.TOTAL_RECEITA) || 0;
-  const aReceber = (SEG.a_pagar_receber && SEG.a_pagar_receber.KPIS && SEG.a_pagar_receber.KPIS.TOTAL_RECEITA) || 0;
-  const pago = (SEG.realizado && SEG.realizado.KPIS && SEG.realizado.KPIS.TOTAL_DESPESA) || 0;
-  const aPagar = (SEG.a_pagar_receber && SEG.a_pagar_receber.KPIS && SEG.a_pagar_receber.KPIS.TOTAL_DESPESA) || 0;
-  const recDiaSeg = (SEG.realizado && SEG.realizado.RECEITA_DIA) || B.RECEITA_DIA;
-  const pagoDiaSeg = (SEG.realizado && SEG.realizado.DESPESA_DIA) || B.DESPESA_DIA;
-  const aReceberDiaSeg = (SEG.a_pagar_receber && SEG.a_pagar_receber.RECEITA_DIA) || B.RECEITA_DIA;
-  const aPagarDiaSeg = (SEG.a_pagar_receber && SEG.a_pagar_receber.DESPESA_DIA) || B.DESPESA_DIA;
+  const segReal = useMemo(() => window.getBit("realizado", drilldown, year, month, filters), [drilldown, year, month, filters]);
+  const segAPR = useMemo(() => window.getBit("a_pagar_receber", drilldown, year, month, filters), [drilldown, year, month, filters]);
+  const recebido = segReal.TOTAL_RECEITA || 0;
+  const aReceber = segAPR.TOTAL_RECEITA || 0;
+  const pago = segReal.TOTAL_DESPESA || 0;
+  const aPagar = segAPR.TOTAL_DESPESA || 0;
+  const recDiaSeg = segReal.RECEITA_DIA || B.RECEITA_DIA;
+  const pagoDiaSeg = segReal.DESPESA_DIA || B.DESPESA_DIA;
+  const aReceberDiaSeg = segAPR.RECEITA_DIA || B.RECEITA_DIA;
+  const aPagarDiaSeg = segAPR.DESPESA_DIA || B.DESPESA_DIA;
 
   const saldosMes = (SEG.tudo && SEG.tudo.SALDOS_MES) || B.SALDOS_MES;
   // Cumulativo (running balance): cada mês = saldo atual após acumular movimentos
@@ -672,10 +681,10 @@ const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, dril
       <DrilldownBadge drilldown={drilldown} onClear={() => setDrilldown(null)} />
 
       <div className="row row-4">
-        <KpiTile label="Recebido (PAGO)" value={(recebido / 1e6).toFixed(2).replace(".", ",")} unit="M" sparkValues={recDiaSeg} sparkColor="var(--green)" tone="green" />
-        <KpiTile label="A receber" value={(aReceber / 1e6).toFixed(2).replace(".", ",")} unit="M" sparkValues={aReceberDiaSeg} sparkColor="var(--cyan)" tone="cyan" />
-        <KpiTile label="Pago" value={(pago / 1e6).toFixed(2).replace(".", ",")} unit="M" sparkValues={pagoDiaSeg} sparkColor="var(--red)" tone="red" />
-        <KpiTile label="A pagar" value={(aPagar / 1e6).toFixed(2).replace(".", ",")} unit="M" sparkValues={aPagarDiaSeg} sparkColor="var(--amber)" tone="amber" />
+        <KpiTile label="Recebido (PAGO)" value={B.fmt(recebido)} sparkValues={recDiaSeg} sparkColor="var(--green)" tone="green" noPrefix />
+        <KpiTile label="A receber" value={B.fmt(aReceber)} sparkValues={aReceberDiaSeg} sparkColor="var(--cyan)" tone="cyan" noPrefix />
+        <KpiTile label="Pago" value={B.fmt(pago)} sparkValues={pagoDiaSeg} sparkColor="var(--red)" tone="red" noPrefix />
+        <KpiTile label="A pagar" value={B.fmt(aPagar)} sparkValues={aPagarDiaSeg} sparkColor="var(--amber)" tone="amber" noPrefix />
       </div>
 
       <div className="row row-1-1">
@@ -687,7 +696,9 @@ const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, dril
               <span className="chip cyan">A receber · {B.fmt(aReceber)}</span>
             </div>
           </div>
-          <DailyBars values={recDiaSeg} color="green" />
+          <DailyBars values={recDiaSeg} color="green"
+            onBarClick={(i) => setDrilldown({ type: "dia", value: i + 1, label: `Dia ${i + 1}` })}
+            activeIdx={drilldown && drilldown.type === "dia" ? drilldown.value - 1 : -1} />
         </div>
         <div className="card">
           <div className="card-title-row">
@@ -697,7 +708,9 @@ const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, dril
               <span className="chip" style={{ background: "rgba(245,158,11,0.12)", color: "#fcd34d", borderColor: "rgba(245,158,11,0.28)" }}>A pagar · {B.fmt(aPagar)}</span>
             </div>
           </div>
-          <DailyBars values={pagoDiaSeg} color="red" />
+          <DailyBars values={pagoDiaSeg} color="red"
+            onBarClick={(i) => setDrilldown({ type: "dia", value: i + 1, label: `Dia ${i + 1}` })}
+            activeIdx={drilldown && drilldown.type === "dia" ? drilldown.value - 1 : -1} />
         </div>
       </div>
 
@@ -923,8 +936,8 @@ const SaldoProjetadoChart = ({ pontos, saldoInicial }) => {
   );
 };
 
-const PageComparativo = ({ statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month), [statusFilter, drilldown, year, month]);
+const PageComparativo = ({ filters, statusFilter, drilldown, setDrilldown, year, month }) => {
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
   const refYear = window.REF_YEAR || new Date().getFullYear();
   const fmt = (B && B.fmt) || (n => `R$ ${n.toFixed(2)}`);
   const fmtPct = (B && B.fmtPct) || (n => `${n.toFixed(1)}%`);
@@ -933,6 +946,14 @@ const PageComparativo = ({ statusFilter, drilldown, setDrilldown, year, month })
   const [p1, setP1] = useState({ y: refYear, kind: "trim", val: 1 });
   const [p2, setP2] = useState({ y: refYear, kind: "trim", val: 2 });
   const [expanded, setExpanded] = useState({ Receita: true, Despesa: true });
+  const [expandedCats, setExpandedCats] = useState(() => new Set());
+  const toggleCat = (key) => {
+    setExpandedCats(prev => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key); else next.add(key);
+      return next;
+    });
+  };
 
   // Calcula bounds de mes do periodo
   const periodBounds = (p) => {
@@ -953,33 +974,43 @@ const PageComparativo = ({ statusFilter, drilldown, setDrilldown, year, month })
     return `${mn}/${p.y}`;
   };
 
-  // Filtra ALL_TX por periodo + statusFilter; agrega receitas/despesas por categoria
+  // Filtra ALL_TX por periodo + statusFilter; agrega receitas/despesas por categoria + cliente/fornecedor
   const aggregate = (p) => {
     const allTx = window.ALL_TX || [];
     const filterTx = window.filterTx;
     const sf = statusFilter || window.BIT_FILTER || "realizado";
-    const txFiltered = filterTx ? filterTx(allTx, sf, null) : allTx;
+    const txFiltered = filterTx ? filterTx(allTx, sf, null, filters) : allTx;
     const { y, mIni, mFim } = periodBounds(p);
     const mIniStr = `${y}-${String(mIni).padStart(2, "0")}`;
     const mFimStr = `${y}-${String(mFim).padStart(2, "0")}`;
     let totalRec = 0, totalDesp = 0;
     const recCat = new Map(), despCat = new Map();
+    // Sub-agrupamento: Map<"cat", Map<"cliente/fornecedor", valor>>
+    const recSub = new Map(), despSub = new Map();
     for (const row of txFiltered) {
-      const [kind, mes, , categoria, , valor] = row;
+      const [kind, mes, , categoria, cliente, valor, , fornecedor] = row;
       if (!mes || mes < mIniStr || mes > mFimStr) continue;
       if (kind === "r") {
         totalRec += valor;
         recCat.set(categoria, (recCat.get(categoria) || 0) + valor);
+        const sub = recSub.get(categoria) || new Map();
+        const nome = cliente || "Sem identificação";
+        sub.set(nome, (sub.get(nome) || 0) + valor);
+        recSub.set(categoria, sub);
       } else {
         totalDesp += valor;
         despCat.set(categoria, (despCat.get(categoria) || 0) + valor);
+        const sub = despSub.get(categoria) || new Map();
+        const nome = fornecedor || "Sem identificação";
+        sub.set(nome, (sub.get(nome) || 0) + valor);
+        despSub.set(categoria, sub);
       }
     }
-    return { totalRec, totalDesp, liq: totalRec - totalDesp, recCat, despCat };
+    return { totalRec, totalDesp, liq: totalRec - totalDesp, recCat, despCat, recSub, despSub };
   };
 
-  const a1 = useMemo(() => aggregate(p1), [p1, statusFilter]);
-  const a2 = useMemo(() => aggregate(p2), [p2, statusFilter]);
+  const a1 = useMemo(() => aggregate(p1), [p1, statusFilter, filters]);
+  const a2 = useMemo(() => aggregate(p2), [p2, statusFilter, filters]);
 
   const safePct = (a, b) => b !== 0 ? (a / b) * 100 : (a !== 0 ? 100 : 0);
   const diffReceita = a2.totalRec - a1.totalRec;
@@ -1104,14 +1135,37 @@ const PageComparativo = ({ statusFilter, drilldown, setDrilldown, year, month })
                   const v2 = a2.recCat.get(cat) || 0;
                   const diff = v2 - v1;
                   const pct = safePct(diff, v1);
+                  const catKey = `r::${cat}`;
+                  const isCatExp = expandedCats.has(catKey);
+                  // Union de clientes nos 2 periodos
+                  const sub1 = a1.recSub.get(cat) || new Map();
+                  const sub2 = a2.recSub.get(cat) || new Map();
+                  const allClients = [...new Set([...sub1.keys(), ...sub2.keys()])].sort((a, b) => ((sub2.get(b) || 0) + (sub1.get(b) || 0)) - ((sub2.get(a) || 0) + (sub1.get(a) || 0)));
                   return (
-                    <tr key={`r${i}`}>
-                      <td style={{ paddingLeft: 24 }}><span className="chev">+</span>{cat}</td>
-                      <td className="num green">{v1 !== 0 ? fmt(v1) : "—"}</td>
-                      <td className="num green">{v2 !== 0 ? fmt(v2) : "—"}</td>
-                      <td className={`num ${diff >= 0 ? "green" : "red"}`}>{fmt(diff)}</td>
-                      <td className={`num ${diff >= 0 ? "green" : "red"}`}>{fmtPct(pct)}</td>
-                    </tr>
+                    <React.Fragment key={`r${i}`}>
+                      <tr className={`fluxo-cat-row ${isCatExp ? "expanded" : ""}`} onClick={() => toggleCat(catKey)} style={{ cursor: "pointer" }} title="Clique para ver clientes">
+                        <td style={{ paddingLeft: 24 }}><span className={`fluxo-chev ${isCatExp ? "open" : ""}`}>▸</span>{cat}</td>
+                        <td className="num green">{v1 !== 0 ? fmt(v1) : "—"}</td>
+                        <td className="num green">{v2 !== 0 ? fmt(v2) : "—"}</td>
+                        <td className={`num ${diff >= 0 ? "green" : "red"}`}>{fmt(diff)}</td>
+                        <td className={`num ${diff >= 0 ? "green" : "red"}`}>{fmtPct(pct)}</td>
+                      </tr>
+                      {isCatExp && allClients.slice(0, 15).map((cli, j) => {
+                        const sv1 = sub1.get(cli) || 0;
+                        const sv2 = sub2.get(cli) || 0;
+                        const sd = sv2 - sv1;
+                        const sp = safePct(sd, sv1);
+                        return (
+                          <tr key={`r${i}-c${j}`} className="fluxo-forn-row">
+                            <td className="fluxo-indent-1" style={{ paddingLeft: 44 }}>{cli}</td>
+                            <td className="num green">{sv1 !== 0 ? fmt(sv1) : "—"}</td>
+                            <td className="num green">{sv2 !== 0 ? fmt(sv2) : "—"}</td>
+                            <td className={`num ${sd >= 0 ? "green" : "red"}`}>{fmt(sd)}</td>
+                            <td className={`num ${sd >= 0 ? "green" : "red"}`}>{fmtPct(sp)}</td>
+                          </tr>
+                        );
+                      })}
+                    </React.Fragment>
                   );
                 })}
                 {/* Header Despesa */}
@@ -1131,14 +1185,36 @@ const PageComparativo = ({ statusFilter, drilldown, setDrilldown, year, month })
                   const v2 = a2.despCat.get(cat) || 0;
                   const diff = v2 - v1;
                   const pct = safePct(diff, v1);
+                  const catKey = `d::${cat}`;
+                  const isCatExp = expandedCats.has(catKey);
+                  const sub1 = a1.despSub.get(cat) || new Map();
+                  const sub2 = a2.despSub.get(cat) || new Map();
+                  const allForns = [...new Set([...sub1.keys(), ...sub2.keys()])].sort((a, b) => ((sub2.get(b) || 0) + (sub1.get(b) || 0)) - ((sub2.get(a) || 0) + (sub1.get(a) || 0)));
                   return (
-                    <tr key={`d${i}`}>
-                      <td style={{ paddingLeft: 24 }}><span className="chev">+</span>{cat}</td>
-                      <td className="num red">{v1 !== 0 ? fmt(v1) : "—"}</td>
-                      <td className="num red">{v2 !== 0 ? fmt(v2) : "—"}</td>
-                      <td className={`num ${diff <= 0 ? "green" : "red"}`}>{fmt(diff)}</td>
-                      <td className={`num ${diff <= 0 ? "green" : "red"}`}>{fmtPct(pct)}</td>
-                    </tr>
+                    <React.Fragment key={`d${i}`}>
+                      <tr className={`fluxo-cat-row ${isCatExp ? "expanded" : ""}`} onClick={() => toggleCat(catKey)} style={{ cursor: "pointer" }} title="Clique para ver fornecedores">
+                        <td style={{ paddingLeft: 24 }}><span className={`fluxo-chev ${isCatExp ? "open" : ""}`}>▸</span>{cat}</td>
+                        <td className="num red">{v1 !== 0 ? fmt(v1) : "—"}</td>
+                        <td className="num red">{v2 !== 0 ? fmt(v2) : "—"}</td>
+                        <td className={`num ${diff <= 0 ? "green" : "red"}`}>{fmt(diff)}</td>
+                        <td className={`num ${diff <= 0 ? "green" : "red"}`}>{fmtPct(pct)}</td>
+                      </tr>
+                      {isCatExp && allForns.slice(0, 15).map((forn, j) => {
+                        const sv1 = sub1.get(forn) || 0;
+                        const sv2 = sub2.get(forn) || 0;
+                        const sd = sv2 - sv1;
+                        const sp = safePct(sd, sv1);
+                        return (
+                          <tr key={`d${i}-f${j}`} className="fluxo-forn-row">
+                            <td className="fluxo-indent-1" style={{ paddingLeft: 44 }}>{forn}</td>
+                            <td className="num red">{sv1 !== 0 ? fmt(sv1) : "—"}</td>
+                            <td className="num red">{sv2 !== 0 ? fmt(sv2) : "—"}</td>
+                            <td className={`num ${sd <= 0 ? "green" : "red"}`}>{fmt(sd)}</td>
+                            <td className={`num ${sd <= 0 ? "green" : "red"}`}>{fmtPct(sp)}</td>
+                          </tr>
+                        );
+                      })}
+                    </React.Fragment>
                   );
                 })}
                 <tr className="total">
@@ -1160,7 +1236,7 @@ const PageComparativo = ({ statusFilter, drilldown, setDrilldown, year, month })
 // ===== PageRelatorio =====
 // Carrega report.json (gerado offline por generate-report.cjs) e renderiza
 // um relatorio executivo imprimivel (Ctrl+P -> Save as PDF).
-const PageRelatorio = ({ year, statusFilter }) => {
+const PageRelatorio = ({ year, statusFilter, filters }) => {
   const refYear = window.REF_YEAR || new Date().getFullYear();
   // Hooks de dados — DEVEM ficar antes de qualquer early return pra não violar
   // a ordem dos hooks. Os useMemo dependem de periodYear/periodMonth declarados abaixo
@@ -1181,12 +1257,12 @@ const PageRelatorio = ({ year, statusFilter }) => {
   // Cards reativos ao período (year + month) — antes usavam window.BIT global YTD
   // Mantidos no topo (regra dos hooks) — não chamar dentro de early returns
   const B = useMemo(
-    () => window.getBit('realizado', null, periodYear, periodMonth),
-    [periodYear, periodMonth]
+    () => window.getBit('realizado', null, periodYear, periodMonth, filters),
+    [periodYear, periodMonth, filters]
   );
   const Bprev = useMemo(
-    () => window.getBit('a_pagar_receber', null, periodYear, periodMonth),
-    [periodYear, periodMonth]
+    () => window.getBit('a_pagar_receber', null, periodYear, periodMonth, filters),
+    [periodYear, periodMonth, filters]
   );
 
   // resolve o nome do arquivo conforme periodo

@@ -17351,6 +17351,8 @@ function aggregateTx(txList, year) {
   year = year || REF_YEAR;
   const months = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
   const MONTH_DATA = months.map(m => ({ m, receita: 0, despesa: 0 }));
+  const RECEITA_DIA = new Array(31).fill(0);
+  const DESPESA_DIA = new Array(31).fill(0);
   const recCat = new Map(), despCat = new Map();
   const recCli = new Map(), despForn = new Map();
   const extratoArr = [];
@@ -17364,14 +17366,17 @@ function aggregateTx(txList, year) {
     if (Number(ymonth) !== year) continue;
     const mIdx = parseInt(mes.slice(5,7), 10) - 1;
     if (mIdx < 0 || mIdx > 11) continue;
+    const diaIdx = (dia >= 1 && dia <= 31) ? dia - 1 : -1;
     if (kind === 'r') {
       MONTH_DATA[mIdx].receita += valor;
       totalReceita += valor;
+      if (diaIdx >= 0) RECEITA_DIA[diaIdx] += valor;
       recCat.set(categoria, (recCat.get(categoria) || 0) + valor);
       if (cliente) recCli.set(cliente, (recCli.get(cliente) || 0) + valor);
     } else {
       MONTH_DATA[mIdx].despesa += valor;
       totalDespesa += valor;
+      if (diaIdx >= 0) DESPESA_DIA[diaIdx] += valor;
       despCat.set(categoria, (despCat.get(categoria) || 0) + valor);
       if (fornecedor) despForn.set(fornecedor, (despForn.get(fornecedor) || 0) + valor);
     }
@@ -17398,6 +17403,8 @@ function aggregateTx(txList, year) {
 
   return {
     MONTH_DATA,
+    RECEITA_DIA,
+    DESPESA_DIA,
     RECEITA_CATEGORIAS: topN(recCat, 12),
     DESPESA_CATEGORIAS: topN(despCat, 12),
     RECEITA_CLIENTES: topN(recCli, 12),
@@ -17418,7 +17425,7 @@ function aggregateTx(txList, year) {
 // applyDrilldown: filtra ALL_TX baseado em statusFilter + drilldown.
 // statusFilter: 'realizado' | 'a_pagar_receber' | 'tudo'
 // drilldown: null | { type: 'mes'|'categoria'|'cliente'|'fornecedor'|'conta', value: ... }
-function filterTx(allTx, statusFilter, drilldown) {
+function filterTx(allTx, statusFilter, drilldown, filters) {
   let out = allTx;
   if (statusFilter === 'realizado') out = out.filter(r => r[6] === 1);
   else if (statusFilter === 'a_pagar_receber') out = out.filter(r => r[6] === 0);
@@ -17428,6 +17435,16 @@ function filterTx(allTx, statusFilter, drilldown) {
     else if (drilldown.type === 'cliente') out = out.filter(r => r[0] === 'r' && r[4] === drilldown.value);
     else if (drilldown.type === 'fornecedor') out = out.filter(r => r[0] === 'd' && r[7] === drilldown.value);
     else if (drilldown.type === 'conta') out = out.filter(r => r[9] === drilldown.value);
+    else if (drilldown.type === 'dia') out = out.filter(r => r[2] === drilldown.value);
+  }
+  // Filtros globais de categoria e centro de custo
+  if (filters) {
+    if (filters.categoria && filters.categoria !== 'Todas categorias') {
+      out = out.filter(r => r[3] === filters.categoria);
+    }
+    if (filters.cc && filters.cc !== 'Todos centros de custo') {
+      out = out.filter(r => r[8] === filters.cc);
+    }
   }
   return out;
 }
@@ -17437,18 +17454,19 @@ function filterTx(allTx, statusFilter, drilldown) {
 function _makeBit(filter) {
   const seg = SEGMENTS[filter] || SEGMENTS.realizado;
   const K = seg.KPIS;
+  const totalImpostos = MONTH_DRE.reduce((s, m) => s + (m.imposto || 0), 0);
   const indicadores = {
     TOTAL_RECEITA: K.TOTAL_RECEITA,
     TOTAL_DESPESA: K.TOTAL_DESPESA,
     VALOR_LIQUIDO: K.VALOR_LIQUIDO,
     MARGEM_LIQUIDA: K.MARGEM_LIQUIDA,
-    IMPOSTOS: 0,
-    EBITDA: K.VALOR_LIQUIDO,
+    IMPOSTOS: totalImpostos,
+    EBITDA: K.VALOR_LIQUIDO + totalImpostos,
     RESULTADO_OPERACIONAL: K.VALOR_LIQUIDO,
     CAPEX: 0,
     MARGEM_CONTRIB: K.MARGEM_LIQUIDA,
-    EBITDA_PCT: K.MARGEM_LIQUIDA,
-    IMPOSTOS_PCT: 0,
+    EBITDA_PCT: K.TOTAL_RECEITA > 0 ? ((K.VALOR_LIQUIDO + totalImpostos) / K.TOTAL_RECEITA) * 100 : 0,
+    IMPOSTOS_PCT: K.TOTAL_RECEITA > 0 ? (totalImpostos / K.TOTAL_RECEITA) * 100 : 0,
   };
   return Object.assign({
     META, POSICAO_CAIXA, COMPOSICAO_DESPESA, CONTAS, MONTH_DRE, ORCAMENTO, DRE_BY_CONTA,
@@ -17484,7 +17502,7 @@ window.filterTx = filterTx;
 // getBit: SEMPRE recomputa via recomputeBit (sem cache de window.BIT).
 // Evita lag no toggle Previsto/Realizado e suporta year/month arbitrario.
 // month: 0 = ano completo, 1-12 = mes especifico.
-window.getBit = function (statusFilter, drilldown, year, month) {
+window.getBit = function (statusFilter, drilldown, year, month, filters) {
   const sf = statusFilter || window.BIT_FILTER || 'realizado';
   const y = year || window.REF_YEAR;
   let dd = drilldown;
@@ -17493,19 +17511,23 @@ window.getBit = function (statusFilter, drilldown, year, month) {
     const ym = y + '-' + mm;
     dd = { type: 'mes', value: ym, label: ym };
   }
-  return window.recomputeBit(sf, dd, y);
+  return window.recomputeBit(sf, dd, y, filters);
 };
 // Cross-filter helper: combina statusFilter + drilldown e retorna BIT-like
 // com KPIs/charts/extrato recalculados em ~10ms (17k rows).
-window.recomputeBit = function (statusFilter, drilldown, year) {
-  const filtered = filterTx(ALL_TX, statusFilter, drilldown);
+window.recomputeBit = function (statusFilter, drilldown, year, filters) {
+  const filtered = filterTx(ALL_TX, statusFilter, drilldown, filters);
   const agg = aggregateTx(filtered, year || REF_YEAR);
   // Mescla com BIT base pra preservar META, helpers (fmt, fmtK), MONTHS etc.
   const base = window.BIT || {};
+  var totalImpostos = (base.MONTH_DRE || MONTH_DRE || []).reduce(function (s, m) { return s + (m.imposto || 0); }, 0);
   return Object.assign({}, base, agg, {
     TOTAL_RECEITA: agg.KPIS.TOTAL_RECEITA,
     TOTAL_DESPESA: agg.KPIS.TOTAL_DESPESA,
     VALOR_LIQUIDO: agg.KPIS.VALOR_LIQUIDO,
     MARGEM_LIQUIDA: agg.KPIS.MARGEM_LIQUIDA,
+    IMPOSTOS: totalImpostos,
+    EBITDA: agg.KPIS.VALOR_LIQUIDO + totalImpostos,
+    RESULTADO_OPERACIONAL: agg.KPIS.VALOR_LIQUIDO,
   });
 };
