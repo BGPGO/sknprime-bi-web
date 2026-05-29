@@ -9,6 +9,7 @@ module.exports = {
   'omie-multi': require('./omie-multi.cjs'),
   'conta-azul': require('./conta-azul.cjs'),
   'manual-xlsx': require('./manual-xlsx.cjs'),
+  'nibo-xlsx': require('./nibo-xlsx.cjs'),
   // 'bling': require('./bling.cjs'),         // TODO
   // 'tiny': require('./tiny.cjs'),           // TODO
   // 'f360': require('./f360.cjs'),           // TODO

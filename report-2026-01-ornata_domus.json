@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-29T12:00:00.000Z",
+  "empresa": "Ornata Domus",
+  "periodo": "Janeiro/2026",
+  "year": 2026,
+  "month": 1,
+  "filter": "realizado",
+  "secoes": {
+    "visao_geral": {
+      "title": "Visão Geral",
+      "analysis": "Em janeiro de 2026, a Ornata Domus registrou receita total de R$ 1.176.196,45 contra despesas de R$ 735.421,38, resultando em um valor liquido positivo de R$ 440.775,07 e margem liquida de 37,47%. A receita DRE foi de R$ 404.861,98, com custos de R$ 482.290,13 e despesas de R$ 117.998,72. O resultado expressivo no caixa foi fortemente influenciado pela obtencao de emprestimo de R$ 500.000,00 junto ao Banco Bradesco, que elevou significativamente as entradas do mes. O principal canal de vendas foi a Shopee com R$ 275.123,68 em repasses, seguido pela transferencia entre empresas da Outside The Box no valor de R$ 220.254,51.\n\nApesar do saldo positivo robusto, e necessario ponderar que a margem operacional real, excluindo o emprestimo bancario, seria consideravelmente menor. A concentracao de receita em poucos canais, especialmente Shopee, representa risco de dependencia comercial. A despesa com compra de mercadorias alcancou R$ 323.138,73, sendo o principal centro de custo, seguido por compra de ativo imobilizado de R$ 83.144,09 e materia-prima de R$ 76.161,93. Recomenda-se monitorar de perto o comprometimento com o servico da divida do emprestimo obtido e diversificar os canais de receita para reduzir a exposicao a um unico marketplace.",
+      "error": null
+    },
+    "receita": {
+      "title": "Receita",
+      "analysis": "A receita total de janeiro foi de R$ 1.176.196,45, com destaque para a obtencao de emprestimo de R$ 500.000,00, repasse de vendas de R$ 395.642,33 e transferencia entre empresas de R$ 220.254,51. A receita DRE, que exclui movimentacoes nao operacionais, ficou em R$ 404.861,98. Os principais clientes foram Banco Bradesco com R$ 500.000,61 (emprestimo), Shopee com R$ 275.123,68, Outside The Box com R$ 220.254,51 e Shein com R$ 77.950,28. Receitas menores incluem salarios e encargos recebidos de R$ 31.647,58 e pro-labores de R$ 14.000,00.\n\nA estrutura de receita revela forte dependencia de operacoes financeiras e intercompany, que juntas representam mais de 60% do total. A receita genuina de vendas diretas (R$ 3.916,00) e servicos prestados (R$ 2.235,15) ainda e bastante modesta frente ao volume total. O rendimento de investimentos de R$ 1.224,38 e marginal. Para os proximos meses, recomenda-se acompanhar a evolucao do repasse de vendas dos marketplaces e buscar ampliar a participacao da Amazon (R$ 21.828,15) e Mercado Livre (R$ 17.528,43) na composicao de receita, reduzindo a concentracao na Shopee.",
+      "error": null
+    },
+    "despesa": {
+      "title": "Despesa",
+      "analysis": "As despesas totais de janeiro atingiram R$ 735.421,38. O principal componente foi compra de mercadorias com R$ 323.138,73, representando 43,9% do total. Em seguida, compra de ativo imobilizado com R$ 83.144,09, compra de materia-prima com R$ 76.161,93 e compra de insumos para expedicao com R$ 66.250,29. As despesas com ADS somaram R$ 53.074,00, totalmente direcionadas a Shopee. Salarios e encargos ficaram em R$ 36.592,43, pro-labores em R$ 14.000,00 e impostos sobre receita em R$ 12.224,84. O principal fornecedor foi a DSA Distribuidora de Vidros com R$ 159.154,67, seguida por Imperio Decor com R$ 114.119,80.\n\nA elevada concentracao de despesas em compra de mercadorias e insumos indica um mes de forte reposicao de estoque. A aquisicao de ativo imobilizado de R$ 83.144,09 junto a Agnaldo Silva Lopes Veiculos (R$ 75.000,00) sugere investimento em logistica ou infraestrutura. O gasto com ADS exclusivamente na Shopee (R$ 53.074,00) merece atencao quanto ao retorno sobre investimento em publicidade. Recomenda-se avaliar a relacao custo-beneficio dos gastos com marketing por canal e negociar melhores condicoes com os fornecedores de maior volume, especialmente DSA e Imperio Decor.",
+      "error": null
+    },
+    "fluxo_caixa": {
+      "title": "Fluxo de Caixa",
+      "analysis": "O fluxo de caixa de janeiro apresentou saldo positivo acumulado de R$ 440.775,07, sustentado pela entrada expressiva do emprestimo bancario de R$ 500.000,00. Sem essa operacao financeira, o fluxo operacional teria sido deficitario em aproximadamente R$ 59.225,00. O repasse de vendas de R$ 395.642,33 constituiu a principal fonte operacional de caixa, enquanto as saidas foram dominadas por compras de mercadorias e insumos que somaram R$ 465.550,95. As transferencias intercompany com a Outside The Box totalizaram R$ 220.254,51 em entradas.\n\nA dependencia de capital de terceiros para manter o caixa positivo e um ponto de atencao critico. O ciclo financeiro da empresa aparenta estar pressionado pela necessidade de antecipar compras de estoque em volume elevado. Para os proximos meses, sera fundamental que o fluxo operacional gerado pelos marketplaces seja suficiente para cobrir o servico da divida do emprestimo e as despesas correntes. Recomenda-se elaborar projecao de caixa mensal considerando as parcelas do emprestimo e buscar otimizar o capital de giro atraves de negociacao de prazos com fornecedores.",
+      "error": null
+    },
+    "tesouraria": {
+      "title": "Tesouraria",
+      "analysis": "A tesouraria de janeiro encerrou com posicao acumulada de R$ 440.775,07, refletindo o saldo liquido entre receitas e despesas do periodo. O principal recebimento foi o credito de emprestimo do Banco Bradesco no valor de R$ 500.000,61, seguido pelos repasses da Shopee de R$ 275.123,68. A retirada de capital somou R$ 10.511,31, e os alugueis para uso totalizaram R$ 7.800,00. O rendimento de investimentos foi de R$ 1.224,38, indicando baixa alocacao de recursos em aplicacoes financeiras.\n\nA gestao de tesouraria precisa priorizar a constituicao de reserva de liquidez, considerando que a empresa agora carrega obrigacao de emprestimo bancario. A concentracao de recebimentos em poucos dias do mes, tipica de repasses de marketplaces, cria volatilidade no caixa diario. Recomenda-se estruturar um cronograma de pagamentos alinhado aos ciclos de recebimento dos marketplaces e avaliar a aplicacao de excedentes de caixa em investimentos de curto prazo para maximizar rendimentos enquanto o emprestimo esta ativo.",
+      "error": null
+    },
+    "comparativo": {
+      "title": "Comparativo",
+      "analysis": "Janeiro de 2026 inaugurou o exercicio com resultado liquido de R$ 440.775,07, fortemente influenciado pela obtencao de emprestimo bancario. A receita DRE de R$ 404.861,98 reflete a operacao genuina da empresa, enquanto os custos de R$ 482.290,13 superaram essa receita, indicando que a operacao pura foi deficitaria. A margem liquida aparente de 37,47% nao reflete a rentabilidade operacional real, que seria negativa sem a entrada do emprestimo. Os cinco maiores clientes por receita concentram mais de 93% do faturamento total.\n\nComo primeiro mes do ano, janeiro estabelece a linha de base para acompanhamento. Sera importante comparar a evolucao mensal excluindo eventos nao recorrentes como o emprestimo. Os indicadores-chave a monitorar sao a receita DRE, o custo de mercadorias vendidas e a margem operacional. A meta para os meses seguintes deve ser atingir saldo operacional positivo sem depender de financiamento externo. A empresa demonstra escala de faturamento significativa via marketplaces, porem precisa ajustar a estrutura de custos para converter volume em lucratividade sustentavel.",
+      "error": null
+    }
+  },
+  "conclusao": "Janeiro de 2026 apresentou saldo positivo de R$ 440.775,07, porem sustentado por emprestimo bancario de R$ 500.000,00. A operacao genuina da empresa, medida pela receita DRE de R$ 404.861,98 contra custos de R$ 482.290,13, foi deficitaria. A empresa demonstra boa capacidade de geracao de volume via marketplaces, especialmente Shopee, mas precisa ajustar a relacao entre custos de aquisicao de mercadorias e receita operacional. Os proximos meses serao determinantes para avaliar se a empresa consegue gerar caixa operacional suficiente para honrar o servico da divida e manter a sustentabilidade financeira."
+}

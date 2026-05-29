@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-29T00:00:00.000Z",
+  "empresa": "Outside The Box",
+  "periodo": "Fevereiro/2026",
+  "year": 2026,
+  "month": 2,
+  "filter": "realizado",
+  "secoes": {
+    "visao_geral": {
+      "title": "Visão Geral",
+      "analysis": "Em fevereiro de 2026, a Outside The Box registrou receita total de R$ 228.616,80 e despesas de R$ 233.593,91, resultando em prejuizo liquido de R$ 4.977,11 e margem liquida negativa de -2,18%. Houve queda de 7,8% na receita em relacao a janeiro (R$ 247.977,72), enquanto as despesas operacionais proprias aumentaram significativamente com a entrada de folha de pagamento e pro-labore na estrutura de custos. A Shopee continuou como canal principal com R$ 186.028,62, mas a Shein cresceu para R$ 42.190,12, representando 18,4% da receita.\n\nO resultado negativo de fevereiro acende um alerta importante. As transferencias intercompany de R$ 197.000,00 representaram 84,3% das despesas totais. Mesmo excluindo essas transferencias, as despesas operacionais proprias subiram para R$ 36.593,91, quase o dobro de janeiro. A inclusao de pro-labores (R$ 6.000,00) e o aumento de salarios e encargos (R$ 4.104,00), somados ao crescimento dos gastos com ADS para R$ 18.600,00, pressionaram a margem. Recomenda-se avaliar o retorno sobre o investimento em publicidade e otimizar a alocacao de recursos entre plataformas.",
+      "error": null
+    },
+    "receita": {
+      "title": "Receita",
+      "analysis": "A receita de fevereiro totalizou R$ 228.616,80, composta por repasses de vendas (R$ 228.521,79), trocas de produtos (R$ 65,01) e outras receitas (R$ 30,00). A Shopee gerou R$ 186.028,62 (81,4% do total), a Shein R$ 42.190,12 (18,4%) e a Amazon R$ 303,05. Em comparacao com janeiro, a Shopee apresentou queda de R$ 44.650,43 (-19,3%), enquanto a Shein cresceu R$ 25.321,76 (+150,1%), demonstrando boa evolucao nesse canal.\n\nO crescimento expressivo da Shein e um sinal positivo para a estrategia de diversificacao. A participacao da Shopee caiu de 93% para 81,4%, reducao relevante que diminui o risco de concentracao. No entanto, a queda absoluta de receita da Shopee merece investigacao: pode indicar sazonalidade, reducao de competitividade ou problemas com o algoritmo da plataforma. Recomenda-se intensificar a presenca na Shein e avaliar a entrada no TikTok Shop para acelerar a diversificacao de canais.",
+      "error": null
+    },
+    "despesa": {
+      "title": "Despesa",
+      "analysis": "As despesas totais de fevereiro foram de R$ 233.593,91, com transferencias entre empresas de R$ 197.000,00 (84,3%). As despesas operacionais proprias somaram R$ 36.593,91, um aumento de 88,8% em relacao a janeiro (R$ 19.378,30). Os principais itens foram: ADS R$ 18.600,00 (alta de 86% vs janeiro), pro-labores R$ 6.000,00 (novo custo), salarios e encargos R$ 4.104,00, impostos R$ 2.228,54, fretes de devolucao R$ 2.120,28, reembolsos R$ 1.414,51 e horas extras R$ 774,19.\n\nO gasto com ADS de R$ 18.600,00 representa 8,1% da receita, acima do patamar de 4% registrado em janeiro e significativamente alto para o segmento. E fundamental avaliar o ROAS (retorno sobre investimento em publicidade) para verificar se o aumento gerou proporcional incremento de vendas. O custo de devolucoes e reembolsos totalizou R$ 3.534,79 (1,5% da receita), mantendo-se em nivel aceitavel. A nova linha de pro-labores (R$ 6.000,00) deve ser incorporada ao planejamento mensal como custo fixo recorrente.",
+      "error": null
+    },
+    "fluxo_caixa": {
+      "title": "Fluxo de Caixa",
+      "analysis": "O fluxo de caixa de fevereiro foi negativo em R$ 4.977,11, com entradas de R$ 228.616,80 e saidas de R$ 233.593,91. A DRE registrou receita de R$ 228.616,80, custos de R$ 3.002,73 e despesas de R$ 230.591,18. O saldo acumulado encerrou em -R$ 4.977,11, indicando que a empresa consumiu o caixa gerado em janeiro (R$ 8.344,91) e entrou em territorio negativo.\n\nA queima de caixa de fevereiro e preocupante quando combinada com a posicao anterior. A empresa pode enfrentar dificuldades de capital de giro se a tendencia se mantiver. Os principais fornecedores pagos foram Ornata Domus (R$ 197.000,00), Shopee para ADS (R$ 18.600,00) e colaboradores (Carlos Eduardo R$ 2.494,11, Gabriel Vinicius R$ 1.786,72, Jonathan Roque R$ 1.700,00). Recomenda-se renegociar o valor de transferencia intercompany nos meses de menor faturamento para preservar a liquidez operacional.",
+      "error": null
+    },
+    "tesouraria": {
+      "title": "Tesouraria",
+      "analysis": "A posicao de tesouraria ao final de fevereiro indica saldo negativo de R$ 4.977,11. Os recebimentos concentraram-se na Shopee (R$ 186.028,62) e Shein (R$ 42.190,12). Os maiores desembolsos foram direcionados a Ornata Domus (R$ 197.000,00), Shopee ADS (R$ 18.600,00), e folha de pagamento com varios colaboradores totalizando aproximadamente R$ 12.481,58.\n\nA situacao de caixa negativo demanda atencao imediata da gestao. A empresa precisa de aporte ou reducao de saidas para reequilibrar a posicao de tesouraria. Considerando que as transferencias intercompany sao o item de maior impacto, uma reducao temporaria de R$ 10.000 a R$ 15.000 no repasse mensal ja seria suficiente para recompor a posicao de caixa. Adicionalmente, a negociacao de melhores condicoes de repasse com os marketplaces pode antecipar recebimentos e aliviar a pressao sobre o capital de giro.",
+      "error": null
+    },
+    "comparativo": {
+      "title": "Comparativo",
+      "analysis": "Comparando fevereiro com janeiro de 2026, a receita caiu 7,8% (de R$ 247.977,72 para R$ 228.616,80), enquanto as despesas operacionais proprias (excluindo transferencias) quase dobraram, passando de R$ 19.378,30 para R$ 36.593,91. A margem liquida deteriorou de +3,37% para -2,18%, representando uma inversao de resultado. A participacao da Shein cresceu de 6,8% para 18,4%, movimento positivo de diversificacao.\n\nOs gastos com ADS subiram 86% (de R$ 10.000 para R$ 18.600) sem crescimento correspondente de receita, sugerindo ineficiencia no investimento publicitario. A entrada de pro-labores (R$ 6.000) e o aumento de salarios adicionaram R$ 9.372,54 em custos fixos nao existentes em janeiro. Para os proximos meses, e essencial que o crescimento de receita acompanhe a expansao da base de custos, sob risco de perpetuacao de resultados negativos. A meta deve ser recuperar margem liquida positiva acima de 3% ate abril.",
+      "error": null
+    }
+  },
+  "conclusao": "Fevereiro de 2026 apresentou resultado negativo de R$ 4.977,11, com margem liquida de -2,18%, revertendo o desempenho positivo de janeiro. A queda de receita de 7,8% combinada com aumento de 88,8% nas despesas operacionais proprias (excluindo transferencias) pressionou o resultado. O crescimento da Shein para 18,4% da receita e positivo, mas os gastos com ADS precisam de revisao de eficiencia. A posicao de caixa negativa demanda acao imediata, seja via ajuste nas transferencias intercompany ou otimizacao de custos operacionais. Recomenda-se foco em ROAS, controle rigoroso de custos fixos e renegociacao dos valores de transferencia."
+}

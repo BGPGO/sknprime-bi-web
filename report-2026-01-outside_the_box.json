@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-29T00:00:00.000Z",
+  "empresa": "Outside The Box",
+  "periodo": "Janeiro/2026",
+  "year": 2026,
+  "month": 1,
+  "filter": "realizado",
+  "secoes": {
+    "visao_geral": {
+      "title": "Visão Geral",
+      "analysis": "Em janeiro de 2026, a Outside The Box registrou receita total de R$ 247.977,72 contra despesas de R$ 239.632,81, resultando em um valor liquido positivo de R$ 8.344,91 e margem liquida de 3,37%. A principal fonte de receita foi o repasse de vendas no valor de R$ 247.911,72, com destaque para a Shopee como canal dominante, contribuindo com R$ 230.679,05. A operacao apresentou resultado positivo, porem com margem bastante estreita, evidenciando que a empresa opera com baixa rentabilidade em relacao ao volume movimentado.\n\nO principal ponto de atencao e a elevada concentracao de despesas em transferencias entre empresas, que totalizaram R$ 220.254,51, representando mais de 91% das despesas totais. Excluindo essa transferencia para a Ornata Domus, as despesas operacionais somaram apenas R$ 19.378,30, o que indicaria uma margem operacional propria bem mais saudavel, superior a 92%. Recomenda-se avaliar a politica de transferencias intercompany para garantir que a Outside The Box retenha capital suficiente para investimentos em crescimento e capital de giro.",
+      "error": null
+    },
+    "receita": {
+      "title": "Receita",
+      "analysis": "A receita total de janeiro foi de R$ 247.977,72, composta quase integralmente por repasses de vendas (R$ 247.911,72) e um valor residual de R$ 66,00 referente a trocas e adicoes de produtos em pedidos. A Shopee foi responsavel por R$ 230.679,05 (93% da receita), seguida pela Shein com R$ 16.868,36 (6,8%) e Amazon com R$ 364,31. Essa concentracao em um unico marketplace representa risco significativo de dependencia.\n\nA diversificacao de canais de venda deve ser prioridade estrategica para os proximos meses. A Shein demonstra potencial de crescimento e a Amazon ainda tem participacao muito baixa, sinalizando espaco para expansao. Recomenda-se investir na otimizacao de listagens e campanhas especificas para cada plataforma, visando reduzir a dependencia da Shopee para um patamar abaixo de 70% da receita total ate o segundo semestre.",
+      "error": null
+    },
+    "despesa": {
+      "title": "Despesa",
+      "analysis": "As despesas totais de janeiro somaram R$ 239.632,81, sendo que a transferencia entre empresas para a Ornata Domus representou R$ 220.254,51 (91,9% do total). As despesas operacionais proprias totalizaram R$ 19.378,30, distribuidas entre ADS (R$ 10.000,00), reembolsos de marketplaces (R$ 2.600,97), fretes de devolucao e reenvio (R$ 2.120,58), impostos sobre receita (R$ 1.517,88), horas extras de producao (R$ 746,06), salarios e encargos (R$ 731,46), sistema de gestao (R$ 564,01) e contabilidade (R$ 526,00).\n\nOs gastos com ADS representaram R$ 10.000,00, equivalente a 4% da receita total, patamar considerado moderado para e-commerce. Os reembolsos de marketplaces (R$ 2.600,97) e fretes de devolucao (R$ 2.120,58) somados representam 1,9% da receita, indicando taxa de retorno aceitavel. Recomenda-se monitorar de perto os custos com horas extras de producao e avaliar se a estrutura de pessoal esta adequada ao volume de pedidos para evitar pressao crescente nessa linha.",
+      "error": null
+    },
+    "fluxo_caixa": {
+      "title": "Fluxo de Caixa",
+      "analysis": "O fluxo de caixa de janeiro apresentou saldo positivo de R$ 8.344,91, com entradas de R$ 247.977,72 e saidas de R$ 239.632,81. A DRE aponta receita de R$ 247.977,72, custo de R$ 2.263,94 e despesas de R$ 237.368,87. O saldo acumulado ao final do mes ficou em R$ 8.344,91, sinalizando que a empresa iniciou o ano com geracao de caixa positiva, embora marginal em relacao ao volume total movimentado.\n\nA principal saida de caixa foi a transferencia de R$ 220.254,51 para a Ornata Domus, que consome a maior parte do faturamento. Do ponto de vista de fluxo operacional proprio, a empresa gerou caixa robusto. O risco reside na baixa reserva de caixa remanescente (R$ 8.344,91), que oferece pouca margem para absorver imprevistos. Recomenda-se negociar prazos ou percentuais das transferencias intercompany para garantir um colchao de liquidez minimo equivalente a pelo menos um mes de despesas operacionais.",
+      "error": null
+    },
+    "tesouraria": {
+      "title": "Tesouraria",
+      "analysis": "A posicao de tesouraria ao final de janeiro indica saldo de R$ 8.344,91 em caixa. Os recebimentos vieram majoritariamente da Shopee (R$ 230.679,05), Shein (R$ 16.868,36) e Amazon (R$ 364,31). O principal desembolso foi direcionado a Ornata Domus Company Ltda (R$ 220.254,51), seguido de Shopee para ADS (R$ 10.000,00), reembolsos (R$ 2.600,97) e Correios (R$ 2.120,58).\n\nO saldo de caixa disponivel de R$ 8.344,91 e insuficiente para cobrir sequer um mes de despesas operacionais (excluindo transferencias). A gestao de tesouraria deve priorizar a constituicao de uma reserva operacional. Sugere-se acordar com a controladora um percentual de retencao sobre as transferencias mensais ou postergar parcialmente os repasses em meses de maior pressao operacional, de modo a garantir a saude financeira da operacao.",
+      "error": null
+    },
+    "comparativo": {
+      "title": "Comparativo",
+      "analysis": "Janeiro de 2026 marca o inicio do periodo analisado, nao havendo mes anterior para comparacao direta. A receita de R$ 247.977,72 com margem liquida de 3,37% estabelece a linha de base para acompanhamento dos proximos meses. A Shopee respondeu por 93% das vendas, Shein por 6,8% e Amazon por 0,15%, configurando alta concentracao em um unico canal.\n\nComo referencia para os proximos periodos, os indicadores-chave a serem monitorados sao: evolucao da margem liquida (meta de superar 5%), diversificacao de canais (meta de reduzir Shopee para menos de 80%), eficiencia dos gastos com ADS (atualmente em 4% da receita) e nivel de reserva de caixa. O desempenho de janeiro sera utilizado como benchmark para avaliar tendencias de melhoria ou deterioracao ao longo do primeiro semestre.",
+      "error": null
+    }
+  },
+  "conclusao": "Janeiro de 2026 apresentou resultado positivo de R$ 8.344,91, porem com margem liquida de apenas 3,37%, fortemente impactada pelas transferencias intercompany de R$ 220.254,51. Excluindo essas transferencias, a operacao demonstra boa saude, com despesas operacionais proprias de R$ 19.378,30 e margem operacional elevada. Os principais pontos de atencao sao a alta concentracao de receita na Shopee (93%), a baixa reserva de caixa e a necessidade de revisar a politica de transferencias para garantir sustentabilidade e capacidade de investimento. Recomenda-se priorizar a diversificacao de canais e a constituicao de reserva operacional."
+}

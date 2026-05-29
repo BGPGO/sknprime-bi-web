@@ -206,13 +206,46 @@ const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilld
   const current = indicatorSeries[indicator];
   const monthLabels = B.MONTHS_FULL.map(m => `${m.charAt(0).toUpperCase() + m.slice(1, 3)} ${refYear}`);
 
+  // DRE dinâmico — recalcula a partir das transações filtradas (reage a filtro de empresa/conta/mês)
+  const dreCalc = useMemo(() => {
+    // Merge month do header com drilldown (mesmo comportamento do getBit)
+    let dd = drilldown;
+    if (!dd && month && month >= 1 && month <= 12) {
+      const mm = String(month).padStart(2, '0');
+      dd = { type: 'mes', value: `${year || refYear}-${mm}` };
+    }
+    const txFiltered = window.ALL_TX ? window.filterTx(window.ALL_TX, statusFilter, dd, 'caixa', filters) : [];
+    const bySecao = { receita: 0, custo: 0, despesa: 0, investimento: 0, financiamento: 0 };
+    const yr = year || refYear;
+    for (const row of txFiltered) {
+      if (!row[1]) continue;
+      if (Number(row[1].slice(0, 4)) !== yr) continue;
+      if (row[6] !== 1) continue; // só realizado
+      const secao = row[11] || (row[0] === 'r' ? 'receita' : 'despesa');
+      if (row[0] === 'r') bySecao[secao] = (bySecao[secao] || 0) + row[5];
+      else bySecao[secao] = (bySecao[secao] || 0) - row[5];
+    }
+    const rec = bySecao.receita;
+    const custo = Math.abs(bySecao.custo);
+    const margem = rec + bySecao.custo;
+    const desp = Math.abs(bySecao.despesa);
+    const resOp = rec + bySecao.custo + bySecao.despesa;
+    return {
+      receitas_operacionais: rec,
+      custos_operacionais: custo,
+      margem_contribuicao: margem,
+      margem_contribuicao_pct: rec > 0 ? (margem / rec) * 100 : 0,
+      despesas_operacionais: desp,
+      resultado_operacional: resOp,
+      resultado_operacional_pct: rec > 0 ? (resOp / rec) * 100 : 0,
+    };
+  }, [statusFilter, drilldown, year, month, refYear, filters]);
   const indicadores = [
-    { value: B.TOTAL_RECEITA, label: "Soma de receita",     kind: "receita" },
-    { value: B.TOTAL_DESPESA, label: "Soma de despesa",     kind: "despesa" },
-    { value: B.VALOR_LIQUIDO, label: "Valor líquido",       kind: B.VALOR_LIQUIDO >= 0 ? "receita" : "despesa" },
-    { value: B.IMPOSTOS,      label: "Impostos",            kind: "despesa" },
-    { value: B.EBITDA,        label: "EBITDA",              kind: B.EBITDA >= 0 ? "receita" : "despesa" },
-    { value: B.RESULTADO_OPERACIONAL, label: "Resultado operacional", kind: B.RESULTADO_OPERACIONAL >= 0 ? "receita" : "despesa" },
+    { value: dreCalc.receitas_operacionais, label: "Receitas operacionais", kind: "receita" },
+    { value: dreCalc.custos_operacionais, label: "Custos operacionais", kind: "despesa" },
+    { value: dreCalc.margem_contribuicao, label: "Margem de contribuição", kind: dreCalc.margem_contribuicao >= 0 ? "receita" : "despesa" },
+    { value: dreCalc.despesas_operacionais, label: "Despesas operacionais", kind: "despesa" },
+    { value: dreCalc.resultado_operacional, label: "Resultado operacional", kind: dreCalc.resultado_operacional >= 0 ? "receita" : "despesa" },
   ];
 
   const statusLabel = statusFilter === "realizado" ? "realizado (PAGO)" :
@@ -246,12 +279,12 @@ const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilld
             </div>
           </div>
 
-          <div className={`card resultado-card ${B.VALOR_LIQUIDO < 0 ? "negative" : ""}`}>
-            <SectionHeading strong="RESULTADO" soft="GERAL" />
-            <div className="kpi-stack-value resultado-val">{B.fmt(B.VALOR_LIQUIDO)}</div>
-            <div className="kpi-stack-label">Valor líquido</div>
-            <div className="kpi-stack-pct">{B.MARGEM_LIQUIDA.toFixed(2).replace(".", ",")}%</div>
-            <div className="kpi-stack-label">Margem Líquida</div>
+          <div className={`card resultado-card ${dreCalc.resultado_operacional < 0 ? "negative" : ""}`}>
+            <SectionHeading strong="RESULTADO" soft="OPERACIONAL" />
+            <div className="kpi-stack-value resultado-val">{B.fmt(dreCalc.resultado_operacional)}</div>
+            <div className="kpi-stack-label">Resultado operacional</div>
+            <div className="kpi-stack-pct">{dreCalc.resultado_operacional_pct.toFixed(2).replace(".", ",")}%</div>
+            <div className="kpi-stack-label">Margem operacional</div>
           </div>
         </div>
 

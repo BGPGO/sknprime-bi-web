@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-29T12:00:00.000Z",
+  "empresa": "Ornata Domus (Consolidado)",
+  "periodo": "Janeiro/2026",
+  "year": 2026,
+  "month": 1,
+  "filter": "realizado",
+  "secoes": {
+    "visao_geral": {
+      "title": "Visao Geral",
+      "analysis": "O consolidado Ornata Domus e Outside The Box encerrou janeiro de 2026 com receita total de R$ 1.424.174,17 e despesa total de R$ 975.054,19, resultando em valor liquido positivo de R$ 449.119,98. A margem liquida ficou em 31,54%, indicando boa rentabilidade operacional no primeiro mes do exercicio. O DRE consolidado aponta receita de R$ 652.839,70, custo de R$ 484.554,07 e despesas operacionais de R$ 119.370,15, evidenciando que a operacao core gerou resultado positivo mesmo desconsiderando receitas financeiras e transferencias.\n\nO resultado positivo de janeiro estabelece uma base solida para o ano, porem cabe observar que a receita total inclui R$ 500.000,00 de obtencao de emprestimo (Bradesco) e R$ 220.254,51 em transferencias entre empresas, que nao representam receita operacional recorrente. Recomenda-se monitorar a evolucao da receita operacional pura nos proximos meses para avaliar a sustentabilidade do resultado. O saldo acumulado de R$ 449.119,98 oferece folego de caixa para investimentos estrategicos.",
+      "error": null
+    },
+    "receita": {
+      "title": "Receita",
+      "analysis": "A receita consolidada de R$ 1.424.174,17 em janeiro foi composta majoritariamente por repasse de vendas (R$ 643.554,05), obtencao de emprestimo (R$ 500.000,00) e transferencias entre empresas (R$ 220.254,51). Os principais canais de venda foram Shopee com R$ 505.802,73, Shein com R$ 94.818,64, Amazon com R$ 22.192,46 e Mercado Livre com R$ 17.528,43. O cliente Notavel Aroma Cosmeticos contribuiu com R$ 5.043,15 em servicos prestados. Receita com vendas diretas somou R$ 3.916,00 e rendimentos de investimentos R$ 1.224,38.\n\nA forte concentracao em Shopee (mais de 35% da receita total, excluindo emprestimos e transferencias) representa um risco de dependencia de canal. Recomenda-se diversificar a presenca em marketplaces, especialmente ampliando participacao em Amazon e Mercado Livre. A obtencao do emprestimo de R$ 500 mil junto ao Bradesco sinaliza necessidade de capital, sendo fundamental garantir que o custo financeiro desse emprestimo seja compensado pela geracao de receita operacional nos meses seguintes.",
+      "error": null
+    },
+    "despesa": {
+      "title": "Despesa",
+      "analysis": "As despesas consolidadas totalizaram R$ 975.054,19 em janeiro. Os maiores componentes foram compra de mercadorias (R$ 323.138,73), transferencias entre empresas (R$ 220.254,51), compra de ativo imobilizado (R$ 83.144,09), compra de materia-prima (R$ 76.161,93), insumos para expedicao (R$ 66.250,29) e despesas com ADS (R$ 63.074,00). Os principais fornecedores foram DSA Distribuidora de Vidros (R$ 159.154,67), Imperio Decor (R$ 114.119,80), Agnaldo Silva Lopes Veiculos (R$ 75.000,00) e Shopee (R$ 63.074,00 em publicidade).\n\nO investimento em ativo imobilizado de R$ 83.144,09 e a compra do veiculo de R$ 75.000,00 elevaram significativamente o desembolso do mes, porem sao gastos de natureza nao recorrente. As despesas com ADS de R$ 63.074,00 merecem acompanhamento do ROI por canal. Salarios e encargos somaram R$ 37.323,89 e pro-labores R$ 14.000,00, indicando uma folha de pessoal relativamente enxuta. Recomenda-se avaliar a eficiencia dos gastos com insumos para expedicao, que representaram R$ 66.250,29 no mes.",
+      "error": null
+    },
+    "fluxo_caixa": {
+      "title": "Fluxo de Caixa",
+      "analysis": "O fluxo de caixa consolidado de janeiro apresentou saldo positivo de R$ 449.119,98, resultado da diferenca entre entradas de R$ 1.424.174,17 e saidas de R$ 975.054,19. O fluxo foi fortemente influenciado pela entrada de R$ 500.000,00 referente ao emprestimo bancario. Desconsiderando essa entrada extraordinaria, o fluxo operacional teria sido deficitario em aproximadamente R$ 50.880,02, sinalizando que a operacao por si so nao gerou caixa suficiente para cobrir todos os desembolsos do mes.\n\nA dependencia do emprestimo para manter o caixa positivo e um ponto de atencao critico. As saidas com investimentos (ativo imobilizado e veiculo) totalizaram R$ 158.144,09, comprimindo o caixa operacional. Para os proximos meses, quando nao havera entrada extraordinaria de emprestimo, sera essencial que a operacao gere caixa proprio suficiente. Recomenda-se estabelecer um controle semanal de fluxo de caixa para antecipar eventuais gaps de liquidez.",
+      "error": null
+    },
+    "tesouraria": {
+      "title": "Tesouraria",
+      "analysis": "A tesouraria consolidada encerrou janeiro com saldo acumulado de R$ 449.119,98. As principais fontes de recursos foram o emprestimo do Banco Bradesco (R$ 500.000,61), repasses da Shopee (R$ 505.802,73) e recebimentos da Shein (R$ 94.818,64). Na saida, os maiores desembolsos foram para DSA Distribuidora de Vidros (R$ 159.154,67), Imperio Decor (R$ 114.119,80) e compra de veiculo (R$ 75.000,00). A retirada de capital dos socios somou R$ 10.511,31 e impostos sobre receita R$ 13.742,72.\n\nO saldo de tesouraria e confortavel para o inicio do ano, porem carrega o peso do emprestimo que precisara ser amortizado. A gestao de contas a receber deve priorizar a reducao de prazos junto aos marketplaces, especialmente Shopee e Shein, que concentram os maiores volumes. Recomenda-se estruturar uma politica de pagamento a fornecedores que alinhe os prazos de saida com os ciclos de recebimento, evitando descasamento de caixa nos meses subsequentes.",
+      "error": null
+    },
+    "comparativo": {
+      "title": "Comparativo",
+      "analysis": "Janeiro de 2026 marca o primeiro mes do exercicio consolidado, nao havendo base comparativa com meses anteriores do mesmo ano. A margem liquida de 31,54% sera o benchmark para avaliar a evolucao nos meses seguintes. A receita DRE de R$ 652.839,70 contra custos de R$ 484.554,07 gerou margem bruta de aproximadamente 25,77%, enquanto as despesas operacionais de R$ 119.370,15 representaram 18,29% da receita DRE. Esses indicadores servirao como referencia para analise comparativa futura.\n\nPara construir uma base comparativa robusta, recomenda-se acompanhar mensalmente a evolucao de tres indicadores-chave: receita operacional pura (excluindo emprestimos e transferencias), margem liquida operacional e indice de despesas com ADS sobre receita. Em janeiro, o ADS representou 9,66% da receita DRE, percentual que deve ser avaliado em relacao ao crescimento de vendas nos proximos meses. O resultado positivo de janeiro, embora influenciado pelo emprestimo, demonstra potencial operacional que precisa ser confirmado nos periodos seguintes.",
+      "error": null
+    }
+  },
+  "conclusao": "O consolidado Ornata Domus e Outside The Box iniciou 2026 com resultado liquido positivo de R$ 449.119,98 e margem de 31,54%, sustentado em grande parte pela obtencao de emprestimo de R$ 500 mil. A operacao core gerou receita DRE de R$ 652.839,70, porem os custos e despesas totalizaram R$ 603.924,22, resultando em margem operacional apertada. Os principais riscos sao a concentracao de receita na Shopee, o comprometimento futuro com amortizacao do emprestimo e a necessidade de investimentos em ativo imobilizado. As oportunidades residem na diversificacao de canais de venda, otimizacao do custo de aquisicao via ADS e melhoria da eficiencia logistica. Para os proximos meses, e fundamental que a geracao de caixa operacional seja suficiente para sustentar o negocio sem dependencia de credito bancario."
+}

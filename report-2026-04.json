@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-29T12:00:00.000Z",
+  "empresa": "Ornata Domus (Consolidado)",
+  "periodo": "Abril/2026",
+  "year": 2026,
+  "month": 4,
+  "filter": "realizado",
+  "secoes": {
+    "visao_geral": {
+      "title": "Visao Geral",
+      "analysis": "O consolidado Ornata Domus e Outside The Box registrou em abril de 2026 receita total de R$ 572.947,30 e despesa total de R$ 615.044,89, resultando em deficit de R$ 42.097,59 e margem liquida de -7,35%. O resultado, embora ainda negativo, representa a continuidade da tendencia de melhora observada desde fevereiro: o deficit recuou de R$ 293.237,93 (fev) para R$ 163.043,79 (mar) e agora para R$ 42.097,59. O DRE consolidado mostra receita de R$ 466.957,52, custo de R$ 344.693,84 e despesas de R$ 137.074,88, com prejuizo operacional DRE de R$ 14.811,20.\n\nA trajetoria de recuperacao e encorajadora, com o deficit mensal reduzindo-se a uma fracao do observado nos meses anteriores. O prejuizo DRE de R$ 14.811,20 e relativamente pequeno e indica que a operacao esta proxima do ponto de equilibrio. A receita DRE recuou 15,8% em relacao a marco, porem os custos cairam 30,5%, demonstrando ganho de eficiencia na cadeia de suprimentos. Recomenda-se manter a disciplina de custos e buscar incremento de receita para converter o resultado em positivo ja em maio.",
+      "error": null
+    },
+    "receita": {
+      "title": "Receita",
+      "analysis": "A receita consolidada de abril totalizou R$ 572.947,30, com repasses de vendas de R$ 455.529,13 e transferencias entre empresas de R$ 104.025,11. A Shopee manteve lideranca com R$ 333.306,66, seguida por Outside The Box (R$ 100.000,00), Shein (R$ 60.380,97), Amazon (R$ 34.544,15) e Mercado Livre (R$ 19.000,00). Notavel Aroma Cosmeticos contribuiu com R$ 12.929,23 e o TikTok Shop aparece pela primeira vez com R$ 5.308,76. Servicos prestados somaram R$ 8.904,12 e venda de ativo imobilizado R$ 1.843,66.\n\nA entrada do TikTok Shop (BR) como novo canal de vendas com R$ 5.308,76 e um desenvolvimento positivo que indica diversificacao da base de receita. A Shopee recuou 8,2% frente a marco (de R$ 363.049,06 para R$ 333.306,66), enquanto Shein caiu 28,4% e Amazon recuou 10,8%. Mercado Livre tambem retraiu de R$ 28.285,88 para R$ 19.000,00 (-32,8%). A tendencia de queda generalizada nos marketplaces merece atencao, podendo indicar sazonalidade ou perda de competitividade. Recomenda-se analisar o posicionamento de precos e avaliacoes nos canais para identificar causas da retracao.",
+      "error": null
+    },
+    "despesa": {
+      "title": "Despesa",
+      "analysis": "As despesas consolidadas de abril totalizaram R$ 615.044,89, queda de 25,1% sobre marco. Compra de mercadorias liderou com R$ 215.487,49, seguida por transferencias entre empresas (R$ 100.000,00), insumos para expedicao (R$ 64.444,34), salarios e encargos (R$ 50.710,76), materia-prima (R$ 41.642,22) e ADS (R$ 28.619,00). Pagamento de emprestimo somou R$ 19.303,94, impostos R$ 15.512,89 e pro-labores R$ 10.500,00. Os fornecedores mais relevantes foram DSA Distribuidora (R$ 123.977,55), Natalia Ricordi/Compet V8 (R$ 52.234,75) e Prime Box (R$ 32.164,56).\n\nA reducao do ADS de R$ 59.250,00 para R$ 28.619,00 (-51,7%) foi a medida de maior impacto no controle de despesas. Compra de mercadorias tambem caiu 37,9% (de R$ 347.210,50 para R$ 215.487,49), sinalizando ajuste no ritmo de compras. A folha de pessoal permanece estavel em R$ 50.710,76 mais pro-labores de R$ 10.500,00. O aluguel de R$ 7.800,00 reaparece como despesa fixa. Recomenda-se monitorar se a reducao agressiva de ADS nao esta prejudicando o volume de vendas, buscando o nivel otimo de investimento publicitario que maximize o retorno.",
+      "error": null
+    },
+    "fluxo_caixa": {
+      "title": "Fluxo de Caixa",
+      "analysis": "O fluxo de caixa de abril registrou deficit de R$ 42.097,59, o menor desde o inicio do ano quando descontado o emprestimo de janeiro. Entradas de R$ 572.947,30 quase cobriram as saidas de R$ 615.044,89, com gap de apenas 7,3%. As compras de mercadorias e materia-prima somaram R$ 257.129,71 (41,8% das saidas), percentual similar aos meses anteriores. O pagamento de emprestimo de R$ 19.303,94 e a amortizacao ao Bradesco (R$ 23.546,09 total) consumiram recursos relevantes.\n\nA proximidade do equilbrio de caixa em abril sinaliza que a estrategia de contencao esta funcionando. O fluxo de caixa operacional, excluindo pagamento de emprestimo e transferencias entre empresas, esta praticamente equilibrado. Para maio, sera crucial manter despesas no patamar de abril enquanto busca-se recuperacao de receita. Recomenda-se evitar compras especulativas de estoque e priorizar reposicao sob demanda para nao pressionar o caixa. A gestao de capital de giro deve focar em reduzir o ciclo financeiro, acelerando recebimentos e alongando pagamentos.",
+      "error": null
+    },
+    "tesouraria": {
+      "title": "Tesouraria",
+      "analysis": "A tesouraria consolidada de abril registrou deficit mensal de R$ 42.097,59. As entradas foram dominadas por Shopee (R$ 333.306,66), Outside The Box (R$ 100.000,00), Shein (R$ 60.380,97) e Amazon (R$ 34.544,15). As saidas concentraram-se em DSA Distribuidora (R$ 123.977,55), Natalia Ricordi/Compet V8 (R$ 52.234,75), Prime Box (R$ 32.164,56), Shopee ADS (R$ 28.119,00), Bradesco (R$ 23.546,09) e Mega EPS (R$ 20.531,00). Impostos Simples Nacional somaram R$ 15.512,89.\n\nA gestao de tesouraria mostra evolucao positiva, com deficit quase zerado. A diversificacao de fornecedores e perceptivel, sem nenhum concentrando mais de 20,2% das saidas (DSA). O pagamento a Unespuma (R$ 14.526,60) e Mega EPS (R$ 20.531,00) indica continuidade das compras de insumos produtivos. Recomenda-se negociar descontos por antecipacao de pagamento nos casos em que o caixa permitir, e manter reserva minima equivalente a 15 dias de despesas operacionais para evitar estresse de liquidez.",
+      "error": null
+    },
+    "comparativo": {
+      "title": "Comparativo",
+      "analysis": "Abril consolida a tendencia de recuperacao: o deficit caiu de R$ 293.237,93 (fev) para R$ 163.043,79 (mar) e R$ 42.097,59 (abr). A margem liquida evoluiu de -34,97% para -24,78% e agora -7,35%. A receita DRE recuou para R$ 466.957,52 (-15,8% vs marco), porem os custos DRE cairam proporcionalmente mais (-30,5%), melhorando a margem bruta de 10,6% para 26,2%. As despesas operacionais de R$ 137.074,88 representam 29,4% da receita DRE, acima do ideal mas em queda frente aos 33,5% de marco.\n\nNo acumulado janeiro-abril, a receita DRE soma R$ 2.311.666,38, custos R$ 1.886.933,37 e despesas R$ 665.557,54, resultando em prejuizo operacional acumulado de R$ 240.824,53. O ADS acumulado de R$ 244.243,00 representou 10,57% da receita DRE acumulada, dentro de parametros aceitaveis para e-commerce. A meta para maio deve ser atingir margem liquida positiva, o que exige receita total superior a despesa total. Com base na tendencia linear, o breakeven deve ocorrer com receita total acima de R$ 620.000,00 mantendo despesas no patamar de abril.",
+      "error": null
+    }
+  },
+  "conclusao": "Abril de 2026 representou avanço significativo na recuperacao financeira do consolidado Ornata Domus e Outside The Box, com deficit reduzido a R$ 42.097,59 e margem de -7,35%. A receita DRE de R$ 466.957,52 e custos de R$ 344.693,84 resultaram em margem bruta de 26,2%, a melhor do ano. A reducao agressiva do ADS para R$ 28.619,00 e o ajuste no ritmo de compras foram determinantes para a melhora. O TikTok Shop estreou como canal de vendas com R$ 5.308,76, diversificando a base de receita. Os desafios permanecem na queda generalizada de vendas nos marketplaces e no compromisso mensal com amortizacao do emprestimo (R$ 19.303,94). Para maio, a prioridade e reverter o resultado para positivo, mantendo a disciplina de custos e buscando incremento de receita especialmente em Amazon, Mercado Livre e TikTok Shop."
+}

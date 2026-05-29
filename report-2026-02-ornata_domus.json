@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-29T12:00:00.000Z",
+  "empresa": "Ornata Domus",
+  "periodo": "Fevereiro/2026",
+  "year": 2026,
+  "month": 2,
+  "filter": "realizado",
+  "secoes": {
+    "visao_geral": {
+      "title": "Visão Geral",
+      "analysis": "Fevereiro de 2026 registrou receita total de R$ 609.862,99 contra despesas de R$ 898.123,81, resultando em deficit de R$ 288.260,82 e margem liquida negativa de -47,27%. A receita DRE foi de R$ 408.618,94, com custos de R$ 558.690,68 e despesas adicionais de R$ 7.423,81. O mes foi marcado por forte pressao de custos, com a compra de mercadorias atingindo R$ 356.824,81 e direitos a receber de R$ 112.350,00 representando saida significativa. O principal canal de vendas continuou sendo a Shopee com R$ 278.562,43 em repasses, seguido pela Outside The Box com R$ 197.000,00 em transferencias intercompany.\n\nO resultado negativo expressivo de fevereiro representa um alerta importante para a gestao financeira. A ausencia de emprestimo bancario, que sustentou janeiro, revelou a fragilidade da operacao em gerar caixa por meios proprios. As despesas com ADS aumentaram para R$ 72.700,00 (alta de 37% em relacao a janeiro), enquanto a receita de vendas via marketplaces nao acompanhou esse crescimento proporcionalmente. Recomenda-se revisao imediata da politica de compras, avaliacao do retorno sobre investimento em publicidade e controle rigoroso dos desembolsos com fornecedores, especialmente DSA Distribuidora (R$ 231.824,78) e Notavel Aroma (R$ 121.525,65).",
+      "error": null
+    },
+    "receita": {
+      "title": "Receita",
+      "analysis": "A receita total de fevereiro foi de R$ 609.862,99, representando queda de 48,2% em relacao a janeiro. O repasse de vendas totalizou R$ 391.409,49, mantendo-se relativamente estavel, enquanto as transferencias entre empresas cairam para R$ 197.000,00. Nao houve obtencao de emprestimo no mes. A Shopee liderou os recebimentos com R$ 278.562,43, seguida por Outside The Box com R$ 197.000,00, Shein com R$ 45.362,84 e Amazon com R$ 43.072,77. Receitas com servicos prestados somaram R$ 5.054,30 e venda de ativo imobilizado R$ 1.917,65.\n\nA queda acentuada na receita total evidencia a natureza nao recorrente do emprestimo de janeiro. A receita DRE de R$ 408.618,94 ficou praticamente estavel em relacao ao mes anterior (R$ 404.861,98), o que indica consistencia na operacao comercial. A Amazon apresentou crescimento expressivo, passando de R$ 21.828,15 para R$ 43.072,77, dobrando sua participacao. Por outro lado, a Shein recuou de R$ 77.950,28 para R$ 45.362,84. Recomenda-se intensificar a diversificacao de canais, aproveitando o crescimento da Amazon e buscando ampliar a presenca no Mercado Livre, que recebeu R$ 20.000,00 em repasses.",
+      "error": null
+    },
+    "despesa": {
+      "title": "Despesa",
+      "analysis": "As despesas totais de fevereiro atingiram R$ 898.123,81, alta de 22,1% em relacao a janeiro. A compra de mercadorias permaneceu como principal componente com R$ 356.824,81, seguida por direitos a receber com R$ 112.350,00, compra de materia-prima com R$ 88.177,17 e insumos para expedicao com R$ 87.319,46. As despesas com ADS saltaram para R$ 72.700,00, um aumento de R$ 19.626,00 em relacao a janeiro. Salarios e encargos subiram para R$ 43.584,14 e impostos sobre receita ficaram em R$ 13.931,81. O principal fornecedor foi DSA Distribuidora com R$ 231.824,78, seguido por Notavel Aroma com R$ 121.525,65 e Imperio Decor com R$ 79.709,79.\n\nO aumento generalizado de despesas sem correspondente crescimento de receita e o principal fator do deficit. A linha de direitos a receber de R$ 112.350,00, ausente em janeiro, sugere antecipacao de recebiveis ou concessao de credito que impactou o caixa. O crescimento de 37% nas despesas com ADS para R$ 72.700,00 precisa ser confrontado com o volume de vendas gerado para avaliar eficiencia. Recomenda-se revisar a politica de compras com DSA Distribuidora, cujo volume praticamente dobrou em relacao ao fornecedor principal de janeiro, e reavaliar a estrategia de investimento em publicidade nos marketplaces.",
+      "error": null
+    },
+    "fluxo_caixa": {
+      "title": "Fluxo de Caixa",
+      "analysis": "O fluxo de caixa de fevereiro foi severamente negativo, com deficit de R$ 288.260,82. As entradas de R$ 609.862,99 foram insuficientes para cobrir as saidas de R$ 898.123,81. O saldo acumulado do ano, considerando o superavit de janeiro, seria positivo em R$ 152.514,25, porem a tendencia de deterioracao e preocupante. As compras de mercadorias e insumos totalizaram R$ 532.321,44, absorvendo 87,3% da receita total do mes. As transferencias da Outside The Box de R$ 197.000,00 foram a segunda maior fonte de caixa.\n\nA queima de caixa de quase R$ 290 mil em um unico mes coloca pressao significativa sobre a liquidez da empresa. Se o saldo de janeiro era de R$ 440.775,07, apos fevereiro restam apenas R$ 152.514,25 acumulados. A empresa precisa urgentemente equilibrar o ritmo de compras com a capacidade de geracao de receita. Recomenda-se implementar controle semanal de fluxo de caixa, estabelecer limites de compras mensais alinhados a projecao de receita e negociar prazos mais longos com fornecedores estrategicos para aliviar a pressao sobre o capital de giro.",
+      "error": null
+    },
+    "tesouraria": {
+      "title": "Tesouraria",
+      "analysis": "A tesouraria de fevereiro encerrou com posicao acumulada negativa de R$ 288.260,82 no mes, consumindo parte significativa do saldo construido em janeiro. Os recebimentos foram liderados pela Shopee com R$ 278.562,43, enquanto os principais desembolsos foram para DSA Distribuidora (R$ 231.824,78), Notavel Aroma (R$ 121.525,65) e Imperio Decor (R$ 79.709,79). O rendimento de investimentos caiu para R$ 2.076,40, enquanto a retirada de capital somou R$ 14.476,18.\n\nA gestao de tesouraria enfrenta desafio critico com a deterioracao do caixa. A retirada de capital de R$ 14.476,18 em um mes deficitario merece revisao por parte dos socios. A concentracao de pagamentos em poucos fornecedores de grande porte oferece oportunidade de negociacao de descontos por volume ou extensao de prazos. Recomenda-se suspender temporariamente retiradas de capital ate a recuperacao do caixa operacional, priorizar pagamentos por ordem de criticidade e avaliar a possibilidade de utilizar linhas de credito rotativo para gestao de capital de giro nos meses de maior pressao.",
+      "error": null
+    },
+    "comparativo": {
+      "title": "Comparativo",
+      "analysis": "Comparando com janeiro, fevereiro apresentou deterioracao significativa em todos os indicadores. A receita total caiu 48,2% (de R$ 1.176.196,45 para R$ 609.862,99), embora a receita DRE tenha se mantido estavel em R$ 408.618,94 contra R$ 404.861,98. A margem liquida despencou de 37,47% para -47,27%. As despesas cresceram 22,1% (de R$ 735.421,38 para R$ 898.123,81), impulsionadas por compras de mercadorias, direitos a receber e ADS. O custo DRE subiu de R$ 482.290,13 para R$ 558.690,68, um aumento de 15,8%.\n\nA analise comparativa revela que a operacao comercial da empresa esta relativamente estavel em termos de receita DRE, mas os custos estao em trajetoria ascendente. O aumento de custos sem correspondente crescimento de receita esta corroendo a margem operacional. A Shopee se consolidou como canal dominante, mantendo patamar proximo a R$ 275-278 mil mensais. A meta para marco deve ser reduzir o volume de compras para niveis compativeis com a demanda real e buscar equilibrio entre investimento em estoque e geracao de caixa.",
+      "error": null
+    }
+  },
+  "conclusao": "Fevereiro de 2026 foi um mes critico para a Ornata Domus, com deficit de R$ 288.260,82 e margem liquida de -47,27%. A operacao comercial via marketplaces se manteve estavel, com receita DRE de R$ 408.618,94, porem os custos totais de R$ 898.123,81 superaram amplamente as receitas. A elevacao de despesas com compras de mercadorias, ADS e insumos, combinada com a ausencia de receitas financeiras extraordinarias, expoe a necessidade urgente de revisao da estrutura de custos e da politica de compras para restaurar a sustentabilidade financeira da operacao."
+}

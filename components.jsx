@@ -94,7 +94,7 @@ const Sidebar = ({ active, onSelect, open }) => {
   return (
     <aside className={`sidebar ${open ? "open" : ""}`}>
       <div className="sb-brand">
-        <img src="assets/bgp-logo-white.png" alt="BGP" className="sb-logo-img" />
+        <img src="assets/logo.jpg" alt="Ornata Domus" className="sb-logo-img" style={{ height: 56, objectFit: "contain", mixBlendMode: "lighten" }} />
       </div>
       <div className="sb-section">Geral</div>
       {general.map(renderItem)}
@@ -196,26 +196,21 @@ const MonthSelect = ({ value, onChange }) => (
   </select>
 );
 
-// ContaSelect — filtra todo o BI por uma das 24 empresas/lojas do Grupo DEX.
-// Usa drilldown.type='conta' pra propagar o filtro pra todas as pages
-// (filterTx já reconhece esse type em data.js).
-const ContaSelect = ({ drilldown, setDrilldown }) => {
+// ContaSelect — filtra por empresa/conta via filters (não drilldown), permitindo
+// combinar com drilldown de mês/categoria sem conflito.
+const ContaSelect = ({ filters, setFilters }) => {
   const contas = (window.BIT && window.BIT.CONTAS) || [];
   if (!contas.length) return null;
-  const current = (drilldown && drilldown.type === 'conta') ? drilldown.value : '';
+  const current = (filters && filters.conta) || '';
   const onChange = (e) => {
-    const slug = e.target.value;
-    if (!slug) { setDrilldown(null); return; }
-    const c = contas.find(x => x.slug === slug);
-    if (!c) return;
-    setDrilldown({ type: 'conta', value: slug, label: c.label });
+    setFilters({ ...filters, conta: e.target.value || '' });
   };
   return (
     <select
       className="header-year header-conta"
       value={current}
       onChange={onChange}
-      title="Filtrar por empresa / loja (24 contas Omie consolidadas)"
+      title="Filtrar por empresa"
       style={{ minWidth: 200, maxWidth: 280 }}
     >
       <option value="">Todas as empresas ({contas.length})</option>
@@ -235,16 +230,10 @@ const BI_EXPORT_PAGES = [
   { id: "tesouraria", label: "05 Tesouraria" },
   { id: "comparativo", label: "06 Comparativo" },
   { id: "relatorio", label: "07 Relatório IA" },
-  { id: "valuation", label: "08 Valuation" },
-  { id: "indicators", label: "09 Indicadores" },
-  { id: "faturamento_produto", label: "10 Faturamento por Produto" },
-  { id: "curva_abc", label: "11 Curva ABC" },
-  { id: "marketing", label: "12 Marketing ADS" },
-  { id: "hierarquia", label: "13 Hierarquia ADS" },
-  { id: "detalhado", label: "14 Detalhado" },
-  { id: "profunda_cliente", label: "15 Profunda Cliente" },
-  { id: "crm", label: "16 CRM" },
-];
+].filter(p => {
+  const mode = window.BI_PAGE_MODE && window.BI_PAGE_MODE[p.id];
+  return !mode || mode === 'active';
+});
 
 const BiExportButton = () => {
   const [open, setOpen] = useState(false);
@@ -306,7 +295,7 @@ const BiExportButton = () => {
 };
 
 // Header: breadcrumb + YearSelect + MonthSelect + StatusFilter
-const Header = ({ page, onToggleSidebar, statusFilter, setStatusFilter, year, setYear, month, setMonth, drilldown, setDrilldown }) => {
+const Header = ({ page, onToggleSidebar, statusFilter, setStatusFilter, year, setYear, month, setMonth, drilldown, setDrilldown, filters, setFilters }) => {
   return (
     <header className="header">
       <button className="hd-icon-btn hd-menu-btn" title="Menu" onClick={onToggleSidebar}><Icon name="menu" /></button>
@@ -318,7 +307,7 @@ const Header = ({ page, onToggleSidebar, statusFilter, setStatusFilter, year, se
         <b>{PAGE_TITLES[page] || "Visão Geral"}</b>
       </div>
       <div style={{ flex: 1 }} />
-      {setDrilldown && <ContaSelect drilldown={drilldown} setDrilldown={setDrilldown} />}
+      {setFilters && <ContaSelect filters={filters} setFilters={setFilters} />}
       {setYear && <YearSelect value={year} onChange={setYear} available={window.AVAILABLE_YEARS} />}
       {setMonth && <MonthSelect value={month} onChange={setMonth} />}
       {setStatusFilter && <StatusFilterSeg value={statusFilter} onChange={setStatusFilter} />}
@@ -895,7 +884,6 @@ const GlobalFilterBar = ({ filters, setFilters }) => {
   return (
     <div className="global-filterbar">
       <label className="gfb-item">
-        <Icon name="tag" />
         <select className="filter-select" value={filters.categoria || "Todas categorias"} onChange={e => setFilters({ ...filters, categoria: e.target.value })}>
           <option>Todas categorias</option>
           {categorias.map(c => <option key={c} value={c}>{c}</option>)}

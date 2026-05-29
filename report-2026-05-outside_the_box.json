@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-29T00:00:00.000Z",
+  "empresa": "Outside The Box",
+  "periodo": "Maio/2026",
+  "year": 2026,
+  "month": 5,
+  "filter": "realizado",
+  "secoes": {
+    "visao_geral": {
+      "title": "Visão Geral",
+      "analysis": "Em maio de 2026, a Outside The Box registrou receita total de R$ 251.297,44 e despesas de R$ 253.158,55, resultando em prejuizo liquido de R$ 1.861,11 e margem liquida de -0,74%. A receita cresceu 41,9% em relacao a abril (R$ 177.150,66), atingindo o segundo maior faturamento do ano, atras apenas de janeiro. Pela DRE, a receita foi de R$ 251.297,44, custos de R$ 2.619,56 e despesas de R$ 243.836,24. A Shopee respondeu por R$ 234.833,24 (93,4%), Shein por R$ 15.574,01 (6,2%) e Amazon por R$ 890,19 (0,4%).\n\nApesar do crescimento expressivo de receita, o resultado voltou ao territorio negativo devido ao aumento das transferencias intercompany para R$ 229.500,00, que representaram 91,3% da receita, o maior percentual do ano. Excluindo as transferencias, as despesas operacionais proprias somaram R$ 23.658,55, patamar controlado. O resultado de maio evidencia que o fator critico de rentabilidade nao e a receita ou os custos operacionais, mas sim o montante transferido para a controladora. A concentracao na Shopee voltou ao patamar de janeiro (93,4%), apagando os avancos de diversificacao de meses anteriores.",
+      "error": null
+    },
+    "receita": {
+      "title": "Receita",
+      "analysis": "A receita de maio totalizou R$ 251.297,44, integralmente composta por repasses de vendas. A Shopee dominou com R$ 234.833,24 (93,4%), a Shein contribuiu com R$ 15.574,01 (6,2%) e a Amazon com R$ 890,19 (0,4%). Notavelmente, o TikTok Shop que havia estreado em abril com R$ 5.308,76 nao registrou receita em maio, indicando possivel descontinuidade ou pausa nas operacoes nesse canal.\n\nA reconcentracao na Shopee e um retrocesso estrategico. Em abril, tres canais contribuiam de forma mais equilibrada (Shopee 73,8%, Shein 23,1%, TikTok 3%). Em maio, voltou-se ao padrao de janeiro com dependencia quase total da Shopee. A queda da Shein de R$ 40.966,75 para R$ 15.574,01 (-62%) e a ausencia do TikTok Shop demandam investigacao. Possiveis causas incluem problemas de estoque para essas plataformas, mudancas de estrategia comercial ou questoes operacionais. Recomenda-se retomar urgentemente as operacoes no TikTok Shop e investigar a queda da Shein para reconquistar a diversificacao alcancada em abril.",
+      "error": null
+    },
+    "despesa": {
+      "title": "Despesa",
+      "analysis": "As despesas totais de maio foram R$ 253.158,55, com transferencias entre empresas de R$ 229.500,00 (90,7%). As despesas operacionais proprias somaram R$ 23.658,55, distribuidas em: retirada de capital R$ 6.702,75, pro-labores R$ 5.500,00, ADS R$ 5.100,00, impostos R$ 2.619,56, contabilidade R$ 1.500,00, outras despesas R$ 626,20, sistema de gestao R$ 564,01, beneficios R$ 468,92, reembolsos R$ 424,98 e outras menores.\n\nA retirada de capital de R$ 6.702,75 e uma novidade no perfil de despesas e, combinada com o pro-labore de R$ 5.500,00 (aumento de R$ 2.000,00 vs abril), elevou a remuneracao dos socios para R$ 12.202,75. Os gastos com ADS cairam para R$ 5.100,00 (2,0% da receita), o percentual mais eficiente do ano, sugerindo que o volume de vendas na Shopee foi mais organico. O principal fornecedor de despesas foi Ornata Domus (R$ 229.500,00), seguido de Jonathan Roque (R$ 12.402,75, somando pro-labore e retirada) e Shopee ADS (R$ 5.000,00). A Amazon registrou R$ 626,20 em outras despesas, item que precisa de esclarecimento.",
+      "error": null
+    },
+    "fluxo_caixa": {
+      "title": "Fluxo de Caixa",
+      "analysis": "O fluxo de caixa de maio foi negativo em R$ 1.861,11, com entradas de R$ 251.297,44 e saidas de R$ 253.158,55. O saldo acumulado encerrou em -R$ 1.861,11, consumindo quase toda a reserva de R$ 61.477,41 construida em abril. A DRE registrou receita de R$ 251.297,44, custos de R$ 2.619,56 e despesas de R$ 243.836,24. A transferencia de R$ 229.500,00 para a controladora foi a maior do ano e a principal responsavel pelo resultado negativo.\n\nA destruicao de caixa de maio e especialmente preocupante porque ocorreu em um mes de alta receita. Se a empresa nao consegue gerar caixa com faturamento de R$ 251 mil, o modelo de transferencias esta claramente subdimensionando a retencao necessaria. A transferencia de R$ 229.500,00 equivale a 91,3% da receita, deixando apenas R$ 21.797,44 para cobrir R$ 23.658,55 em despesas operacionais. Recomenda-se estabelecer um limite maximo de transferencia de 85% da receita, o que em maio teria resultado em saldo positivo de aproximadamente R$ 15.000,00.",
+      "error": null
+    },
+    "tesouraria": {
+      "title": "Tesouraria",
+      "analysis": "A posicao de tesouraria ao final de maio indica saldo negativo de R$ 1.861,11, uma deterioracao acentuada em relacao ao saldo positivo de R$ 61.477,41 de abril. A empresa queimou R$ 63.338,52 em posicao de caixa em um unico mes. Os recebimentos foram concentrados na Shopee (R$ 234.833,24), Shein (R$ 15.574,01) e Amazon (R$ 890,19). Os maiores desembolsos foram Ornata Domus (R$ 229.500,00), Jonathan Roque (R$ 12.402,75) e Shopee ADS (R$ 5.000,00).\n\nA volatilidade da posicao de caixa (de -R$ 4.977 em fevereiro para +R$ 61.477 em abril e de volta a -R$ 1.861 em maio) demonstra ausencia de politica de gestao de tesouraria. A recomendacao feita em abril de reservar R$ 25.000 a R$ 40.000 nao foi implementada, e o saldo foi consumido por transferencias excessivas. E imperativo que a gestao defina e cumpra regras claras: transferencia maxima de 85% da receita e saldo minimo de caixa de R$ 15.000,00. Sem essas travas, a empresa continuara alternando entre meses de folga e meses de estresse financeiro.",
+      "error": null
+    },
+    "comparativo": {
+      "title": "Comparativo",
+      "analysis": "Comparando os cinco meses de 2026, a receita acumulada da Outside The Box foi de R$ 1.017.281,50, com despesas de R$ 954.842,23 e resultado liquido acumulado de R$ 62.439,27. A receita media mensal foi de R$ 203.456,30. Os meses com resultado positivo foram janeiro (R$ 8.344,91, margem 3,4%) e abril (R$ 61.477,41, margem 34,7%). Os meses negativos foram fevereiro (-R$ 4.977,11), marco (-R$ 544,85) e maio (-R$ 1.861,11).\n\nO padrao que emerge com clareza e que a rentabilidade e determinada quase exclusivamente pelo percentual de transferencia intercompany. Em abril, quando a transferencia foi de 56,5% da receita, a margem foi de 34,7%. Em maio, com transferencia de 91,3%, a margem foi de -0,74%. As despesas operacionais proprias variaram entre R$ 15.673 e R$ 36.594, representando 7% a 22% da receita, o que e gerenciavel. A formalizacao de uma politica de transferencias com teto percentual e a acao mais impactante que a empresa pode adotar para garantir rentabilidade consistente. Recomenda-se um teto de 80% da receita, o que teria gerado resultado positivo em todos os cinco meses.",
+      "error": null
+    }
+  },
+  "conclusao": "Maio de 2026 encerra o primeiro quadrimestre util com receita recorde de R$ 251.297,44, porem resultado negativo de R$ 1.861,11 devido a transferencias intercompany de R$ 229.500,00 (91,3% da receita). A reconcentracao na Shopee (93,4%) e a ausencia do TikTok Shop representam retrocesso na diversificacao. No acumulado de cinco meses, a empresa faturou R$ 1.017.281,50 com resultado liquido positivo de R$ 62.439,27, sustentado quase integralmente pelo excelente abril. A analise comparativa deixa evidente que o unico fator determinante de rentabilidade e o percentual de transferencia intercompany. Recomenda-se formalizacao urgente de um teto de 80% sobre a receita para transferencias, retomada das operacoes no TikTok Shop, investigacao da queda da Shein e constituicao de reserva de caixa minima de R$ 15.000,00."
+}

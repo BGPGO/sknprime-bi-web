@@ -101,9 +101,7 @@ const PAGE_MODE_INJECT = `\n// Injetado por build-jsx.cjs a partir de bi.config.
       try { var y = parseInt(localStorage.getItem('bi.year'), 10); return y > 1900 ? y : (window.REF_YEAR || new Date().getFullYear()); } catch (e) { return window.REF_YEAR || new Date().getFullYear(); }
     });
     var year = ys[0], setYear = ys[1];
-    var ms = useState(function () {
-      try { var m = parseInt(localStorage.getItem('bi.month'), 10); return (m >= 0 && m <= 12) ? m : 0; } catch (e) { return 0; }
-    });
+    var ms = useState(0); // default: ano inteiro
     var month = ms[0], setMonth = ms[1];
 
     // BI export multi-tela: array de page-ids ou null. Quando setado, renderiza
@@ -281,6 +279,8 @@ const PAGE_MODE_INJECT = `\n// Injetado por build-jsx.cjs a partir de bi.config.
             setMonth={setMonth}
             drilldown={drilldown}
             setDrilldown={setDrilldown}
+            filters={filters}
+            setFilters={setFilters}
           />
           <GlobalFilterBar filters={filters} setFilters={setFilters} />
           <PageComp {...commonProps} />

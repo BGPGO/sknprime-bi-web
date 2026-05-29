@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-29T00:00:00.000Z",
+  "empresa": "Outside The Box",
+  "periodo": "Março/2026",
+  "year": 2026,
+  "month": 3,
+  "filter": "realizado",
+  "secoes": {
+    "visao_geral": {
+      "title": "Visão Geral",
+      "analysis": "Em marco de 2026, a Outside The Box registrou receita total de R$ 112.238,87 e despesas de R$ 112.783,72, resultando em prejuizo liquido de R$ 544,85 e margem liquida de -0,49%. A receita sofreu queda expressiva de 50,9% em relacao a fevereiro (R$ 228.616,80), representando o pior mes do trimestre em faturamento. Pela DRE, a receita foi de R$ 112.238,24, custos de R$ 1.595,93 e despesas de R$ 110.039,93. A Shein assumiu a lideranca de vendas com R$ 60.156,20 (53,6%), superando a Shopee que registrou R$ 51.573,08 (45,9%).\n\nApesar do prejuizo, a margem negativa foi bem menor que em fevereiro, sinalizando que as despesas acompanharam a queda de receita. As transferencias intercompany foram ajustadas para R$ 87.901,06, queda de 55,3% em relacao a fevereiro, demonstrando alguma flexibilidade na politica de repasses. As despesas operacionais proprias (excluindo transferencias) somaram R$ 24.882,66, reducao de 32% frente a fevereiro. A inversao de lideranca entre Shein e Shopee e um fenomeno que merece acompanhamento atento nos proximos meses.",
+      "error": null
+    },
+    "receita": {
+      "title": "Receita",
+      "analysis": "A receita de marco totalizou R$ 112.238,87, composta por repasses de vendas (R$ 112.164,95), trocas de produtos (R$ 68,50), outras receitas (R$ 4,79) e rendimento de investimentos (R$ 0,63). A Shein liderou com R$ 60.156,20 (53,6%), seguida pela Shopee com R$ 51.573,08 (45,9%) e Amazon com R$ 435,67. Pela primeira vez no ano, a Shein superou a Shopee como principal canal de vendas, uma mudanca significativa no mix de receita.\n\nA queda abrupta da receita total em relacao a fevereiro (50,9%) demanda investigacao urgente. Possiveis causas incluem sazonalidade do segmento, ruptura de estoque, problemas logisticos ou alteracoes nos algoritmos dos marketplaces. A ascensao da Shein ao primeiro lugar e estrategicamente interessante, mas a queda simultanea de ambos os canais em termos absolutos (Shopee -72,3%, Shein +42,6%) sugere que fatores externos ou internos afetaram o volume geral. Recomenda-se analise detalhada de conversao por plataforma e revisao da estrategia de precificacao.",
+      "error": null
+    },
+    "despesa": {
+      "title": "Despesa",
+      "analysis": "As despesas totais de marco foram R$ 112.783,72, com transferencias entre empresas de R$ 87.901,06 (77,9%). As despesas operacionais proprias somaram R$ 24.882,66, distribuidas em: ADS R$ 14.250,00, pro-labores R$ 3.500,00, contabilidade R$ 2.052,00, impostos R$ 1.595,93, retirada de capital R$ 1.147,86, fretes de devolucao R$ 1.024,31, beneficios R$ 468,92, sistema de gestao R$ 335,49 e reembolsos R$ 286,78.\n\nO gasto com ADS de R$ 14.250,00 representa 12,7% da receita, o percentual mais alto do trimestre e muito acima do benchmark de 5-8% para e-commerce. Com uma receita de apenas R$ 112.238,87, o investimento publicitario parece desproporcional. A contabilidade subiu de R$ 552,00 para R$ 2.052,00, aumento que precisa de justificativa. Positivamente, o pro-labore foi reduzido de R$ 6.000,00 para R$ 3.500,00. Recomenda-se cortar ADS para no maximo 8% da receita e reavaliar o contrato de contabilidade.",
+      "error": null
+    },
+    "fluxo_caixa": {
+      "title": "Fluxo de Caixa",
+      "analysis": "O fluxo de caixa de marco foi negativo em R$ 544,85, com entradas de R$ 112.238,87 e saidas de R$ 112.783,72. O saldo acumulado encerrou em -R$ 544,85. A DRE registrou receita de R$ 112.238,24, custos de R$ 1.595,93 e despesas de R$ 110.039,93. Embora o resultado tenha sido negativo, a queima de caixa foi muito menor que em fevereiro (-R$ 4.977,11), indicando melhor equilibrio entre entradas e saidas.\n\nA reducao das transferencias intercompany para R$ 87.901,06 (proporcional a queda de faturamento) foi fundamental para evitar um prejuizo maior. Os principais pagamentos a fornecedores foram: Ornata Domus (R$ 87.901,06), Shopee ADS (R$ 14.000,00) e Jonathan Roque (R$ 4.847,86). A empresa opera muito proximo do ponto de equilibrio quando as transferencias sao proporcionais. Recomenda-se formalizar um percentual fixo de transferencia (por exemplo, 70% da receita) em vez de valores absolutos variaveis, para garantir previsibilidade no fluxo de caixa.",
+      "error": null
+    },
+    "tesouraria": {
+      "title": "Tesouraria",
+      "analysis": "A posicao de tesouraria ao final de marco indica saldo negativo de R$ 544,85, uma melhora significativa em relacao ao saldo de -R$ 4.977,11 de fevereiro. Os recebimentos foram liderados pela Shein (R$ 60.156,20) e Shopee (R$ 51.573,08). Os maiores desembolsos foram para Ornata Domus (R$ 87.901,06), Shopee ADS (R$ 14.000,00), Jonathan Roque (R$ 4.847,86) e Simples Nacional (R$ 1.595,93).\n\nA recuperacao parcial da posicao de caixa e positiva, mas o saldo segue negativo pelo segundo mes consecutivo. Com rendimento de investimentos de apenas R$ 0,63, fica evidente que a empresa nao possui reservas aplicadas. A gestao de tesouraria deve buscar constituir um fundo de reserva equivalente a pelo menos R$ 25.000,00 (aproximadamente um mes de despesas operacionais proprias). Adicionalmente, a Sicredi e o Mercado Pago geraram receitas residuais que sugerem a existencia de contas bancarias multiplas, cuja consolidacao pode melhorar a visibilidade e gestao do caixa.",
+      "error": null
+    },
+    "comparativo": {
+      "title": "Comparativo",
+      "analysis": "Marco apresentou receita de R$ 112.238,87, queda de 50,9% em relacao a fevereiro (R$ 228.616,80) e de 54,7% em relacao a janeiro (R$ 247.977,72). As despesas operacionais proprias cairam 32% (de R$ 36.593,91 para R$ 24.882,66), porem nao na mesma proporcao da receita, indicando rigidez parcial da estrutura de custos. A margem liquida de -0,49% melhorou em relacao a fevereiro (-2,18%), mas permanece negativa.\n\nA tendencia de queda de receita ao longo do trimestre (R$ 247,9 mil em janeiro, R$ 228,6 mil em fevereiro, R$ 112,2 mil em marco) e preocupante e sugere fatores estruturais alem de sazonalidade. A inversao de lideranca Shein versus Shopee em marco adiciona complexidade ao cenario. O ratio de ADS sobre receita se deteriorou progressivamente (4,0% em janeiro, 8,1% em fevereiro, 12,7% em marco), indicando que o aumento de investimento publicitario nao esta gerando retorno proporcional. E urgente revisar a estrategia comercial para reverter a tendencia de queda no segundo trimestre.",
+      "error": null
+    }
+  },
+  "conclusao": "Marco de 2026 registrou prejuizo de R$ 544,85 com margem de -0,49%, em um cenario de queda expressiva de 50,9% na receita. A Shein assumiu a lideranca de vendas pela primeira vez (53,6%), enquanto a Shopee caiu para 45,9%. As transferencias intercompany foram ajustadas proporcionalmente (R$ 87.901,06), evitando prejuizo maior. O gasto com ADS de 12,7% da receita esta insustentavel e demanda correcao imediata. A tendencia de tres meses consecutivos de queda de faturamento exige revisao estrategica urgente, incluindo analise de mix de produtos, precificacao e eficiencia publicitaria. A formalizacao de um percentual fixo para transferencias intercompany traria maior previsibilidade financeira."
+}

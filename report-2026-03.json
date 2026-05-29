@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-29T12:00:00.000Z",
+  "empresa": "Ornata Domus (Consolidado)",
+  "periodo": "Marco/2026",
+  "year": 2026,
+  "month": 3,
+  "filter": "realizado",
+  "secoes": {
+    "visao_geral": {
+      "title": "Visao Geral",
+      "analysis": "O consolidado Ornata Domus e Outside The Box encerrou marco de 2026 com receita total de R$ 658.077,75 e despesa total de R$ 821.121,54, gerando deficit de R$ 163.043,79 e margem liquida de -24,78%. Embora o resultado ainda seja negativo, houve melhora em relacao a fevereiro, quando o deficit foi de R$ 293.237,93. O DRE consolidado registra receita de R$ 554.633,42, custo de R$ 495.992,05 e despesas operacionais de R$ 185.945,14, totalizando prejuizo operacional DRE de R$ 127.303,77.\n\nA reducao do deficit de R$ 293.237,93 para R$ 163.043,79 (-44,4%) indica que medidas de contencao comecaram a surtir efeito, porem o resultado permanece insustentavel. A receita DRE de R$ 554.633,42 recuou 12,96% em relacao a fevereiro, sugerindo desaceleracao nas vendas. O custo de R$ 495.992,05 permanece elevado, representando 89,4% da receita DRE. Recomenda-se intensificar acoes de venda nos canais com melhor margem e manter o controle de despesas para buscar o breakeven nos proximos meses.",
+      "error": null
+    },
+    "receita": {
+      "title": "Receita",
+      "analysis": "A receita consolidada de marco foi de R$ 658.077,75, queda de 21,5% em relacao a fevereiro. Os repasses de vendas totalizaram R$ 517.319,88, transferencias entre empresas R$ 93.399,81 e outras receitas R$ 30.233,81. A Shopee liderou com R$ 363.049,06, seguida por Outside The Box (R$ 87.901,06), Shein (R$ 84.325,92), Amazon (R$ 38.715,06) e Mercado Livre (R$ 28.285,88). A Notavel Aroma Cosmeticos contribuiu com R$ 22.824,98 e ajustes de reconciliacao somaram R$ 28.011,25. Venda de ativo imobilizado gerou R$ 8.521,25.\n\nA Shopee sofreu queda de 21,8% (de R$ 464.591,05 para R$ 363.049,06), enquanto Shein apresentou leve recuo de 3,7%. Em contrapartida, Mercado Livre saltou de R$ 20.000,00 para R$ 28.285,88 (+41,4%) e Notavel Aroma cresceu 47,6%. A entrada de R$ 30.233,81 em outras receitas e R$ 8.521,25 em venda de ativo imobilizado ajudaram a amenizar a queda. Recomenda-se investigar as causas da retração na Shopee, que pode estar relacionada a sazonalidade, concorrencia ou reducao do investimento em ADS, e capitalizar o crescimento no Mercado Livre.",
+      "error": null
+    },
+    "despesa": {
+      "title": "Despesa",
+      "analysis": "As despesas consolidadas recuaram para R$ 821.121,54 em marco, queda de 27,4% em relacao aos R$ 1.131.717,72 de fevereiro. Os maiores componentes foram compra de mercadorias (R$ 347.210,50), transferencias entre empresas (R$ 87.901,06), insumos para expedicao (R$ 77.647,32), ADS (R$ 59.250,00), salarios e encargos (R$ 50.745,93) e materia-prima (R$ 48.434,38). O pagamento de emprestimo aparece pela primeira vez com R$ 24.471,22. Os fornecedores mais relevantes foram DSA Distribuidora de Vidros (R$ 206.021,61), Natalia Ricordi/Compet V8 (R$ 49.754,93) e Prime Box Embalagens (R$ 44.600,10).\n\nA reducao do ADS de R$ 91.300,00 para R$ 59.250,00 (-35,1%) foi positiva para o controle de custos, embora tenha possivelmente contribuido para a queda de receita. Despesas com rescisoes trabalhistas de R$ 12.560,97 indicam reestruturacao de equipe. O inicio da amortizacao do emprestimo (R$ 24.471,22) adiciona um compromisso fixo mensal ao fluxo de saidas. Impostos sobre receita somaram R$ 15.410,82 (Simples Nacional). Recomenda-se encontrar o ponto de equilibrio entre investimento em ADS e geracao de receita, garantindo que cada real investido gere retorno mensuravel.",
+      "error": null
+    },
+    "fluxo_caixa": {
+      "title": "Fluxo de Caixa",
+      "analysis": "O fluxo de caixa de marco registrou deficit de R$ 163.043,79, com entradas de R$ 658.077,75 e saidas de R$ 821.121,54. Apesar de negativo, o deficit foi 44,4% menor que o de fevereiro (R$ 293.237,93), sinalizando tendencia de melhora. As compras de mercadorias e materia-prima somaram R$ 395.644,88 (48,2% das saidas totais), mantendo-se como principal categoria de desembolso. O pagamento de emprestimo de R$ 24.471,22 adiciona pressao ao fluxo.\n\nO terceiro mes consecutivo de resultado negativo (considerando que janeiro so foi positivo pelo emprestimo) confirma um problema estrutural de geracao de caixa operacional. O acumulado do trimestre mostra que a operacao precisa gerar pelo menos R$ 7.161,74 adicionais por mes para cobrir a parcela do emprestimo, alem de reverter o deficit corrente. Recomenda-se elaborar projecao de fluxo de caixa para os proximos 90 dias, priorizando a conversao de estoques acumulados em vendas e evitando novas compras ate normalizacao do capital de giro.",
+      "error": null
+    },
+    "tesouraria": {
+      "title": "Tesouraria",
+      "analysis": "A tesouraria consolidada registrou saldo mensal negativo de R$ 163.043,79 em marco. As fontes de recursos foram lideradas por Shopee (R$ 363.049,06), Outside The Box (R$ 87.901,06), Shein (R$ 84.325,92), Amazon (R$ 38.715,06) e Mercado Livre (R$ 28.285,88). As saidas concentraram-se em DSA Distribuidora (R$ 206.021,61), Natalia Ricordi/Compet V8 (R$ 49.754,93), Prime Box Embalagens (R$ 44.600,10) e Bradesco (R$ 30.167,35 incluindo amortizacao). Impostos (Simples Nacional) consumiram R$ 15.410,82.\n\nA concentracao de pagamentos em DSA Distribuidora (25,1% das saidas totais) torna este fornecedor estrategico para negociacao de prazos. O pagamento ao Bradesco de R$ 30.167,35 inclui amortizacao e juros do emprestimo tomado em janeiro. Recomenda-se mapear o cronograma completo de amortizacao do emprestimo e verificar se os prazos de pagamento a fornecedores estao alinhados com o ciclo de recebimento dos marketplaces. A antecipacao de recebiveis junto a Shopee pode ser uma alternativa para recompor liquidez.",
+      "error": null
+    },
+    "comparativo": {
+      "title": "Comparativo",
+      "analysis": "Marco apresentou melhora relativa frente a fevereiro: o deficit reduziu 44,4% (de R$ 293.237,93 para R$ 163.043,79) e a margem liquida subiu de -34,97% para -24,78%. Contudo, a receita total caiu 21,5% e as despesas cairam 27,4%, indicando que a melhora veio mais pelo corte de despesas do que pelo crescimento de receita. No acumulado do trimestre, a receita DRE somou R$ 1.844.708,86, custos R$ 1.542.239,53 e despesas R$ 528.482,66, resultando em prejuizo operacional acumulado de R$ 226.013,33.\n\nA evolucao trimestral revela um padrao preocupante: janeiro com margem de 31,54% (inflada pelo emprestimo), fevereiro com -34,97% e marco com -24,78%. Excluindo o emprestimo de janeiro, os tres meses apresentam deficit operacional consistente. O ADS como percentual da receita DRE variou de 9,66% em janeiro para 14,33% em fevereiro e 10,68% em marco, sem correlacao clara com o volume de vendas. Recomenda-se definir um teto de ADS em 10% da receita DRE e focar em eficiencia operacional para atingir o breakeven ate maio.",
+      "error": null
+    }
+  },
+  "conclusao": "Marco de 2026 mostrou sinais de recuperacao parcial para o consolidado Ornata Domus e Outside The Box, com deficit reduzido para R$ 163.043,79 e margem de -24,78%. A receita DRE de R$ 554.633,42 nao foi suficiente para cobrir custos de R$ 495.992,05 e despesas de R$ 185.945,14. A reducao do investimento em ADS para R$ 59.250,00 e a reestruturacao de pessoal (rescisoes de R$ 12.560,97) contribuiram para o controle de saidas, porem a receita acompanhou a queda. O inicio da amortizacao do emprestimo bancario (R$ 24.471,22/mes) adiciona pressao ao fluxo de caixa ja deficitario. As prioridades para abril devem ser: conversao de estoques em vendas, otimizacao do mix de canais priorizando Amazon e Mercado Livre em crescimento, e manutencao da disciplina de custos para buscar equilibrio financeiro."
+}

@@ -33,6 +33,11 @@ function parseFlag(name) {
 }
 const ARG_YEAR = parseFlag('year');
 const ARG_MONTH = parseFlag('month');
+// --conta=slug filtra por empresa (conta_slug no index 9 do ALL_TX)
+const ARG_CONTA = (() => {
+  const a = process.argv.find(x => x.startsWith('--conta='));
+  return a ? a.split('=').slice(1).join('=') : null;
+})();
 
 // ---------- env loader simples (sem dotenv) ----------
 function loadEnv() {
@@ -86,9 +91,10 @@ if (!SEG || !SEG.realizado) {
 const targetYear = ARG_YEAR || REF_YEAR;
 const targetMonth = ARG_MONTH; // pode ser null
 
-// Build segments filtrados por (year, month) a partir de ALL_TX
+// Build segments filtrados por (year, month, conta) a partir de ALL_TX
 function filterByPeriod(txList, statusFilter) {
-  let out = sandbox.window.filterTx(txList, statusFilter, null);
+  const extraFilters = ARG_CONTA ? { conta: ARG_CONTA } : {};
+  let out = sandbox.window.filterTx(txList, statusFilter, null, 'caixa', extraFilters);
   if (targetMonth) {
     const ym = `${targetYear}-${String(targetMonth).padStart(2, '0')}`;
     out = out.filter(r => r[1] === ym);
@@ -102,22 +108,25 @@ const realizado = filterByPeriod(ALL_TX, 'realizado');
 const aPagarReceber = filterByPeriod(ALL_TX, 'a_pagar_receber');
 const tudo = filterByPeriod(ALL_TX, 'tudo');
 
-const empresaNome = (META && META.empresa && META.empresa.nome_fantasia) || 'Cliente';
+// Resolve nome da empresa: se --conta, busca label do CONTAS; senão usa META
+const _CONTAS = sandbox.window.BIT && sandbox.window.BIT.CONTAS || [];
+const contaLabel = ARG_CONTA ? (_CONTAS.find(c => c.slug === ARG_CONTA) || {}).label || ARG_CONTA : null;
+const empresaNome = contaLabel || (META && META.empresa && META.empresa.nome_fantasia) || 'Cliente';
 const refYear = targetYear;
 
 // Periodo legivel + nome do arquivo de saida
 const MONTH_NAMES_PT = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 let periodo, OUT_FILE;
+const contaSuffix = ARG_CONTA ? `-${ARG_CONTA}` : '';
 if (targetMonth) {
   periodo = `${MONTH_NAMES_PT[targetMonth - 1]}/${targetYear}`;
-  OUT_FILE = path.join(ROOT, `report-${targetYear}-${String(targetMonth).padStart(2,'0')}.json`);
-} else if (targetYear === REF_YEAR && !ARG_YEAR) {
-  // Sem flags -> YTD do ano corrente -> nome default report.json (compat)
+  OUT_FILE = path.join(ROOT, `report-${targetYear}-${String(targetMonth).padStart(2,'0')}${contaSuffix}.json`);
+} else if (targetYear === REF_YEAR && !ARG_YEAR && !ARG_CONTA) {
   periodo = `Ano ${targetYear} (YTD)`;
   OUT_FILE = path.join(ROOT, 'report.json');
 } else {
   periodo = `Ano ${targetYear}`;
-  OUT_FILE = path.join(ROOT, `report-${targetYear}.json`);
+  OUT_FILE = path.join(ROOT, `report-${targetYear}${contaSuffix}.json`);
 }
 
 // ---------- check cache (so se nao for --force) ----------

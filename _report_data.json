@@ -1,0 +1,6599 @@
+[
+  {
+    "month": 1,
+    "monthName": "Janeiro",
+    "conta": "ornata_domus",
+    "contaLabel": "Ornata Domus",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 1176196.45,
+        "TOTAL_DESPESA": 735421.3800000004,
+        "VALOR_LIQUIDO": 440775.0699999996,
+        "MARGEM_LIQUIDA": 37.47461319067913,
+        "VALOR_LIQ_SERIES": [
+          440775.0699999996,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 1176196.45,
+          "despesa": 735421.3800000004
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Obtenção de empréstimo",
+          "value": 500000
+        },
+        {
+          "name": "Repasse de vendas",
+          "value": 395642.33000000013
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 220254.51
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 31647.58
+        },
+        {
+          "name": "Pró-labores",
+          "value": 14000
+        },
+        {
+          "name": "Bonificações, Brindes e Festividades",
+          "value": 4208
+        },
+        {
+          "name": "Receita com vendas",
+          "value": 3916
+        },
+        {
+          "name": "Outras receitas (Não considerar DRE)",
+          "value": 2649
+        },
+        {
+          "name": "Receita com serviços prestados",
+          "value": 2235.15
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 1224.38
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Compra de mercadorias",
+          "value": 323138.73
+        },
+        {
+          "name": "Compra de ativo imobilizado",
+          "value": 83144.09
+        },
+        {
+          "name": "Compra de matéria-prima",
+          "value": 76161.93
+        },
+        {
+          "name": "Compra de insumos para expedição",
+          "value": 66250.29000000001
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 53074
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 36592.42999999999
+        },
+        {
+          "name": "Pró-labores",
+          "value": 14000
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 12224.84
+        },
+        {
+          "name": "Retirada de capital",
+          "value": 10511.31
+        },
+        {
+          "name": "Despesas com aluguéis para uso",
+          "value": 7800
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 500000.61
+        },
+        {
+          "name": "SHOPEE",
+          "value": 275123.68
+        },
+        {
+          "name": "OUTSIDE THE BOX",
+          "value": 220254.51
+        },
+        {
+          "name": "SHEIN",
+          "value": 77950.28
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 49855.58
+        },
+        {
+          "name": "AMAZON",
+          "value": 21828.15
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 17528.43
+        },
+        {
+          "name": "NOTAVEL AROMA COSMETICOS LTDA",
+          "value": 5043.15
+        },
+        {
+          "name": "RAUL GONCALVES NETO",
+          "value": 3905
+        },
+        {
+          "name": "MADEIRA MADEIRA",
+          "value": 2982.87
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          "value": 159154.67
+        },
+        {
+          "name": "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          "value": 114119.8
+        },
+        {
+          "name": "AGNALDO SILVA LOPES VEICULOS",
+          "value": 75000
+        },
+        {
+          "name": "SHOPEE",
+          "value": 53074
+        },
+        {
+          "name": "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          "value": 31194.08
+        },
+        {
+          "name": "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          "value": 29223.6
+        },
+        {
+          "name": "REI DOS VIDROS - M. ROCCO PEREIRA LTDA",
+          "value": 27825
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 19680.5
+        },
+        {
+          "name": "CONCRENOG - PEDRO HENRIQUE NOGUEIRA DA SILVA",
+          "value": 18176
+        },
+        {
+          "name": "MEGA EPS LTDA",
+          "value": 16576
+        }
+      ],
+      "extrato": [
+        [
+          "31/01/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "MERCADO PAGO",
+          706.59,
+          "PAGO"
+        ],
+        [
+          "31/01/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "INTER DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LTDA",
+          1.92,
+          "PAGO"
+        ],
+        [
+          "31/01/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -1018.33,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          8642.98,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MAGAZINE LUIZA",
+          54.2,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MERCADO LIVRE",
+          5000,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "OUTSIDE THE BOX",
+          32000,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas com serviços",
+          "Despesas com frete para compra de materiais",
+          "TATIANE DE SOUZA BARONI - TRANSPORTES",
+          -249.22,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -76.22,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -64.9,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -85.28,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -80.96,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -85.04,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -44.89,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas Financeiras",
+          "Impostos e Taxas",
+          "SECRETARIA DA FAZENDA E PLANEJAMENTO",
+          -5.22,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "CONCRENOG - PEDRO HENRIQUE NOGUEIRA DA SILVA",
+          -4747.25,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "HEDER LUIZ FERNANDES LTDA",
+          -2350,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas administrativas",
+          "Despesas administrativas",
+          "SUPERMERCADO SÃO LUIZ",
+          -204.31,
+          "PAGO"
+        ],
+        [
+          "29/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          7885.49,
+          "PAGO"
+        ],
+        [
+          "29/01/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "OUTSIDE THE BOX",
+          20000,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        440775.0699999996,
+        440775.0699999996,
+        440775.0699999996,
+        440775.0699999996,
+        440775.0699999996,
+        440775.0699999996,
+        440775.0699999996,
+        440775.0699999996,
+        440775.0699999996,
+        440775.0699999996,
+        440775.0699999996,
+        440775.0699999996
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 404861.9800000001,
+        "custo": -482290.13000000006,
+        "despesa": 117998.72000000006
+      }
+    }
+  },
+  {
+    "month": 2,
+    "monthName": "Fevereiro",
+    "conta": "ornata_domus",
+    "contaLabel": "Ornata Domus",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 609862.99,
+        "TOTAL_DESPESA": 898123.8100000004,
+        "VALOR_LIQUIDO": -288260.8200000004,
+        "MARGEM_LIQUIDA": -47.26648849440764,
+        "VALOR_LIQ_SERIES": [
+          0,
+          -288260.8200000004,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 609862.99,
+          "despesa": 898123.8100000004
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 391409.49000000005
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 197000
+        },
+        {
+          "name": "Outras receitas (Não considerar DRE)",
+          "value": 9300
+        },
+        {
+          "name": "Receita com serviços prestados",
+          "value": 5054.3
+        },
+        {
+          "name": "Outras receitas",
+          "value": 2198.52
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 2076.4
+        },
+        {
+          "name": "Venda de ativo imobilizado",
+          "value": 1917.65
+        },
+        {
+          "name": "Receita com vendas",
+          "value": 604.6999999999999
+        },
+        {
+          "name": "Despesas com outros serviços contratados",
+          "value": 250
+        },
+        {
+          "name": "Receita por troca/adição de produtos em pedido",
+          "value": 51.93
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Compra de mercadorias",
+          "value": 356824.81000000006
+        },
+        {
+          "name": "Direitos a receber",
+          "value": 112350
+        },
+        {
+          "name": "Compra de matéria-prima",
+          "value": 88177.16999999998
+        },
+        {
+          "name": "Compra de insumos para expedição",
+          "value": 87319.46
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 72700
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 43584.13999999999
+        },
+        {
+          "name": "Compra de ativo imobilizado",
+          "value": 17854.22
+        },
+        {
+          "name": "Retirada de capital",
+          "value": 14476.18
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 13931.81
+        },
+        {
+          "name": "Pró-labores",
+          "value": 8000
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 278562.43
+        },
+        {
+          "name": "OUTSIDE THE BOX",
+          "value": 197000
+        },
+        {
+          "name": "SHEIN",
+          "value": 45362.84
+        },
+        {
+          "name": "AMAZON",
+          "value": 43072.770000000004
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 20000
+        },
+        {
+          "name": "NOTAVEL AROMA COSMETICOS LTDA",
+          "value": 15462.3
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 3245.67
+        },
+        {
+          "name": "MADEIRA MADEIRA",
+          "value": 3191.7
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 1752.44
+        },
+        {
+          "name": "MAGAZINE LUIZA",
+          "value": 1219.75
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          "value": 231824.78
+        },
+        {
+          "name": "NOTÁVEL AROMA COSMÉTICOS LTDA",
+          "value": 121525.65
+        },
+        {
+          "name": "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          "value": 79709.79000000001
+        },
+        {
+          "name": "SHOPEE",
+          "value": 72700
+        },
+        {
+          "name": "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          "value": 47668.89
+        },
+        {
+          "name": "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          "value": 33206.44
+        },
+        {
+          "name": "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          "value": 31604.94
+        },
+        {
+          "name": "REI DOS VIDROS - M. ROCCO PEREIRA LTDA",
+          "value": 21200
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 16399.58
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 13931.81
+        }
+      ],
+      "extrato": [
+        [
+          "28/02/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "BANCO BRADESCO S.A.",
+          1752.19,
+          "PAGO"
+        ],
+        [
+          "28/02/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MULTIFIX COMERCIO DE FITAS ADESIVAS LTDA",
+          -1886.67,
+          "PAGO"
+        ],
+        [
+          "28/02/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          -3161.66,
+          "PAGO"
+        ],
+        [
+          "28/02/2026",
+          "Despesas com serviços",
+          "Despesas com frete para compra de materiais",
+          "TATIANE DE SOUZA BARONI - TRANSPORTES",
+          -349.39,
+          "PAGO"
+        ],
+        [
+          "28/02/2026",
+          "Operações",
+          "Compra de matéria-prima",
+          "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          -7295.25,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          15444.98,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MAGAZINE LUIZA",
+          707.77,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de ativo imobilizado",
+          "LEANDRO - BULDOGUE",
+          -70,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -85.04,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -62.72,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de matéria-prima",
+          "KARIPLAST COMERCIO IMPORTACAO E EXPORTACAO DE PLASTICOS E TECIDOS LTDA",
+          -1386,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Despesas Financeiras",
+          "Taxas e Encargos Bancários",
+          "SICREDI",
+          -20,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -6833.33,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -125,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -4512.34,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          -5500,
+          "PAGO"
+        ],
+        [
+          "26/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          11576.14,
+          "PAGO"
+        ],
+        [
+          "26/02/2026",
+          "Operações",
+          "Compra de matéria-prima",
+          "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          -5926.67,
+          "PAGO"
+        ],
+        [
+          "26/02/2026",
+          "Despesas operacionais",
+          "Luz, água e outros",
+          "ELEKTRO REDES S.A.",
+          -6506.75,
+          "PAGO"
+        ],
+        [
+          "26/02/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          -4419.71,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        -288260.8200000004,
+        -288260.8200000004,
+        -288260.8200000004,
+        -288260.8200000004,
+        -288260.8200000004,
+        -288260.8200000004,
+        -288260.8200000004,
+        -288260.8200000004,
+        -288260.8200000004,
+        -288260.8200000004,
+        -288260.8200000004
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 408618.94000000006,
+        "custo": -558690.6799999999,
+        "despesa": 7423.810000000177
+      }
+    }
+  },
+  {
+    "month": 3,
+    "monthName": "Março",
+    "conta": "ornata_domus",
+    "contaLabel": "Ornata Domus",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 545838.8800000001,
+        "TOTAL_DESPESA": 708337.8200000001,
+        "VALOR_LIQUIDO": -162498.93999999994,
+        "MARGEM_LIQUIDA": -29.770495645161795,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          -162498.93999999994,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 545838.8800000001,
+          "despesa": 708337.8200000001
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 405154.93000000017
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 93399.81
+        },
+        {
+          "name": "Outras receitas",
+          "value": 30229.02
+        },
+        {
+          "name": "Venda de ativo imobilizado",
+          "value": 8521.25
+        },
+        {
+          "name": "Receita com serviços prestados",
+          "value": 4298.88
+        },
+        {
+          "name": "Outras receitas (Não considerar DRE)",
+          "value": 2517.35
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 1522.6399999999999
+        },
+        {
+          "name": "Receita com vendas",
+          "value": 195
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Compra de mercadorias",
+          "value": 347210.5
+        },
+        {
+          "name": "Compra de insumos para expedição",
+          "value": 77647.31999999998
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 50745.92999999999
+        },
+        {
+          "name": "Compra de matéria-prima",
+          "value": 48434.38
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 45000
+        },
+        {
+          "name": "Pagamento de empréstimo",
+          "value": 24471.22
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 13814.89
+        },
+        {
+          "name": "Despesas com rescisões trabalhistas",
+          "value": 12560.969999999998
+        },
+        {
+          "name": "Compra de ativo imobilizado",
+          "value": 9259.2
+        },
+        {
+          "name": "Direitos a receber",
+          "value": 8036.610000000001
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 311475.9800000001
+        },
+        {
+          "name": "OUTSIDE THE BOX",
+          "value": 87901.06
+        },
+        {
+          "name": "AMAZON",
+          "value": 38279.39000000001
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 28285.88
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 28011.25
+        },
+        {
+          "name": "SHEIN",
+          "value": 24169.72
+        },
+        {
+          "name": "NOTAVEL AROMA COSMETICOS LTDA",
+          "value": 22824.98
+        },
+        {
+          "name": "MADEIRA MADEIRA",
+          "value": 2382.8
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 1521.81
+        },
+        {
+          "name": "MAGAZINE LUIZA",
+          "value": 561.16
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          "value": 206021.61
+        },
+        {
+          "name": "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          "value": 63258.14
+        },
+        {
+          "name": "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          "value": 49754.93000000001
+        },
+        {
+          "name": "SHOPEE",
+          "value": 45000
+        },
+        {
+          "name": "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          "value": 44600.100000000006
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 30167.35
+        },
+        {
+          "name": "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          "value": 21821.85
+        },
+        {
+          "name": "MEGA EPS LTDA",
+          "value": 20787.25
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 13814.89
+        },
+        {
+          "name": "HEDER LUIZ ALÇAS E TIRAS LTDA",
+          "value": 12283.6
+        }
+      ],
+      "extrato": [
+        [
+          "31/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          5647.21,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "BANCO BRADESCO S.A.",
+          118.55,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Operações",
+          "Compra de matéria-prima",
+          "KARIPLAST COMERCIO IMPORTACAO E EXPORTACAO DE PLASTICOS E TECIDOS LTDA",
+          -1391.5,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Despesas Financeiras",
+          "Impostos e Taxas",
+          "SECRETARIA DA FAZENDA E PLANEJAMENTO",
+          -348.95,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Despesas administrativas",
+          "Despesas com materiais de consumo",
+          "RICARDO ANTUNES - NATHYPEL",
+          -375,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          4275.7,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          16364.41,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "OUTSIDE THE BOX",
+          18000,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          -11550,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MUNDO GIBA LTDA - MUNDO GB",
+          -448,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "HEDER LUIZ FERNANDES LTDA",
+          -912.5,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MULTIFIX COMERCIO DE FITAS ADESIVAS LTDA",
+          -1886.67,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "RGL - FITAS ADESIVAS",
+          -1084.43,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -45.89,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -2350,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Despesas administrativas",
+          "Despesas administrativas",
+          "NOTÁVEL AROMA COSMÉTICOS LTDA",
+          -350,
+          "PAGO"
+        ],
+        [
+          "29/03/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MEGA EPS LTDA",
+          -1280,
+          "PAGO"
+        ],
+        [
+          "29/03/2026",
+          "Operações",
+          "Compra de matéria-prima",
+          "KARIPLAST COMERCIO IMPORTACAO E EXPORTACAO DE PLASTICOS E TECIDOS LTDA",
+          -1386,
+          "PAGO"
+        ],
+        [
+          "28/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MERCADO LIVRE",
+          2300,
+          "PAGO"
+        ],
+        [
+          "28/03/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "OUTSIDE THE BOX",
+          2700,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        0,
+        -162498.93999999994,
+        -162498.93999999994,
+        -162498.93999999994,
+        -162498.93999999994,
+        -162498.93999999994,
+        -162498.93999999994,
+        -162498.93999999994,
+        -162498.93999999994,
+        -162498.93999999994,
+        -162498.93999999994
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 442395.18000000017,
+        "custo": -494396.11999999994,
+        "despesa": -75905.20999999999
+      }
+    }
+  },
+  {
+    "month": 4,
+    "monthName": "Abril",
+    "conta": "ornata_domus",
+    "contaLabel": "Ornata Domus",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 395796.64,
+        "TOTAL_DESPESA": 499371.63999999996,
+        "VALOR_LIQUIDO": -103574.99999999994,
+        "MARGEM_LIQUIDA": -26.16874160427434,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          -103574.99999999994,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 395796.64,
+          "despesa": 499371.63999999996
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 278380.17
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 104025.11
+        },
+        {
+          "name": "Receita com serviços prestados",
+          "value": 8904.12
+        },
+        {
+          "name": "Outras receitas (Não considerar DRE)",
+          "value": 2059.53
+        },
+        {
+          "name": "Venda de ativo imobilizado",
+          "value": 1843.66
+        },
+        {
+          "name": "Receita com vendas",
+          "value": 295.9
+        },
+        {
+          "name": "Juros Recebidos",
+          "value": 156.34
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 119.31
+        },
+        {
+          "name": "Outras receitas",
+          "value": 12.5
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Compra de mercadorias",
+          "value": 215487.49000000002
+        },
+        {
+          "name": "Compra de insumos para expedição",
+          "value": 64444.340000000004
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 50710.76
+        },
+        {
+          "name": "Compra de matéria-prima",
+          "value": 41642.22
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 20719
+        },
+        {
+          "name": "Pagamento de empréstimo",
+          "value": 19303.940000000002
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 13861.49
+        },
+        {
+          "name": "Despesas com aluguéis para uso",
+          "value": 7800
+        },
+        {
+          "name": "Pró-labores",
+          "value": 7000
+        },
+        {
+          "name": "Compra de insumos para produção",
+          "value": 6979
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 202649.58999999997
+        },
+        {
+          "name": "OUTSIDE THE BOX",
+          "value": 100000
+        },
+        {
+          "name": "AMAZON",
+          "value": 34327.77
+        },
+        {
+          "name": "SHEIN",
+          "value": 19414.219999999998
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 19000
+        },
+        {
+          "name": "NOTAVEL AROMA COSMETICOS LTDA",
+          "value": 12929.230000000001
+        },
+        {
+          "name": "JOAO PEDRO FERNANDES OLIVEIRA",
+          "value": 2059.53
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 2000
+        },
+        {
+          "name": "MADEIRA MADEIRA",
+          "value": 1752.98
+        },
+        {
+          "name": "MAGAZINE LUIZA",
+          "value": 1235.61
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          "value": 123977.55
+        },
+        {
+          "name": "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          "value": 52234.75
+        },
+        {
+          "name": "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          "value": 32164.56
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 23546.09
+        },
+        {
+          "name": "SHOPEE",
+          "value": 20719
+        },
+        {
+          "name": "MEGA EPS LTDA",
+          "value": 20531
+        },
+        {
+          "name": "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          "value": 19620.83
+        },
+        {
+          "name": "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          "value": 14526.6
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 13861.49
+        },
+        {
+          "name": "AKS IMPORTADORA E DISTRIBUIDORA DE VIDROS LTDA",
+          "value": 10364.84
+        }
+      ],
+      "extrato": [
+        [
+          "30/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MAGAZINE LUIZA",
+          392.31,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          6812.99,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          5089.36,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MERCADO LIVRE",
+          4500,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "MERCADO PAGO",
+          0.53,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          -20765.41,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -7168.25,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MEGA EPS LTDA",
+          -640,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "NOTÁVEL AROMA COSMÉTICOS LTDA",
+          -981.77,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          -7293.31,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MEGA EPS LTDA",
+          -2867,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de matéria-prima",
+          "KARIPLAST COMERCIO IMPORTACAO E EXPORTACAO DE PLASTICOS E TECIDOS LTDA",
+          -1518,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          6209.06,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -250,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -1872.84,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -759.16,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -697.5,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -250,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -1872.83,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -1850,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        0,
+        0,
+        -103574.99999999994,
+        -103574.99999999994,
+        -103574.99999999994,
+        -103574.99999999994,
+        -103574.99999999994,
+        -103574.99999999994,
+        -103574.99999999994,
+        -103574.99999999994,
+        -103574.99999999994
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 289808.56000000006,
+        "custo": -343042.4399999999,
+        "despesa": -23083.02999999998
+      }
+    }
+  },
+  {
+    "month": 5,
+    "monthName": "Maio",
+    "conta": "ornata_domus",
+    "contaLabel": "Ornata Domus",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 653488.0099999999,
+        "TOTAL_DESPESA": 483829.9600000002,
+        "VALOR_LIQUIDO": 169658.0499999997,
+        "MARGEM_LIQUIDA": 25.961922392424576,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          169658.0499999997,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 653488.0099999999,
+          "despesa": 483829.9600000002
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 288573.92000000004
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 233488.23
+        },
+        {
+          "name": "Obtenção de empréstimo",
+          "value": 113799.41
+        },
+        {
+          "name": "Receita com serviços prestados",
+          "value": 8466.24
+        },
+        {
+          "name": "Compra de mercadorias",
+          "value": 4486.66
+        },
+        {
+          "name": "Venda de ativo imobilizado",
+          "value": 3200
+        },
+        {
+          "name": "Outras receitas",
+          "value": 1240.54
+        },
+        {
+          "name": "Receita com vendas",
+          "value": 232.95999999999998
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 0.05
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Compra de mercadorias",
+          "value": 212481.08
+        },
+        {
+          "name": "Compra de matéria-prima",
+          "value": 42559.11
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 42249.270000000004
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 37050
+        },
+        {
+          "name": "Compra de insumos para expedição",
+          "value": 30910.19
+        },
+        {
+          "name": "Pagamento de empréstimo",
+          "value": 19225.239999999998
+        },
+        {
+          "name": "Retirada de capital",
+          "value": 16756.87
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 12244.3
+        },
+        {
+          "name": "Pró-labores",
+          "value": 11000
+        },
+        {
+          "name": "Vale-Refeição (VR)",
+          "value": 8573.02
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "OUTSIDE THE BOX",
+          "value": 229500
+        },
+        {
+          "name": "SHOPEE",
+          "value": 221506.08
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 113799.46
+        },
+        {
+          "name": "AMAZON",
+          "value": 40830.41
+        },
+        {
+          "name": "SHEIN",
+          "value": 13034.570000000002
+        },
+        {
+          "name": "NOTAVEL AROMA COSMETICOS LTDA",
+          "value": 12454.47
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 10500
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 7686.66
+        },
+        {
+          "name": "MADEIRA MADEIRA",
+          "value": 1641.2099999999998
+        },
+        {
+          "name": "JOAO PEDRO FERNANDES OLIVEIRA",
+          "value": 1234.29
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          "value": 147319.72
+        },
+        {
+          "name": "SHOPEE",
+          "value": 34550
+        },
+        {
+          "name": "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          "value": 27099.680000000004
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 23471.98
+        },
+        {
+          "name": "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          "value": 21974.69
+        },
+        {
+          "name": "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          "value": 16603.29
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 13598.14
+        },
+        {
+          "name": "CONCRENOG - PEDRO HENRIQUE NOGUEIRA DA SILVA",
+          "value": 13042.75
+        },
+        {
+          "name": "CLAUDIO LISIAS DA SILVA JUNIOR",
+          "value": 12622.65
+        },
+        {
+          "name": "SAMUEL ANTONIO DE SOUZA MARTINS",
+          "value": 12497.83
+        }
+      ],
+      "extrato": [
+        [
+          "29/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          12154.07,
+          "PAGO"
+        ],
+        [
+          "29/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MERCADO LIVRE",
+          2000,
+          "PAGO"
+        ],
+        [
+          "29/05/2026",
+          "Despesas com colaboradores",
+          "Bonificações, Brindes e Festividades",
+          "MARIANA VAROLLO VILERA",
+          -200,
+          "PAGO"
+        ],
+        [
+          "29/05/2026",
+          "Despesas administrativas",
+          "Despesas com materiais de consumo",
+          "SUPERMERCADO SÃO LUIZ",
+          -305.82,
+          "PAGO"
+        ],
+        [
+          "29/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -716.67,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          5367.02,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          6176.95,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MEGA EPS LTDA",
+          -3041.2,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          -15210.72,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          6586.53,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          -20765.41,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Despesas com serviços",
+          "Despesas com frete para compra de materiais",
+          "DARBI RINTON ALVES DO NASCIMENTO",
+          -110,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -3330,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -1733.34,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "CONCRENOG - PEDRO HENRIQUE NOGUEIRA DA SILVA",
+          -5833,
+          "PAGO"
+        ],
+        [
+          "26/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          8840.34,
+          "PAGO"
+        ],
+        [
+          "26/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          583.36,
+          "PAGO"
+        ],
+        [
+          "26/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          479.42,
+          "PAGO"
+        ],
+        [
+          "26/05/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MARCOS ROBERTO LOPES - GM EMBALAGENS",
+          -416.76,
+          "PAGO"
+        ],
+        [
+          "26/05/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -173,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        0,
+        0,
+        0,
+        169658.0499999997,
+        169658.0499999997,
+        169658.0499999997,
+        169658.0499999997,
+        169658.0499999997,
+        169658.0499999997,
+        169658.0499999997,
+        169658.0499999997
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 24335.73,
+        "TOTAL_DESPESA": 12535.19,
+        "VALOR_LIQUIDO": 11800.539999999999,
+        "MARGEM_LIQUIDA": 48.49059387164469,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          11800.539999999999,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 298513.66000000003,
+        "custo": -308758.9799999999,
+        "despesa": 99142.85000000003
+      }
+    }
+  },
+  {
+    "month": 1,
+    "monthName": "Janeiro",
+    "conta": "outside_the_box",
+    "contaLabel": "Outside The Box",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 247977.71999999994,
+        "TOTAL_DESPESA": 239632.81000000003,
+        "VALOR_LIQUIDO": 8344.909999999916,
+        "MARGEM_LIQUIDA": 3.3651853884292176,
+        "VALOR_LIQ_SERIES": [
+          8344.909999999916,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 247977.71999999994,
+          "despesa": 239632.81000000003
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 247911.71999999994
+        },
+        {
+          "name": "Receita por troca/adição de produtos em pedido",
+          "value": 66
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Transferência entre empresas",
+          "value": 220254.51
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 10000
+        },
+        {
+          "name": "Reembolsos por fora de marketplaces",
+          "value": 2600.9700000000007
+        },
+        {
+          "name": "Despesas com frete para devolução e reenvio",
+          "value": 2120.58
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 1517.88
+        },
+        {
+          "name": "Custo com horas extras setor de produção",
+          "value": 746.06
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 731.46
+        },
+        {
+          "name": "Serviços de sistema de gestão",
+          "value": 564.01
+        },
+        {
+          "name": "Serviços de contabilidade",
+          "value": 526
+        },
+        {
+          "name": "Despesas com benefícios aos sócios e diretores",
+          "value": 268.92
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 230679.04999999996
+        },
+        {
+          "name": "SHEIN",
+          "value": 16868.36
+        },
+        {
+          "name": "AMAZON",
+          "value": 364.31
+        },
+        {
+          "name": "Receita por troca/adição de produtos em pedido",
+          "value": 66
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "ORNATA DOMUS COMPANY LTDA",
+          "value": 220254.51
+        },
+        {
+          "name": "SHOPEE",
+          "value": 10000
+        },
+        {
+          "name": "REEMBOLSOS",
+          "value": 2600.9700000000007
+        },
+        {
+          "name": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+          "value": 2120.58
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 1517.88
+        },
+        {
+          "name": "CAIXA ECONOMICA FEDERAL",
+          "value": 731.46
+        },
+        {
+          "name": "CARLOS EDUARDO AGUIAR LULIO",
+          "value": 574.28
+        },
+        {
+          "name": "DIRECT COUNT - CONSULTORIA, ASSESSORIA E CONTABILIDADE EMPRESARIAL LTDA",
+          "value": 526
+        },
+        {
+          "name": "NIBO SOFTWARES E CURSOS LTDA.",
+          "value": 457.04
+        },
+        {
+          "name": "UNIMED SAO JOSE DO RIO PRETO COOPERATIVA DE TRABALHO MEDICO",
+          "value": 268.92
+        }
+      ],
+      "extrato": [
+        [
+          "30/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          8989.55,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -10,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -15,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "ORNATA DOMUS COMPANY LTDA",
+          -32000,
+          "PAGO"
+        ],
+        [
+          "29/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          6628.07,
+          "PAGO"
+        ],
+        [
+          "29/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -10.9,
+          "PAGO"
+        ],
+        [
+          "29/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -44.5,
+          "PAGO"
+        ],
+        [
+          "29/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -109.9,
+          "PAGO"
+        ],
+        [
+          "29/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -109.9,
+          "PAGO"
+        ],
+        [
+          "29/01/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "ORNATA DOMUS COMPANY LTDA",
+          -20000,
+          "PAGO"
+        ],
+        [
+          "28/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          8227.97,
+          "PAGO"
+        ],
+        [
+          "27/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          10577.25,
+          "PAGO"
+        ],
+        [
+          "27/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -123.73,
+          "PAGO"
+        ],
+        [
+          "27/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -33.11,
+          "PAGO"
+        ],
+        [
+          "27/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -215.42,
+          "PAGO"
+        ],
+        [
+          "26/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          4422.93,
+          "PAGO"
+        ],
+        [
+          "26/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          22164.86,
+          "PAGO"
+        ],
+        [
+          "26/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -36.2,
+          "PAGO"
+        ],
+        [
+          "26/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -65.23,
+          "PAGO"
+        ],
+        [
+          "23/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          8614.93,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        8344.909999999916,
+        8344.909999999916,
+        8344.909999999916,
+        8344.909999999916,
+        8344.909999999916,
+        8344.909999999916,
+        8344.909999999916,
+        8344.909999999916,
+        8344.909999999916,
+        8344.909999999916,
+        8344.909999999916,
+        8344.909999999916
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 247977.71999999994,
+        "custo": -2263.94,
+        "despesa": -237368.87000000002
+      }
+    }
+  },
+  {
+    "month": 2,
+    "monthName": "Fevereiro",
+    "conta": "outside_the_box",
+    "contaLabel": "Outside The Box",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 228616.80000000002,
+        "TOTAL_DESPESA": 233593.90999999997,
+        "VALOR_LIQUIDO": -4977.109999999957,
+        "MARGEM_LIQUIDA": -2.177053479884224,
+        "VALOR_LIQ_SERIES": [
+          0,
+          -4977.109999999957,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 228616.80000000002,
+          "despesa": 233593.90999999997
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 228521.79000000004
+        },
+        {
+          "name": "Receita por troca/adição de produtos em pedido",
+          "value": 65.00999999999999
+        },
+        {
+          "name": "Outras receitas (Não considerar DRE)",
+          "value": 30
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Transferência entre empresas",
+          "value": 197000
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 18600
+        },
+        {
+          "name": "Pró-labores",
+          "value": 6000
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 4104
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 2228.54
+        },
+        {
+          "name": "Despesas com frete para devolução e reenvio",
+          "value": 2120.28
+        },
+        {
+          "name": "Reembolsos por fora de marketplaces",
+          "value": 1414.5100000000002
+        },
+        {
+          "name": "Custo com horas extras setor de produção",
+          "value": 774.1899999999999
+        },
+        {
+          "name": "Serviços de contabilidade",
+          "value": 552
+        },
+        {
+          "name": "Despesas com benefícios aos sócios e diretores",
+          "value": 268.92
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 186028.62
+        },
+        {
+          "name": "SHEIN",
+          "value": 42190.12
+        },
+        {
+          "name": "AMAZON",
+          "value": 303.05
+        },
+        {
+          "name": "Receita por troca/adição de produtos em pedido",
+          "value": 65.00999999999999
+        },
+        {
+          "name": "NOTÁVEL AROMA COSMÉTICOS",
+          "value": 30
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "ORNATA DOMUS COMPANY LTDA",
+          "value": 197000
+        },
+        {
+          "name": "SHOPEE",
+          "value": 18600
+        },
+        {
+          "name": "CARLOS EDUARDO AGUIAR LULIO",
+          "value": 2494.1099999999997
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 2228.54
+        },
+        {
+          "name": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+          "value": 2120.28
+        },
+        {
+          "name": "GABRIEL VINICIUS MALTA DOS SANTOS",
+          "value": 1786.72
+        },
+        {
+          "name": "JONATHAN ROQUE DE SOUZA",
+          "value": 1700
+        },
+        {
+          "name": "GUILHERME TORCHETTI LOUREIRO DA SILVA",
+          "value": 1500
+        },
+        {
+          "name": "CLAUDIO LISIAS DA SILVA JUNIOR",
+          "value": 1500
+        },
+        {
+          "name": "SAMUEL ANTONIO DE SOUZA MARTINS",
+          "value": 1500
+        }
+      ],
+      "extrato": [
+        [
+          "27/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          794.36,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Outras receitas (Não considerar DRE)",
+          "NOTÁVEL AROMA COSMÉTICOS",
+          30,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Despesas não operacionais",
+          "Outras despesas (Não considerar DRE)",
+          "PEDRO HENRIQUE SOUZA CARMO",
+          -30,
+          "PAGO"
+        ],
+        [
+          "26/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          976.69,
+          "PAGO"
+        ],
+        [
+          "25/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          1813.73,
+          "PAGO"
+        ],
+        [
+          "24/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          3246.77,
+          "PAGO"
+        ],
+        [
+          "24/02/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "ORNATA DOMUS COMPANY LTDA",
+          -40000,
+          "PAGO"
+        ],
+        [
+          "23/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          9583.76,
+          "PAGO"
+        ],
+        [
+          "23/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          177.38,
+          "PAGO"
+        ],
+        [
+          "23/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          16603.51,
+          "PAGO"
+        ],
+        [
+          "23/02/2026",
+          "Despesas com serviços",
+          "Despesas com frete para devolução e reenvio",
+          "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+          -2120.28,
+          "PAGO"
+        ],
+        [
+          "20/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          7310.37,
+          "PAGO"
+        ],
+        [
+          "20/02/2026",
+          "Operações",
+          "Impostos sobre receita",
+          "SIMPLES NACIONAL",
+          -2228.54,
+          "PAGO"
+        ],
+        [
+          "20/02/2026",
+          "Despesas com colaboradores",
+          "Salários e encargos",
+          "CAIXA ECONOMICA FEDERAL",
+          -304,
+          "PAGO"
+        ],
+        [
+          "20/02/2026",
+          "Despesas com colaboradores",
+          "Salários e encargos",
+          "CAIXA ECONOMICA FEDERAL",
+          -293.36,
+          "PAGO"
+        ],
+        [
+          "19/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          7755.54,
+          "PAGO"
+        ],
+        [
+          "19/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          91.76,
+          "PAGO"
+        ],
+        [
+          "18/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          13461.7,
+          "PAGO"
+        ],
+        [
+          "18/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          24492.72,
+          "PAGO"
+        ],
+        [
+          "18/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          13855.52,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        -4977.109999999957,
+        -4977.109999999957,
+        -4977.109999999957,
+        -4977.109999999957,
+        -4977.109999999957,
+        -4977.109999999957,
+        -4977.109999999957,
+        -4977.109999999957,
+        -4977.109999999957,
+        -4977.109999999957,
+        -4977.109999999957
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 228616.80000000002,
+        "custo": -3002.73,
+        "despesa": -230591.18
+      }
+    }
+  },
+  {
+    "month": 3,
+    "monthName": "Março",
+    "conta": "outside_the_box",
+    "contaLabel": "Outside The Box",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 112238.86999999998,
+        "TOTAL_DESPESA": 112783.72,
+        "VALOR_LIQUIDO": -544.8500000000204,
+        "MARGEM_LIQUIDA": -0.48543788796164866,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          -544.8500000000204,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 112238.86999999998,
+          "despesa": 112783.72
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 112164.94999999998
+        },
+        {
+          "name": "Receita por troca/adição de produtos em pedido",
+          "value": 68.5
+        },
+        {
+          "name": "Outras receitas",
+          "value": 4.79
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 0.63
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Transferência entre empresas",
+          "value": 87901.06
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 14250
+        },
+        {
+          "name": "Pró-labores",
+          "value": 3500
+        },
+        {
+          "name": "Serviços de contabilidade",
+          "value": 2052
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 1595.93
+        },
+        {
+          "name": "Retirada de capital",
+          "value": 1147.86
+        },
+        {
+          "name": "Despesas com frete para devolução e reenvio",
+          "value": 1024.31
+        },
+        {
+          "name": "Despesas com benefícios aos sócios e diretores",
+          "value": 468.92
+        },
+        {
+          "name": "Serviços de sistema de gestão",
+          "value": 335.49
+        },
+        {
+          "name": "Reembolsos por fora de marketplaces",
+          "value": 286.78
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHEIN",
+          "value": 60156.2
+        },
+        {
+          "name": "SHOPEE",
+          "value": 51573.08000000001
+        },
+        {
+          "name": "AMAZON",
+          "value": 435.66999999999996
+        },
+        {
+          "name": "Receita por troca/adição de produtos em pedido",
+          "value": 68.5
+        },
+        {
+          "name": "SICREDI",
+          "value": 4.79
+        },
+        {
+          "name": "MERCADO PAGO",
+          "value": 0.63
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "ORNATA DOMUS COMPANY LTDA",
+          "value": 87901.06
+        },
+        {
+          "name": "SHOPEE",
+          "value": 14000
+        },
+        {
+          "name": "JONATHAN ROQUE DE SOUZA",
+          "value": 4847.86
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 1595.93
+        },
+        {
+          "name": "GUILHERME TORCHETTI LOUREIRO DA SILVA",
+          "value": 1500
+        },
+        {
+          "name": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+          "value": 1024.31
+        },
+        {
+          "name": "DIRECT COUNT - CONSULTORIA, ASSESSORIA E CONTABILIDADE EMPRESARIAL LTDA",
+          "value": 552
+        },
+        {
+          "name": "REEMBOLSOS",
+          "value": 286.78
+        },
+        {
+          "name": "UNIMED SAO JOSE DO RIO PRETO COOPERATIVA DE TRABALHO MEDICO",
+          "value": 268.92
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 250
+        }
+      ],
+      "extrato": [
+        [
+          "31/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          3060.73,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "MERCADO PAGO",
+          0.63,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          11047.59,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          7315.59,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "ORNATA DOMUS COMPANY LTDA",
+          -18000,
+          "PAGO"
+        ],
+        [
+          "28/03/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "ORNATA DOMUS COMPANY LTDA",
+          -2700,
+          "PAGO"
+        ],
+        [
+          "27/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          2578.91,
+          "PAGO"
+        ],
+        [
+          "27/03/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "ORNATA DOMUS COMPANY LTDA",
+          -6500,
+          "PAGO"
+        ],
+        [
+          "26/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          3746.68,
+          "PAGO"
+        ],
+        [
+          "25/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          2554.87,
+          "PAGO"
+        ],
+        [
+          "25/03/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -85.9,
+          "PAGO"
+        ],
+        [
+          "24/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          3656.67,
+          "PAGO"
+        ],
+        [
+          "24/03/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "ORNATA DOMUS COMPANY LTDA",
+          -24000,
+          "PAGO"
+        ],
+        [
+          "23/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          8143.2,
+          "PAGO"
+        ],
+        [
+          "23/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          6027.54,
+          "PAGO"
+        ],
+        [
+          "23/03/2026",
+          "Marketing e publicidade",
+          "Despesas com ADS",
+          "MERCADO LIVRE",
+          -250,
+          "PAGO"
+        ],
+        [
+          "23/03/2026",
+          "Despesas com serviços",
+          "Despesas com frete para devolução e reenvio",
+          "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+          -1024.31,
+          "PAGO"
+        ],
+        [
+          "20/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          127.32,
+          "PAGO"
+        ],
+        [
+          "20/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          2916.37,
+          "PAGO"
+        ],
+        [
+          "20/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          77.37,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        0,
+        -544.8500000000204,
+        -544.8500000000204,
+        -544.8500000000204,
+        -544.8500000000204,
+        -544.8500000000204,
+        -544.8500000000204,
+        -544.8500000000204,
+        -544.8500000000204,
+        -544.8500000000204,
+        -544.8500000000204
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 112238.23999999998,
+        "custo": -1595.93,
+        "despesa": -110039.93
+      }
+    }
+  },
+  {
+    "month": 4,
+    "monthName": "Abril",
+    "conta": "outside_the_box",
+    "contaLabel": "Outside The Box",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 177150.65999999997,
+        "TOTAL_DESPESA": 115673.25,
+        "VALOR_LIQUIDO": 61477.409999999974,
+        "MARGEM_LIQUIDA": 34.703460884650376,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          61477.409999999974,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 177150.65999999997,
+          "despesa": 115673.25
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 177148.95999999996
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 1.7
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Transferência entre empresas",
+          "value": 100000
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 7900
+        },
+        {
+          "name": "Pró-labores",
+          "value": 3500
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 1651.4
+        },
+        {
+          "name": "Serviços de contabilidade",
+          "value": 1500
+        },
+        {
+          "name": "Despesas com benefícios aos sócios e diretores",
+          "value": 468.92
+        },
+        {
+          "name": "Serviços de sistema de gestão",
+          "value": 335.49
+        },
+        {
+          "name": "Taxas e Encargos Bancários",
+          "value": 218.5
+        },
+        {
+          "name": "Outras despesas (Não considerar DRE)",
+          "value": 56.44
+        },
+        {
+          "name": "Direitos a receber",
+          "value": 30
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 130657.07
+        },
+        {
+          "name": "SHEIN",
+          "value": 40966.75000000001
+        },
+        {
+          "name": "BR TIKTOK SHOP",
+          "value": 5308.759999999999
+        },
+        {
+          "name": "AMAZON",
+          "value": 216.38
+        },
+        {
+          "name": "MERCADO PAGO",
+          "value": 1.7
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "ORNATA DOMUS COMPANY LTDA",
+          "value": 100000
+        },
+        {
+          "name": "SHOPEE",
+          "value": 7400
+        },
+        {
+          "name": "JONATHAN ROQUE DE SOUZA",
+          "value": 3700
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 1651.4
+        },
+        {
+          "name": "GUILHERME TORCHETTI LOUREIRO DA SILVA",
+          "value": 1500
+        },
+        {
+          "name": "BR TIKTOK SHOP",
+          "value": 500
+        },
+        {
+          "name": "UNIMED SAO JOSE DO RIO PRETO COOPERATIVA DE TRABALHO MEDICO",
+          "value": 268.92
+        },
+        {
+          "name": "NIBO SOFTWARES E CURSOS LTDA.",
+          "value": 228.52
+        },
+        {
+          "name": "BRADESCO",
+          "value": 168.5
+        },
+        {
+          "name": "OLIST TINY TECNOLOGIA LTDA",
+          "value": 106.97
+        }
+      ],
+      "extrato": [
+        [
+          "30/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          4608.33,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "MERCADO PAGO",
+          1.7,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          4255.24,
+          "PAGO"
+        ],
+        [
+          "28/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          1315.12,
+          "PAGO"
+        ],
+        [
+          "28/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          5172.77,
+          "PAGO"
+        ],
+        [
+          "28/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          3813.12,
+          "PAGO"
+        ],
+        [
+          "27/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          6195.87,
+          "PAGO"
+        ],
+        [
+          "27/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          118.04,
+          "PAGO"
+        ],
+        [
+          "27/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          15216.34,
+          "PAGO"
+        ],
+        [
+          "27/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          296.18,
+          "PAGO"
+        ],
+        [
+          "24/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          5723.62,
+          "PAGO"
+        ],
+        [
+          "23/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "BR TIKTOK SHOP",
+          790.54,
+          "PAGO"
+        ],
+        [
+          "23/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          5132.53,
+          "PAGO"
+        ],
+        [
+          "22/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "BR TIKTOK SHOP",
+          610.28,
+          "PAGO"
+        ],
+        [
+          "22/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          11133.39,
+          "PAGO"
+        ],
+        [
+          "22/04/2026",
+          "Despesas Financeiras",
+          "Taxas e Encargos Bancários",
+          "SICREDI",
+          -50,
+          "PAGO"
+        ],
+        [
+          "21/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "BR TIKTOK SHOP",
+          456.2,
+          "PAGO"
+        ],
+        [
+          "20/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          11337.56,
+          "PAGO"
+        ],
+        [
+          "20/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          2268.53,
+          "PAGO"
+        ],
+        [
+          "20/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          90.66,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        0,
+        0,
+        61477.409999999974,
+        61477.409999999974,
+        61477.409999999974,
+        61477.409999999974,
+        61477.409999999974,
+        61477.409999999974,
+        61477.409999999974,
+        61477.409999999974,
+        61477.409999999974
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 177148.95999999996,
+        "custo": -1651.4,
+        "despesa": -113991.85
+      }
+    }
+  },
+  {
+    "month": 5,
+    "monthName": "Maio",
+    "conta": "outside_the_box",
+    "contaLabel": "Outside The Box",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 251297.44,
+        "TOTAL_DESPESA": 253158.55000000002,
+        "VALOR_LIQUIDO": -1861.1100000000151,
+        "MARGEM_LIQUIDA": -0.7406004613497118,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          -1861.1100000000151,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 251297.44,
+          "despesa": 253158.55000000002
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 251297.44
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Transferência entre empresas",
+          "value": 229500
+        },
+        {
+          "name": "Retirada de capital",
+          "value": 6702.75
+        },
+        {
+          "name": "Pró-labores",
+          "value": 5500
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 5100
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 2619.56
+        },
+        {
+          "name": "Serviços de contabilidade",
+          "value": 1500
+        },
+        {
+          "name": "Outras despesas (Não considerar DRE)",
+          "value": 626.2
+        },
+        {
+          "name": "Serviços de sistema de gestão",
+          "value": 564.01
+        },
+        {
+          "name": "Despesas com benefícios aos sócios e diretores",
+          "value": 468.92
+        },
+        {
+          "name": "Reembolsos por fora de marketplaces",
+          "value": 424.98
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 234833.24000000002
+        },
+        {
+          "name": "SHEIN",
+          "value": 15574.010000000004
+        },
+        {
+          "name": "AMAZON",
+          "value": 890.19
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "ORNATA DOMUS COMPANY LTDA",
+          "value": 229500
+        },
+        {
+          "name": "JONATHAN ROQUE DE SOUZA",
+          "value": 12402.75
+        },
+        {
+          "name": "SHOPEE",
+          "value": 5000
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 2619.56
+        },
+        {
+          "name": "GUILHERME TORCHETTI LOUREIRO DA SILVA",
+          "value": 1500
+        },
+        {
+          "name": "AMAZON",
+          "value": 626.2
+        },
+        {
+          "name": "NIBO SOFTWARES E CURSOS LTDA.",
+          "value": 457.04
+        },
+        {
+          "name": "REEMBOLSOS",
+          "value": 424.98
+        },
+        {
+          "name": "UNIMED SAO JOSE DO RIO PRETO COOPERATIVA DE TRABALHO MEDICO",
+          "value": 268.92
+        },
+        {
+          "name": "OLIST TINY TECNOLOGIA LTDA",
+          "value": 106.97
+        }
+      ],
+      "extrato": [
+        [
+          "29/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          565.61,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          60.87,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          7550.01,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -66.9,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          9262.67,
+          "PAGO"
+        ],
+        [
+          "26/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          119.29,
+          "PAGO"
+        ],
+        [
+          "26/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          13021.19,
+          "PAGO"
+        ],
+        [
+          "26/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          307.7,
+          "PAGO"
+        ],
+        [
+          "25/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          29.81,
+          "PAGO"
+        ],
+        [
+          "25/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          30901.94,
+          "PAGO"
+        ],
+        [
+          "25/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          79.7,
+          "PAGO"
+        ],
+        [
+          "25/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          1178.81,
+          "PAGO"
+        ],
+        [
+          "22/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          10118.51,
+          "PAGO"
+        ],
+        [
+          "22/05/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "ORNATA DOMUS COMPANY LTDA",
+          -21500,
+          "PAGO"
+        ],
+        [
+          "21/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          6189.8,
+          "PAGO"
+        ],
+        [
+          "21/05/2026",
+          "Despesas com serviços",
+          "Despesas com frete para devolução e reenvio",
+          "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+          -54.27,
+          "PAGO"
+        ],
+        [
+          "20/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          10170.88,
+          "PAGO"
+        ],
+        [
+          "20/05/2026",
+          "Operações",
+          "Retirada de capital",
+          "JONATHAN ROQUE DE SOUZA",
+          -5300.63,
+          "PAGO"
+        ],
+        [
+          "20/05/2026",
+          "Operações",
+          "Impostos sobre receita",
+          "SIMPLES NACIONAL",
+          -2619.56,
+          "PAGO"
+        ],
+        [
+          "19/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          431.65,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        0,
+        0,
+        0,
+        -1861.1100000000151,
+        -1861.1100000000151,
+        -1861.1100000000151,
+        -1861.1100000000151,
+        -1861.1100000000151,
+        -1861.1100000000151,
+        -1861.1100000000151,
+        -1861.1100000000151
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 28152.940000000002,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 28152.940000000002,
+        "MARGEM_LIQUIDA": 100,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          28152.940000000002,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 251297.44,
+        "custo": -2619.56,
+        "despesa": -243836.24000000002
+      }
+    }
+  },
+  {
+    "month": 1,
+    "monthName": "Janeiro",
+    "conta": null,
+    "contaLabel": "Consolidado",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 1424174.1700000004,
+        "TOTAL_DESPESA": 975054.1900000004,
+        "VALOR_LIQUIDO": 449119.98,
+        "MARGEM_LIQUIDA": 31.5354673227924,
+        "VALOR_LIQ_SERIES": [
+          449119.98,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 1424174.1700000004,
+          "despesa": 975054.1900000004
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 643554.05
+        },
+        {
+          "name": "Obtenção de empréstimo",
+          "value": 500000
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 220254.51
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 31647.58
+        },
+        {
+          "name": "Pró-labores",
+          "value": 14000
+        },
+        {
+          "name": "Bonificações, Brindes e Festividades",
+          "value": 4208
+        },
+        {
+          "name": "Receita com vendas",
+          "value": 3916
+        },
+        {
+          "name": "Outras receitas (Não considerar DRE)",
+          "value": 2649
+        },
+        {
+          "name": "Receita com serviços prestados",
+          "value": 2235.15
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 1224.38
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Compra de mercadorias",
+          "value": 323138.73
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 220254.51
+        },
+        {
+          "name": "Compra de ativo imobilizado",
+          "value": 83144.09
+        },
+        {
+          "name": "Compra de matéria-prima",
+          "value": 76161.93
+        },
+        {
+          "name": "Compra de insumos para expedição",
+          "value": 66250.29000000001
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 63074
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 37323.88999999999
+        },
+        {
+          "name": "Pró-labores",
+          "value": 14000
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 13742.720000000001
+        },
+        {
+          "name": "Retirada de capital",
+          "value": 10511.31
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 505802.72999999986
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 500000.61
+        },
+        {
+          "name": "OUTSIDE THE BOX",
+          "value": 220254.51
+        },
+        {
+          "name": "SHEIN",
+          "value": 94818.64000000001
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 49855.58
+        },
+        {
+          "name": "AMAZON",
+          "value": 22192.460000000003
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 17528.43
+        },
+        {
+          "name": "NOTAVEL AROMA COSMETICOS LTDA",
+          "value": 5043.15
+        },
+        {
+          "name": "RAUL GONCALVES NETO",
+          "value": 3905
+        },
+        {
+          "name": "MADEIRA MADEIRA",
+          "value": 2982.87
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "ORNATA DOMUS COMPANY LTDA",
+          "value": 220254.51
+        },
+        {
+          "name": "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          "value": 159154.67
+        },
+        {
+          "name": "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          "value": 114119.8
+        },
+        {
+          "name": "AGNALDO SILVA LOPES VEICULOS",
+          "value": 75000
+        },
+        {
+          "name": "SHOPEE",
+          "value": 63074
+        },
+        {
+          "name": "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          "value": 31194.08
+        },
+        {
+          "name": "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          "value": 29223.6
+        },
+        {
+          "name": "REI DOS VIDROS - M. ROCCO PEREIRA LTDA",
+          "value": 27825
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 19680.5
+        },
+        {
+          "name": "CONCRENOG - PEDRO HENRIQUE NOGUEIRA DA SILVA",
+          "value": 18176
+        }
+      ],
+      "extrato": [
+        [
+          "31/01/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "MERCADO PAGO",
+          706.59,
+          "PAGO"
+        ],
+        [
+          "31/01/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "INTER DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LTDA",
+          1.92,
+          "PAGO"
+        ],
+        [
+          "31/01/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -1018.33,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          8642.98,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MAGAZINE LUIZA",
+          54.2,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MERCADO LIVRE",
+          5000,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "OUTSIDE THE BOX",
+          32000,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          8989.55,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas com serviços",
+          "Despesas com frete para compra de materiais",
+          "TATIANE DE SOUZA BARONI - TRANSPORTES",
+          -249.22,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -76.22,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -64.9,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -85.28,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -80.96,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -85.04,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -44.89,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas Financeiras",
+          "Impostos e Taxas",
+          "SECRETARIA DA FAZENDA E PLANEJAMENTO",
+          -5.22,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "CONCRENOG - PEDRO HENRIQUE NOGUEIRA DA SILVA",
+          -4747.25,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "HEDER LUIZ FERNANDES LTDA",
+          -2350,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas administrativas",
+          "Despesas administrativas",
+          "SUPERMERCADO SÃO LUIZ",
+          -204.31,
+          "PAGO"
+        ],
+        [
+          "30/01/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -10,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        449119.98,
+        449119.98,
+        449119.98,
+        449119.98,
+        449119.98,
+        449119.98,
+        449119.98,
+        449119.98,
+        449119.98,
+        449119.98,
+        449119.98,
+        449119.98
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 652839.7000000001,
+        "custo": -484554.0700000001,
+        "despesa": -119370.14999999994
+      }
+    }
+  },
+  {
+    "month": 2,
+    "monthName": "Fevereiro",
+    "conta": null,
+    "contaLabel": "Consolidado",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 838479.7899999999,
+        "TOTAL_DESPESA": 1131717.7200000007,
+        "VALOR_LIQUIDO": -293237.93000000075,
+        "MARGEM_LIQUIDA": -34.972569821867836,
+        "VALOR_LIQ_SERIES": [
+          0,
+          -293237.93000000075,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 838479.7899999999,
+          "despesa": 1131717.7200000007
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 619931.28
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 197000
+        },
+        {
+          "name": "Outras receitas (Não considerar DRE)",
+          "value": 9330
+        },
+        {
+          "name": "Receita com serviços prestados",
+          "value": 5054.3
+        },
+        {
+          "name": "Outras receitas",
+          "value": 2198.52
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 2076.4
+        },
+        {
+          "name": "Venda de ativo imobilizado",
+          "value": 1917.65
+        },
+        {
+          "name": "Receita com vendas",
+          "value": 604.6999999999999
+        },
+        {
+          "name": "Despesas com outros serviços contratados",
+          "value": 250
+        },
+        {
+          "name": "Receita por troca/adição de produtos em pedido",
+          "value": 116.94
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Compra de mercadorias",
+          "value": 356824.81000000006
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 197000
+        },
+        {
+          "name": "Direitos a receber",
+          "value": 112350
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 91300
+        },
+        {
+          "name": "Compra de matéria-prima",
+          "value": 88177.16999999998
+        },
+        {
+          "name": "Compra de insumos para expedição",
+          "value": 87319.46
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 47688.13999999999
+        },
+        {
+          "name": "Compra de ativo imobilizado",
+          "value": 17854.22
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 16160.349999999999
+        },
+        {
+          "name": "Retirada de capital",
+          "value": 14476.18
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 464591.05000000005
+        },
+        {
+          "name": "OUTSIDE THE BOX",
+          "value": 197000
+        },
+        {
+          "name": "SHEIN",
+          "value": 87552.95999999999
+        },
+        {
+          "name": "AMAZON",
+          "value": 43375.82000000001
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 20000
+        },
+        {
+          "name": "NOTAVEL AROMA COSMETICOS LTDA",
+          "value": 15462.3
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 3245.67
+        },
+        {
+          "name": "MADEIRA MADEIRA",
+          "value": 3191.7
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 1752.44
+        },
+        {
+          "name": "MAGAZINE LUIZA",
+          "value": 1219.75
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          "value": 231824.78
+        },
+        {
+          "name": "ORNATA DOMUS COMPANY LTDA",
+          "value": 197000
+        },
+        {
+          "name": "NOTÁVEL AROMA COSMÉTICOS LTDA",
+          "value": 121525.65
+        },
+        {
+          "name": "SHOPEE",
+          "value": 91300
+        },
+        {
+          "name": "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          "value": 79709.79000000001
+        },
+        {
+          "name": "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          "value": 47668.89
+        },
+        {
+          "name": "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          "value": 33206.44
+        },
+        {
+          "name": "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          "value": 31604.94
+        },
+        {
+          "name": "REI DOS VIDROS - M. ROCCO PEREIRA LTDA",
+          "value": 21200
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 16399.58
+        }
+      ],
+      "extrato": [
+        [
+          "28/02/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "BANCO BRADESCO S.A.",
+          1752.19,
+          "PAGO"
+        ],
+        [
+          "28/02/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MULTIFIX COMERCIO DE FITAS ADESIVAS LTDA",
+          -1886.67,
+          "PAGO"
+        ],
+        [
+          "28/02/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          -3161.66,
+          "PAGO"
+        ],
+        [
+          "28/02/2026",
+          "Despesas com serviços",
+          "Despesas com frete para compra de materiais",
+          "TATIANE DE SOUZA BARONI - TRANSPORTES",
+          -349.39,
+          "PAGO"
+        ],
+        [
+          "28/02/2026",
+          "Operações",
+          "Compra de matéria-prima",
+          "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          -7295.25,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          15444.98,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MAGAZINE LUIZA",
+          707.77,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          794.36,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Outras receitas (Não considerar DRE)",
+          "NOTÁVEL AROMA COSMÉTICOS",
+          30,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de ativo imobilizado",
+          "LEANDRO - BULDOGUE",
+          -70,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -85.04,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -62.72,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de matéria-prima",
+          "KARIPLAST COMERCIO IMPORTACAO E EXPORTACAO DE PLASTICOS E TECIDOS LTDA",
+          -1386,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Despesas Financeiras",
+          "Taxas e Encargos Bancários",
+          "SICREDI",
+          -20,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -6833.33,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -125,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -4512.34,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          -5500,
+          "PAGO"
+        ],
+        [
+          "27/02/2026",
+          "Despesas não operacionais",
+          "Outras despesas (Não considerar DRE)",
+          "PEDRO HENRIQUE SOUZA CARMO",
+          -30,
+          "PAGO"
+        ],
+        [
+          "26/02/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          11576.14,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        -293237.93000000075,
+        -293237.93000000075,
+        -293237.93000000075,
+        -293237.93000000075,
+        -293237.93000000075,
+        -293237.93000000075,
+        -293237.93000000075,
+        -293237.93000000075,
+        -293237.93000000075,
+        -293237.93000000075,
+        -293237.93000000075
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 637235.74,
+        "custo": -561693.41,
+        "despesa": -223167.3699999998
+      }
+    }
+  },
+  {
+    "month": 3,
+    "monthName": "Março",
+    "conta": null,
+    "contaLabel": "Consolidado",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 658077.7500000001,
+        "TOTAL_DESPESA": 821121.5400000004,
+        "VALOR_LIQUIDO": -163043.79000000027,
+        "MARGEM_LIQUIDA": -24.775763957982207,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          -163043.79000000027,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 658077.7500000001,
+          "despesa": 821121.5400000004
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 517319.8800000001
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 93399.81
+        },
+        {
+          "name": "Outras receitas",
+          "value": 30233.81
+        },
+        {
+          "name": "Venda de ativo imobilizado",
+          "value": 8521.25
+        },
+        {
+          "name": "Receita com serviços prestados",
+          "value": 4298.88
+        },
+        {
+          "name": "Outras receitas (Não considerar DRE)",
+          "value": 2517.35
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 1523.27
+        },
+        {
+          "name": "Receita com vendas",
+          "value": 195
+        },
+        {
+          "name": "Receita por troca/adição de produtos em pedido",
+          "value": 68.5
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Compra de mercadorias",
+          "value": 347210.5
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 87901.06
+        },
+        {
+          "name": "Compra de insumos para expedição",
+          "value": 77647.31999999998
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 59250
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 50745.92999999999
+        },
+        {
+          "name": "Compra de matéria-prima",
+          "value": 48434.38
+        },
+        {
+          "name": "Pagamento de empréstimo",
+          "value": 24471.22
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 15410.82
+        },
+        {
+          "name": "Despesas com rescisões trabalhistas",
+          "value": 12560.969999999998
+        },
+        {
+          "name": "Pró-labores",
+          "value": 10500
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 363049.06000000006
+        },
+        {
+          "name": "OUTSIDE THE BOX",
+          "value": 87901.06
+        },
+        {
+          "name": "SHEIN",
+          "value": 84325.92
+        },
+        {
+          "name": "AMAZON",
+          "value": 38715.06000000001
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 28285.88
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 28011.25
+        },
+        {
+          "name": "NOTAVEL AROMA COSMETICOS LTDA",
+          "value": 22824.98
+        },
+        {
+          "name": "MADEIRA MADEIRA",
+          "value": 2382.8
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 1521.81
+        },
+        {
+          "name": "MAGAZINE LUIZA",
+          "value": 561.16
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          "value": 206021.61
+        },
+        {
+          "name": "ORNATA DOMUS COMPANY LTDA",
+          "value": 87901.06
+        },
+        {
+          "name": "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          "value": 63258.14
+        },
+        {
+          "name": "SHOPEE",
+          "value": 59000
+        },
+        {
+          "name": "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          "value": 49754.93000000001
+        },
+        {
+          "name": "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          "value": 44600.100000000006
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 30167.35
+        },
+        {
+          "name": "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          "value": 21821.85
+        },
+        {
+          "name": "MEGA EPS LTDA",
+          "value": 20787.25
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 15410.82
+        }
+      ],
+      "extrato": [
+        [
+          "31/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          5647.21,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "BANCO BRADESCO S.A.",
+          118.55,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          3060.73,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "MERCADO PAGO",
+          0.63,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Operações",
+          "Compra de matéria-prima",
+          "KARIPLAST COMERCIO IMPORTACAO E EXPORTACAO DE PLASTICOS E TECIDOS LTDA",
+          -1391.5,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Despesas Financeiras",
+          "Impostos e Taxas",
+          "SECRETARIA DA FAZENDA E PLANEJAMENTO",
+          -348.95,
+          "PAGO"
+        ],
+        [
+          "31/03/2026",
+          "Despesas administrativas",
+          "Despesas com materiais de consumo",
+          "RICARDO ANTUNES - NATHYPEL",
+          -375,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          4275.7,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          16364.41,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Despesas não operacionais",
+          "Transferência entre empresas",
+          "OUTSIDE THE BOX",
+          18000,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHEIN",
+          11047.59,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          7315.59,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          -11550,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MUNDO GIBA LTDA - MUNDO GB",
+          -448,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "HEDER LUIZ FERNANDES LTDA",
+          -912.5,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MULTIFIX COMERCIO DE FITAS ADESIVAS LTDA",
+          -1886.67,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "RGL - FITAS ADESIVAS",
+          -1084.43,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -45.89,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -2350,
+          "PAGO"
+        ],
+        [
+          "30/03/2026",
+          "Despesas administrativas",
+          "Despesas administrativas",
+          "NOTÁVEL AROMA COSMÉTICOS LTDA",
+          -350,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        0,
+        -163043.79000000027,
+        -163043.79000000027,
+        -163043.79000000027,
+        -163043.79000000027,
+        -163043.79000000027,
+        -163043.79000000027,
+        -163043.79000000027,
+        -163043.79000000027,
+        -163043.79000000027,
+        -163043.79000000027
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 554633.42,
+        "custo": -495992.04999999993,
+        "despesa": -185945.13999999998
+      }
+    }
+  },
+  {
+    "month": 4,
+    "monthName": "Abril",
+    "conta": null,
+    "contaLabel": "Consolidado",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 572947.3,
+        "TOTAL_DESPESA": 615044.89,
+        "VALOR_LIQUIDO": -42097.58999999997,
+        "MARGEM_LIQUIDA": -7.347550114993117,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          -42097.58999999997,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 572947.3,
+          "despesa": 615044.89
+        },
+        {
+          "m": "maio",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 455529.13000000006
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 104025.11
+        },
+        {
+          "name": "Receita com serviços prestados",
+          "value": 8904.12
+        },
+        {
+          "name": "Outras receitas (Não considerar DRE)",
+          "value": 2059.53
+        },
+        {
+          "name": "Venda de ativo imobilizado",
+          "value": 1843.66
+        },
+        {
+          "name": "Receita com vendas",
+          "value": 295.9
+        },
+        {
+          "name": "Juros Recebidos",
+          "value": 156.34
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 121.01
+        },
+        {
+          "name": "Outras receitas",
+          "value": 12.5
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Compra de mercadorias",
+          "value": 215487.49000000002
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 100000
+        },
+        {
+          "name": "Compra de insumos para expedição",
+          "value": 64444.340000000004
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 50710.76
+        },
+        {
+          "name": "Compra de matéria-prima",
+          "value": 41642.22
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 28619
+        },
+        {
+          "name": "Pagamento de empréstimo",
+          "value": 19303.940000000002
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 15512.89
+        },
+        {
+          "name": "Pró-labores",
+          "value": 10500
+        },
+        {
+          "name": "Despesas com aluguéis para uso",
+          "value": 7800
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 333306.6600000001
+        },
+        {
+          "name": "OUTSIDE THE BOX",
+          "value": 100000
+        },
+        {
+          "name": "SHEIN",
+          "value": 60380.97000000001
+        },
+        {
+          "name": "AMAZON",
+          "value": 34544.149999999994
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 19000
+        },
+        {
+          "name": "NOTAVEL AROMA COSMETICOS LTDA",
+          "value": 12929.230000000001
+        },
+        {
+          "name": "BR TIKTOK SHOP",
+          "value": 5308.759999999999
+        },
+        {
+          "name": "JOAO PEDRO FERNANDES OLIVEIRA",
+          "value": 2059.53
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 2000
+        },
+        {
+          "name": "MADEIRA MADEIRA",
+          "value": 1752.98
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          "value": 123977.55
+        },
+        {
+          "name": "ORNATA DOMUS COMPANY LTDA",
+          "value": 100000
+        },
+        {
+          "name": "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          "value": 52234.75
+        },
+        {
+          "name": "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          "value": 32164.56
+        },
+        {
+          "name": "SHOPEE",
+          "value": 28119
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 23546.09
+        },
+        {
+          "name": "MEGA EPS LTDA",
+          "value": 20531
+        },
+        {
+          "name": "IMPERIO DECOR COMERCIO DE ARTIGOS DE DECORACAO LTDA",
+          "value": 19620.83
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 15512.89
+        },
+        {
+          "name": "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          "value": 14526.6
+        }
+      ],
+      "extrato": [
+        [
+          "30/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MAGAZINE LUIZA",
+          392.31,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          6812.99,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          5089.36,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MERCADO LIVRE",
+          4500,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "MERCADO PAGO",
+          0.53,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          4608.33,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Rendimento de investimentos",
+          "MERCADO PAGO",
+          1.7,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          -20765.41,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -7168.25,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MEGA EPS LTDA",
+          -640,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "NOTÁVEL AROMA COSMÉTICOS LTDA",
+          -981.77,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          -7293.31,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MEGA EPS LTDA",
+          -2867,
+          "PAGO"
+        ],
+        [
+          "30/04/2026",
+          "Operações",
+          "Compra de matéria-prima",
+          "KARIPLAST COMERCIO IMPORTACAO E EXPORTACAO DE PLASTICOS E TECIDOS LTDA",
+          -1518,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          6209.06,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          4255.24,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -250,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -1872.84,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -759.16,
+          "PAGO"
+        ],
+        [
+          "29/04/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -697.5,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        0,
+        0,
+        -42097.58999999997,
+        -42097.58999999997,
+        -42097.58999999997,
+        -42097.58999999997,
+        -42097.58999999997,
+        -42097.58999999997,
+        -42097.58999999997,
+        -42097.58999999997,
+        -42097.58999999997
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 0,
+        "TOTAL_DESPESA": 0,
+        "VALOR_LIQUIDO": 0,
+        "MARGEM_LIQUIDA": 0,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 466957.52000000014,
+        "custo": -344693.8399999999,
+        "despesa": -137074.87999999998
+      }
+    }
+  },
+  {
+    "month": 5,
+    "monthName": "Maio",
+    "conta": null,
+    "contaLabel": "Consolidado",
+    "data": {
+      "kpis": {
+        "TOTAL_RECEITA": 904785.4500000001,
+        "TOTAL_DESPESA": 736988.5100000002,
+        "VALOR_LIQUIDO": 167796.93999999983,
+        "MARGEM_LIQUIDA": 18.545494956843065,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          167796.93999999983,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "monthData": [
+        {
+          "m": "janeiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "fevereiro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "março",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "abril",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "maio",
+          "receita": 904785.4500000001,
+          "despesa": 736988.5100000002
+        },
+        {
+          "m": "junho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "julho",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "agosto",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "setembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "outubro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "novembro",
+          "receita": 0,
+          "despesa": 0
+        },
+        {
+          "m": "dezembro",
+          "receita": 0,
+          "despesa": 0
+        }
+      ],
+      "recCats": [
+        {
+          "name": "Repasse de vendas",
+          "value": 539871.36
+        },
+        {
+          "name": "Transferência entre empresas",
+          "value": 233488.23
+        },
+        {
+          "name": "Obtenção de empréstimo",
+          "value": 113799.41
+        },
+        {
+          "name": "Receita com serviços prestados",
+          "value": 8466.24
+        },
+        {
+          "name": "Compra de mercadorias",
+          "value": 4486.66
+        },
+        {
+          "name": "Venda de ativo imobilizado",
+          "value": 3200
+        },
+        {
+          "name": "Outras receitas",
+          "value": 1240.54
+        },
+        {
+          "name": "Receita com vendas",
+          "value": 232.95999999999998
+        },
+        {
+          "name": "Rendimento de investimentos",
+          "value": 0.05
+        }
+      ],
+      "despCats": [
+        {
+          "name": "Transferência entre empresas",
+          "value": 229500
+        },
+        {
+          "name": "Compra de mercadorias",
+          "value": 212481.08
+        },
+        {
+          "name": "Compra de matéria-prima",
+          "value": 42559.11
+        },
+        {
+          "name": "Salários e encargos",
+          "value": 42249.270000000004
+        },
+        {
+          "name": "Despesas com ADS",
+          "value": 42150
+        },
+        {
+          "name": "Compra de insumos para expedição",
+          "value": 30910.19
+        },
+        {
+          "name": "Retirada de capital",
+          "value": 23459.62
+        },
+        {
+          "name": "Pagamento de empréstimo",
+          "value": 19225.239999999998
+        },
+        {
+          "name": "Pró-labores",
+          "value": 16500
+        },
+        {
+          "name": "Impostos sobre receita",
+          "value": 14863.859999999999
+        }
+      ],
+      "recClientes": [
+        {
+          "name": "SHOPEE",
+          "value": 456339.32
+        },
+        {
+          "name": "OUTSIDE THE BOX",
+          "value": 229500
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 113799.46
+        },
+        {
+          "name": "AMAZON",
+          "value": 41720.600000000006
+        },
+        {
+          "name": "SHEIN",
+          "value": 28608.580000000005
+        },
+        {
+          "name": "NOTAVEL AROMA COSMETICOS LTDA",
+          "value": 12454.47
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 10500
+        },
+        {
+          "name": "Ajuste reconciliação",
+          "value": 7686.66
+        },
+        {
+          "name": "MADEIRA MADEIRA",
+          "value": 1641.2099999999998
+        },
+        {
+          "name": "JOAO PEDRO FERNANDES OLIVEIRA",
+          "value": 1234.29
+        }
+      ],
+      "despFornec": [
+        {
+          "name": "ORNATA DOMUS COMPANY LTDA",
+          "value": 229500
+        },
+        {
+          "name": "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          "value": 147319.72
+        },
+        {
+          "name": "SHOPEE",
+          "value": 39550
+        },
+        {
+          "name": "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          "value": 27099.680000000004
+        },
+        {
+          "name": "BANCO BRADESCO S.A.",
+          "value": 23471.98
+        },
+        {
+          "name": "UNESPUMA PECAS E FITAS TECNICAS INDUSTRIA E COMERCIO LTDA",
+          "value": 21974.69
+        },
+        {
+          "name": "PRIME BOX EMBALAGENS PAPELAO LTDA",
+          "value": 16603.29
+        },
+        {
+          "name": "SIMPLES NACIONAL",
+          "value": 14863.859999999999
+        },
+        {
+          "name": "MERCADO LIVRE",
+          "value": 13598.14
+        },
+        {
+          "name": "CONCRENOG - PEDRO HENRIQUE NOGUEIRA DA SILVA",
+          "value": 13042.75
+        }
+      ],
+      "extrato": [
+        [
+          "29/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          12154.07,
+          "PAGO"
+        ],
+        [
+          "29/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "MERCADO LIVRE",
+          2000,
+          "PAGO"
+        ],
+        [
+          "29/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          565.61,
+          "PAGO"
+        ],
+        [
+          "29/05/2026",
+          "Despesas com colaboradores",
+          "Bonificações, Brindes e Festividades",
+          "MARIANA VAROLLO VILERA",
+          -200,
+          "PAGO"
+        ],
+        [
+          "29/05/2026",
+          "Despesas administrativas",
+          "Despesas com materiais de consumo",
+          "SUPERMERCADO SÃO LUIZ",
+          -305.82,
+          "PAGO"
+        ],
+        [
+          "29/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -716.67,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          5367.02,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          6176.95,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "AMAZON",
+          60.87,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          7550.01,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Compra de insumos para expedição",
+          "MEGA EPS LTDA",
+          -3041.2,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          -15210.72,
+          "PAGO"
+        ],
+        [
+          "28/05/2026",
+          "Despesas operacionais",
+          "Reembolsos por fora de marketplaces",
+          "REEMBOLSOS",
+          -66.9,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          6586.53,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Repasse de vendas",
+          "SHOPEE",
+          9262.67,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "DSA - DISTRIBUIDORA DE VIDROS SANTO ANTONIO LTDA",
+          -20765.41,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Despesas com serviços",
+          "Despesas com frete para compra de materiais",
+          "DARBI RINTON ALVES DO NASCIMENTO",
+          -110,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -3330,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "NATALIA RICORDI GARCIA CAMILO LTDA - COMPET V8",
+          -1733.34,
+          "PAGO"
+        ],
+        [
+          "27/05/2026",
+          "Operações",
+          "Compra de mercadorias",
+          "CONCRENOG - PEDRO HENRIQUE NOGUEIRA DA SILVA",
+          -5833,
+          "PAGO"
+        ]
+      ],
+      "saldos": [
+        0,
+        0,
+        0,
+        0,
+        167796.93999999983,
+        167796.93999999983,
+        167796.93999999983,
+        167796.93999999983,
+        167796.93999999983,
+        167796.93999999983,
+        167796.93999999983,
+        167796.93999999983
+      ],
+      "aprKpis": {
+        "TOTAL_RECEITA": 52488.67,
+        "TOTAL_DESPESA": 12535.19,
+        "VALOR_LIQUIDO": 39953.479999999996,
+        "MARGEM_LIQUIDA": 76.11829371938742,
+        "VALOR_LIQ_SERIES": [
+          0,
+          0,
+          0,
+          0,
+          39953.479999999996,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "dre": {
+        "receita": 549811.0999999999,
+        "custo": -311378.5399999999,
+        "despesa": -144693.38999999998
+      }
+    }
+  }
+]

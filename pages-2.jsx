@@ -70,13 +70,13 @@ const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown
     if (drilldown.type === "categoria") return row[3] === drilldown.value;
     if (drilldown.type === "cliente") return row[0] === "r" && row[4] === drilldown.value;
     if (drilldown.type === "fornecedor") return row[0] === "d" && row[7] === drilldown.value;
-    if (drilldown.type === "conta") return row[9] === drilldown.value;
     if (drilldown.type === "dia") return row[2] === drilldown.value;
     return true;
   };
   const filtersOk = (row) => {
     if (filters && filters.categoria && filters.categoria !== "Todas categorias" && row[3] !== filters.categoria) return false;
     if (filters && filters.cc && filters.cc !== "Todos centros de custo" && row[8] !== filters.cc) return false;
+    if (filters && filters.conta && row[9] !== filters.conta) return false;
     return true;
   };
 
@@ -1265,11 +1265,13 @@ const PageRelatorio = ({ year, statusFilter, filters }) => {
     [periodYear, periodMonth, filters]
   );
 
-  // resolve o nome do arquivo conforme periodo
+  // resolve o nome do arquivo conforme periodo + conta
+  const contaSlug = (filters && filters.conta) || '';
+  const contaSuffix = contaSlug ? `-${contaSlug}` : '';
   const reportFileName = (y, m) => {
-    if (m && m > 0) return `report-${y}-${String(m).padStart(2,'0')}.json`;
-    if (y === refYear) return 'report.json'; // default mantem nome principal
-    return `report-${y}.json`;
+    if (m && m > 0) return `report-${y}-${String(m).padStart(2,'0')}${contaSuffix}.json`;
+    if (y === refYear && !contaSlug) return 'report.json';
+    return `report-${y}${contaSuffix}.json`;
   };
 
   useEffect(() => {
@@ -1280,26 +1282,34 @@ const PageRelatorio = ({ year, statusFilter, filters }) => {
     setReport(null);
     try { localStorage.setItem('bi.report.period', JSON.stringify({ year: periodYear, month: periodMonth })); } catch (e) {}
     const file = reportFileName(periodYear, periodMonth);
+    const fileKey = file.replace('.json', '');
 
-    // 1) tenta o JSON pre-gerado (estatico). Se 404, cai no fallback de geracao on-demand.
+    // 1) tenta window.REPORTS (embutido em reports.js — funciona offline/file://)
+    const inlineData = window.REPORTS && window.REPORTS[fileKey];
+    if (inlineData) {
+      setReport(inlineData);
+      setLoading(false);
+      return;
+    }
+
+    // 2) tenta fetch do JSON (funciona em servidor HTTP)
     fetch(file, { cache: 'no-store' })
       .then(r => {
         if (r.ok) return r.json();
-        if (r.status === 404) return null; // sinaliza fallback
+        if (r.status === 404) return null;
         throw new Error(`HTTP ${r.status} (arquivo ${file})`);
       })
       .then(data => {
         if (cancelled) return;
         if (data) {
-          // tinha relatorio pre-gerado
           setReport(data);
           setLoading(false);
           return null;
         }
-        // 2) Fallback: chama a API publica de geracao on-demand
+        // 3) Fallback: chama a API publica de geracao on-demand
         const apiUrl = window.BI_REPORT_API;
         if (!apiUrl) {
-          throw new Error('API de geracao nao configurada');
+          throw new Error('Relatorio nao encontrado para este periodo. Gere com: node generate-report.cjs --force --year=' + periodYear + (periodMonth > 0 ? ' --month=' + periodMonth : ''));
         }
         setLoading(false);
         setGenerating(true);

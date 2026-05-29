@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-29T00:00:00.000Z",
+  "empresa": "Outside The Box",
+  "periodo": "Abril/2026",
+  "year": 2026,
+  "month": 4,
+  "filter": "realizado",
+  "secoes": {
+    "visao_geral": {
+      "title": "Visão Geral",
+      "analysis": "Em abril de 2026, a Outside The Box registrou forte recuperacao com receita total de R$ 177.150,66 e despesas de R$ 115.673,25, gerando resultado liquido positivo de R$ 61.477,41 e margem liquida expressiva de 34,70%. A receita cresceu 57,8% em relacao a marco (R$ 112.238,87), revertendo a tendencia de queda dos meses anteriores. Pela DRE, a receita foi de R$ 177.148,96, custos de R$ 1.651,40 e despesas de R$ 113.991,85. A Shopee retomou a lideranca com R$ 130.657,07 (73,8%), seguida pela Shein com R$ 40.966,75 (23,1%) e a novidade TikTok Shop com R$ 5.308,76 (3,0%).\n\nO resultado de abril e o melhor do ano ate o momento, tanto em valor absoluto quanto em margem percentual. A transferencia intercompany de R$ 100.000,00 representou apenas 56,5% da receita, percentual muito inferior aos meses anteriores (janeiro 88,8%, fevereiro 86,1%, marco 78,3%), sendo o principal fator da melhoria na margem. A entrada do TikTok Shop como novo canal de vendas e um marco estrategico positivo que contribui para a diversificacao. Recomenda-se manter a politica de transferencias nesse patamar percentual para sustentar margens saudaveis.",
+      "error": null
+    },
+    "receita": {
+      "title": "Receita",
+      "analysis": "A receita de abril totalizou R$ 177.150,66, composta por repasses de vendas (R$ 177.148,96) e rendimento de investimentos (R$ 1,70). A Shopee liderou com R$ 130.657,07 (73,8%), recuperando participacao apos ceder a lideranca para a Shein em marco. A Shein manteve-se estavel com R$ 40.966,75 (23,1%), a Amazon contribuiu com R$ 216,38 e o TikTok Shop (BR TikTok Shop) estreou com R$ 5.308,76, representando 3% da receita ja no primeiro mes.\n\nA recuperacao da Shopee (+153,3% vs marco) e a estabilidade da Shein demonstram que a queda de marco foi provavelmente sazonal ou pontual. A entrada do TikTok Shop com R$ 5.308,76 no primeiro mes e promissora e valida a estrategia de diversificacao de canais. Com tres plataformas relevantes, o risco de concentracao diminuiu consideravelmente. Recomenda-se investir na escalada do TikTok Shop, que tem potencial de se tornar o terceiro canal relevante, e continuar monitorando a Amazon, cujo desempenho segue muito abaixo do potencial da plataforma.",
+      "error": null
+    },
+    "despesa": {
+      "title": "Despesa",
+      "analysis": "As despesas totais de abril foram R$ 115.673,25, com transferencias entre empresas de R$ 100.000,00 (86,5% das despesas, mas apenas 56,5% da receita). As despesas operacionais proprias somaram R$ 15.673,25, o menor valor do ano: ADS R$ 7.900,00, pro-labores R$ 3.500,00, impostos R$ 1.651,40, contabilidade R$ 1.500,00, beneficios R$ 468,92, sistema de gestao R$ 335,49, taxas bancarias R$ 218,50 e outras despesas R$ 56,44.\n\nA reducao das despesas operacionais para R$ 15.673,25 (vs R$ 24.882,66 em marco) reflete disciplina de custos. O gasto com ADS caiu para R$ 7.900,00 (4,5% da receita), patamar muito mais saudavel e alinhado ao benchmark do setor. A contabilidade estabilizou em R$ 1.500,00, valor mais razoavel que os R$ 2.052,00 de marco. Nao houve despesas com fretes de devolucao, reembolsos ou horas extras, sugerindo melhoria na qualidade operacional. O custo com TikTok Shop foi de R$ 500,00, investimento inicial modesto e adequado para teste de canal.",
+      "error": null
+    },
+    "fluxo_caixa": {
+      "title": "Fluxo de Caixa",
+      "analysis": "O fluxo de caixa de abril foi fortemente positivo em R$ 61.477,41, com entradas de R$ 177.150,66 e saidas de R$ 115.673,25. O saldo acumulado saltou para R$ 61.477,41, revertendo completamente a posicao negativa dos meses anteriores. Este foi o melhor desempenho de caixa do ano, com geracao liquida superior a soma dos tres meses anteriores. A DRE registrou receita de R$ 177.148,96, custos de R$ 1.651,40 e despesas de R$ 113.991,85.\n\nA excelente geracao de caixa de abril oferece oportunidade para constituir a reserva operacional recomendada nos meses anteriores. Com R$ 61.477,41 em caixa, a empresa finalmente possui folga para cobrir mais de tres meses de despesas operacionais proprias. Os pagamentos do mes foram bem distribuidos: Ornata Domus (R$ 100.000,00), Shopee ADS (R$ 7.400,00), Jonathan Roque (R$ 3.700,00) e Simples Nacional (R$ 1.651,40). Recomenda-se reservar pelo menos R$ 25.000,00 como colchao de liquidez e nao aumentar as transferencias intercompany desproporcionalmente nos proximos meses.",
+      "error": null
+    },
+    "tesouraria": {
+      "title": "Tesouraria",
+      "analysis": "A posicao de tesouraria ao final de abril indica saldo positivo de R$ 61.477,41, uma recuperacao expressiva em relacao ao saldo negativo de -R$ 544,85 em marco. Os recebimentos foram liderados pela Shopee (R$ 130.657,07), Shein (R$ 40.966,75) e TikTok Shop (R$ 5.308,76). Os principais desembolsos foram Ornata Domus (R$ 100.000,00), Shopee ADS (R$ 7.400,00), Jonathan Roque (R$ 3.700,00) e impostos (R$ 1.651,40).\n\nCom R$ 61.477,41 em caixa, a empresa atinge sua melhor posicao de tesouraria no ano. O rendimento de investimentos de R$ 1,70 sugere que o saldo anterior era minimo e nao estava aplicado. Com o novo patamar de caixa, e recomendavel aplicar pelo menos R$ 40.000,00 em investimento de liquidez diaria (CDB ou fundo DI) para gerar rendimento enquanto mantém disponibilidade. A gestao de tesouraria deve estabelecer faixas de saldo alvo: minimo operacional de R$ 15.000,00 e meta de reserva de R$ 40.000,00.",
+      "error": null
+    },
+    "comparativo": {
+      "title": "Comparativo",
+      "analysis": "Abril representou uma forte reversao de tendencia: receita cresceu 57,8% (de R$ 112.238,87 para R$ 177.150,66) e a margem liquida saltou de -0,49% para +34,70%. E o primeiro resultado positivo desde janeiro e o melhor do ano em todos os indicadores. As despesas operacionais proprias cairam 37% (de R$ 24.882,66 para R$ 15.673,25), enquanto as transferencias intercompany como percentual da receita caíram de 78,3% para 56,5%.\n\nAnalisando o trimestre completo (janeiro a abril), a receita media mensal foi de R$ 191.496,01 e o resultado medio de R$ 16.075,34. A volatilidade e elevada: o pior mes (marco) teve receita 63,3% menor que o melhor (janeiro). O ADS como percentual da receita variou de 4,0% a 12,7%, estabilizando em 4,5% em abril. O principal determinante do resultado e o percentual de transferencia intercompany: quando abaixo de 60% da receita, a margem e consistentemente positiva. Recomenda-se formalizar um teto de 65% de transferencia sobre a receita para garantir sustentabilidade financeira.",
+      "error": null
+    }
+  },
+  "conclusao": "Abril de 2026 foi o melhor mes do ano com resultado positivo de R$ 61.477,41 e margem liquida de 34,70%. A receita cresceu 57,8% em relacao a marco, impulsionada pela recuperacao da Shopee e entrada do TikTok Shop como novo canal. A disciplina de custos operacionais (R$ 15.673,25, menor do ano) e a moderacao nas transferencias intercompany (56,5% da receita vs 78-89% nos meses anteriores) foram determinantes para o resultado. Recomenda-se formalizar o percentual de transferencia em torno de 60-65%, constituir reserva de R$ 25.000 a R$ 40.000 e investir na escalada do TikTok Shop para consolidar a diversificacao de canais."
+}
