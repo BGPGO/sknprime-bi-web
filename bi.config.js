@@ -2,7 +2,7 @@ module.exports = {
   cliente: {
     nome: "Ornata Domus",
     subdomain: "ornatadomus-bi",
-    coolify_app_uuid: "v98qi2ans17xa9expmvke8mv",
+    coolify_app_uuid: "w3rltjp4ch51aqvvo6003onn",
     cor_primaria: "#8B6914",
   },
   fontes: {
