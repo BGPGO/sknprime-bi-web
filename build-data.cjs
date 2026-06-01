@@ -288,6 +288,8 @@ function normalizeAdapter(m) {
   const realizado = m.realizado || ['PAGO', 'RECEBIDO'].includes((m.status || '').toUpperCase());
   const cancelado = (m.status || '').toUpperCase() === 'CANCELADO';
   if (cancelado) return null;
+  // Filtro transferencias entre contas (mesmo comportamento do normalizeMovimento)
+  if (FILTRAR_TRANSFERENCIAS && TRANSFERENCIA_RE.test(m.categoria || '')) return null;
   const valor = Math.abs(num(m.valor_total) || num(m.valor_pago) || 0);
   if (!valor) return null;
   // Classificar seção DRE a partir do campo secao_dre do adapter

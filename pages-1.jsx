@@ -418,7 +418,8 @@ const PageReceita = ({ filters, setFilters, onOpenFilters, statusFilter, drilldo
   const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
   const mediaMes = B.TOTAL_RECEITA / 12;
   const numClientes = B.RECEITA_CLIENTES.length;
-  const ticket = numClientes > 0 ? B.TOTAL_RECEITA / numClientes : 0;
+  const numLancRec = (B.EXTRATO_RECEITAS || B.EXTRATO.filter(e => e[4] > 0)).length;
+  const ticket = numLancRec > 0 ? B.TOTAL_RECEITA / numLancRec : 0;
   const [range, setRange] = useState("12M");
   const refYear = (B.META && B.META.ref_year) || new Date().getFullYear();
 
@@ -522,7 +523,8 @@ const PageDespesa = ({ filters, setFilters, onOpenFilters, statusFilter, drilldo
   const totalDespesa = B.TOTAL_DESPESA;
   const mediaMes = totalDespesa / 12;
   const numFornec = B.DESPESA_FORNECEDORES.length;
-  const mediaDesp = numFornec > 0 ? totalDespesa / numFornec : 0;
+  const numLancDesp = (B.EXTRATO_DESPESAS || B.EXTRATO.filter(e => e[4] < 0)).length;
+  const ticketDesp = numLancDesp > 0 ? totalDespesa / numLancDesp : 0;
   const [range, setRange] = useState("12M");
   const refYear = (B.META && B.META.ref_year) || new Date().getFullYear();
 
@@ -564,7 +566,7 @@ const PageDespesa = ({ filters, setFilters, onOpenFilters, statusFilter, drilldo
         <KpiTile label="Despesas totais" value={B.fmt(totalDespesa)} sparkValues={B.MONTH_DATA.map(m => m.despesa)} sparkColor="var(--red)" tone="red" noPrefix />
         <KpiTile label="Média por mês" value={B.fmt(mediaMes)} sparkValues={B.MONTH_DATA.map(m => m.despesa)} sparkColor="var(--red)" tone="red" noPrefix />
         <KpiTile label="Fornecedores" value={String(numFornec)} sparkValues={B.MONTH_DATA.map(m => m.despesa > 0 ? 1 : 0)} sparkColor="var(--cyan)" tone="cyan" nonMonetary />
-        <KpiTile label="Média de despesa" value={B.fmt(mediaDesp)} sparkValues={B.MONTH_DATA.map(m => m.despesa / 30)} sparkColor="var(--red)" tone="red" noPrefix />
+        <KpiTile label="Ticket médio" value={B.fmt(ticketDesp)} sparkValues={B.MONTH_DATA.map(m => m.despesa / 30)} sparkColor="var(--red)" tone="red" noPrefix />
       </div>
 
       <div className="card">
