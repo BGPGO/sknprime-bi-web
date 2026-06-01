@@ -1,4 +1,4 @@
-/* BGP BI — gerado por build-data.cjs em 2026-05-29T21:00:05.792Z */
+/* BGP BI — gerado por build-data.cjs em 2026-06-01T12:30:50.694Z */
 /* Empresa: Ornata Domus | Ano ref: 2026 */
 const MONTHS = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
 const MONTHS_FULL = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
