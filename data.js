@@ -1,4 +1,4 @@
-/* BGP BI — gerado por build-data.cjs em 2026-06-19T12:11:16.547Z */
+/* BGP BI — gerado por build-data.cjs em 2026-06-20T06:21:20.375Z */
 /* Empresa: Ornata Domus | Ano ref: 2026 */
 const MONTHS = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
 const MONTHS_FULL = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
@@ -23,7 +23,7 @@ const META = {
   "empresa": {
     "nome_fantasia": "Ornata Domus"
   },
-  "fetched_at": "2026-06-19T12:11:15.495Z",
+  "fetched_at": "2026-06-20T06:21:19.900Z",
   "ref_year": 2026,
   "counts": {
     "contas_pagar": 0,
