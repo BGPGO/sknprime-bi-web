@@ -23,9 +23,6 @@ const SOURCES = [
   'pages-2.jsx',
   'pages-3.jsx',
   'pages-4.jsx',
-  'page-orcamento.jsx',
-  'page-lojas.jsx',
-  'page-risco.jsx',
   'upsell-pages.jsx',
 ];
 
@@ -64,6 +61,7 @@ const PAGE_MODE_INJECT = `\n// Injetado por build-jsx.cjs a partir de bi.config.
   var useState = React.useState;
   var useEffect = React.useEffect;
   var PAGE_LABELS = {
+    capa: '00 Dashboard',
     overview: '01 Visão geral',
     indicators: '02 Indicadores',
     receita: '03 Receita',
@@ -83,9 +81,16 @@ const PAGE_MODE_INJECT = `\n// Injetado por build-jsx.cjs a partir de bi.config.
     detalhado: '14 Detalhado',
     profunda_cliente: '15 Profunda Cliente',
     crm: '16 CRM',
+    organograma: '16 Organograma',
+    folha_pgto: '16b Folha Pgto',
+    custo_depto: '16c Custos',
+    inadimplencia: '17 Inadimplência',
+    qtd_clientes: '18 Qtd Clientes',
+    receita_nova: '19 Receita Nova',
+    margem_contrib: '20 Margem Contribuição',
   };
   function App() {
-    var p = useState('overview'); var page = p[0], setPage = p[1];
+    var p = useState('capa'); var page = p[0], setPage = p[1];
     var f = useState(Object.assign({}, DEFAULT_FILTERS)); var filters = f[0], setFilters = f[1];
     var fo = useState(false); var filtersOpen = fo[0], setFiltersOpen = fo[1];
     var so = useState(false); var sidebarOpen = so[0], setSidebarOpen = so[1];
@@ -200,6 +205,7 @@ const PAGE_MODE_INJECT = `\n// Injetado por build-jsx.cjs a partir de bi.config.
     };
 
     var PAGE_COMPS = {
+      capa: PageCapa,
       overview: PageOverview,
       indicators: PageIndicators,
       receita: PageReceita,
@@ -219,6 +225,13 @@ const PAGE_MODE_INJECT = `\n// Injetado por build-jsx.cjs a partir de bi.config.
       detalhado: PageDetalhado,
       profunda_cliente: PageProfundaCliente,
       crm: PageCRM,
+      organograma: PageOrganograma,
+      folha_pgto: PageFolhaPgto,
+      custo_depto: PageCustoDepto,
+      inadimplencia: PageInadimplencia,
+      qtd_clientes: PageQtdClientes,
+      receita_nova: PageReceitaNova,
+      margem_contrib: PageMargemContrib,
     };
     // Modo da page atual: 'active' (default), 'upsell' (mostra UpsellPage), 'hidden' (não renderiza)
     var pageMode = (window.BI_PAGE_MODE && window.BI_PAGE_MODE[page]) || 'active';

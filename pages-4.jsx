@@ -1049,4 +1049,9 @@ const PageCRM = ({ statusFilter, year, month, drilldown, setDrilldown }) => {
   );
 };
 
-Object.assign(window, { PageHierarquia, PageDetalhado, PageProfundaCliente, PageCRM });
+// Stubs para pages hidden (definições removidas por não se aplicarem ao SKN Prime)
+const PageOrcamento = () => <div className="page-content"><p>Página não disponível.</p></div>;
+const PageLojas = () => <div className="page-content"><p>Página não disponível.</p></div>;
+const PageRisco = () => <div className="page-content"><p>Página não disponível.</p></div>;
+
+Object.assign(window, { PageHierarquia, PageDetalhado, PageProfundaCliente, PageCRM, PageOrcamento, PageLojas, PageRisco });

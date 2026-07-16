@@ -1144,4 +1144,352 @@ const PageValuation = ({ filters, statusFilter, drilldown, year, month }) => {
   );
 };
 
-Object.assign(window, { PageFaturamentoProduto, PageCurvaABC, PageMarketing, PageValuation });
+// ===== Páginas extras SKN Prime — dados de XLSX (window.BIT_EXTRAS) =====
+
+// Componente reutilizável: gráfico de barras mensais simples (fullscreen, igual PBI)
+const SKNMonthlyBars = ({ data, color, formatLabel, year, title, titleStrong, legend }) => {
+  const filtered = data.filter(d => d.value != null);
+  if (!filtered.length) return <div className="page"><div className="card" style={{ padding: 40, textAlign: "center", color: "var(--mute)" }}>Sem dados disponíveis para {year}.</div></div>;
+  const max = Math.max(...filtered.map(d => Math.abs(d.value)), 0.01);
+  const BAR_AREA_H = 480;
+  return (
+    <div className="page">
+      <div className="card">
+        <h2 className="card-title" style={{ textAlign: "center", marginBottom: legend ? 8 : 20 }}>
+          <span style={{ color: "var(--cyan)", fontWeight: 800 }}>{titleStrong}</span> {title}
+        </h2>
+        {legend && <div style={{ display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center", marginBottom: 16, fontSize: 11, fontWeight: 700 }}>{legend}</div>}
+        <div style={{ height: BAR_AREA_H, display: "flex", alignItems: "flex-end", gap: 12, padding: "0 16px" }}>
+          {data.map((d, i) => {
+            if (d.value == null) return null;
+            const hPx = max > 0 ? (Math.abs(d.value) / max) * (BAR_AREA_H - 30) : 0;
+            const barColor = typeof color === "function" ? color(d.value) : color;
+            return (
+              <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 700, color: "var(--text)", whiteSpace: "nowrap", marginBottom: 6 }}>
+                  {formatLabel(d.value)}
+                </span>
+                <div style={{ width: "100%", maxWidth: 120, height: Math.max(hPx, 6), background: barColor, borderRadius: "4px 4px 0 0" }} />
+              </div>
+            );
+          })}
+        </div>
+        <div style={{ display: "flex", gap: 12, padding: "10px 16px 0" }}>
+          {data.map((d, i) => d.value != null ? (
+            <div key={i} style={{ flex: 1, textAlign: "center", fontSize: 12, color: "var(--mute)" }}>{d.m}</div>
+          ) : null)}
+        </div>
+        <div style={{ textAlign: "center", fontSize: 12, color: "var(--mute)", marginTop: 6 }}>{year}</div>
+      </div>
+    </div>
+  );
+};
+
+// 1. Inadimplência
+const PageInadimplencia = ({ year, statusFilter, drilldown, month, filters }) => {
+  const yr = String(year || window.REF_YEAR || 2026);
+  const extras = window.BIT_EXTRAS || {};
+  const raw = (extras.inadimplencia && extras.inadimplencia[yr]) || [];
+  const data = raw.map(d => ({ m: d.m, value: d.pct }));
+  return <SKNMonthlyBars data={data} color="#ef4444" formatLabel={v => (v * 100).toFixed(2).replace(".", ",") + "%"} year={yr} titleStrong="INADIMPLÊNCIA" title="POR MÊS" />;
+};
+
+// 2. Quantidade de Clientes
+const PageQtdClientes = ({ year, statusFilter, drilldown, month, filters }) => {
+  const [view, setView] = useState("qtd");
+  const yr = String(year || window.REF_YEAR || 2026);
+  const extras = window.BIT_EXTRAS || {};
+  const raw = (extras.clientes_ticket && extras.clientes_ticket[yr]) || [];
+
+  if (view === "ticket") {
+    const data = raw.map(d => ({ m: d.m, value: d.ticket }));
+    return (
+      <div>
+        <div style={{ display: "flex", gap: 8, justifyContent: "center", marginBottom: 0, paddingTop: 8 }}>
+          <button className={`ind-pill ${view === "qtd" ? "active" : ""}`} onClick={() => setView("qtd")}>Quantidade</button>
+          <button className={`ind-pill ${view === "ticket" ? "active" : ""}`} onClick={() => setView("ticket")}>Ticket Médio</button>
+        </div>
+        <SKNMonthlyBars data={data} color="#3b82f6" formatLabel={v => "R$" + v.toFixed(2).replace(".", ",")} year={yr} titleStrong="TICKET MÉDIO" title="POR MÊS" />
+      </div>
+    );
+  }
+
+  const data = raw.map(d => ({ m: d.m, value: d.qtd }));
+  return (
+    <div>
+      <div style={{ display: "flex", gap: 8, justifyContent: "center", marginBottom: 0, paddingTop: 8 }}>
+        <button className={`ind-pill ${view === "qtd" ? "active" : ""}`} onClick={() => setView("qtd")}>Quantidade</button>
+        <button className={`ind-pill ${view === "ticket" ? "active" : ""}`} onClick={() => setView("ticket")}>Ticket Médio</button>
+      </div>
+      <SKNMonthlyBars data={data} color="var(--cyan)" formatLabel={v => String(Math.round(v))} year={yr} titleStrong="QUANTIDADE DE CLIENTES" title="POR MÊS" />
+    </div>
+  );
+};
+
+// 3. Receita Nova Comercial
+const PageReceitaNova = ({ year, statusFilter, drilldown, month, filters }) => {
+  const yr = String(year || window.REF_YEAR || 2026);
+  const extras = window.BIT_EXTRAS || {};
+  const raw = (extras.receita_nova && extras.receita_nova[yr]) || [];
+  const data = raw.map(d => ({ m: d.m, value: d.valor }));
+  const fmt = (v) => {
+    const parts = v.toFixed(2).split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return "R$" + parts.join(",");
+  };
+  return <SKNMonthlyBars data={data} color="#22ff66" formatLabel={fmt} year={yr} titleStrong="RECEITA" title="NOVA COMERCIAL POR MÊS" />;
+};
+
+// 4. Margem de Contribuição (XLSX)
+const PageMargemContrib = ({ year, statusFilter, drilldown, month, filters }) => {
+  const yr = String(year || window.REF_YEAR || 2026);
+  const extras = window.BIT_EXTRAS || {};
+  const raw = (extras.margem_contribuicao_xlsx && extras.margem_contribuicao_xlsx[yr]) || [];
+  const data = raw.map(d => ({ m: d.m, value: d.pct }));
+  const barColor = (v) => {
+    const pct = v * 100;
+    if (pct > 60) return "#86efac"; // verde claro
+    if (pct >= 46) return "#bbf7d0"; // verde pastel
+    if (pct >= 36) return "#fde047"; // amarelo
+    return "#ef4444"; // vermelho
+  };
+  const legend = (
+    <>
+      <span><span style={{ display: "inline-block", width: 10, height: 10, borderRadius: "50%", background: "#ef4444", marginRight: 4 }} />MARGEM BAIXA – ATÉ 35%</span>
+      <span><span style={{ display: "inline-block", width: 10, height: 10, borderRadius: "50%", background: "#fde047", marginRight: 4 }} />MARGEM INTERMEDIÁRIA– DE 36% A 45%</span>
+      <span><span style={{ display: "inline-block", width: 10, height: 10, borderRadius: "50%", background: "#bbf7d0", marginRight: 4 }} />MARGEM SAUDÁVEL – DE 46% A 60%</span>
+      <span><span style={{ display: "inline-block", width: 10, height: 10, borderRadius: "50%", background: "#86efac", marginRight: 4 }} />EXCELENTE EFICIÊNCIA OPERACIONAL – ACIMA DE 60%</span>
+    </>
+  );
+  return <SKNMonthlyBars data={data} color={barColor} formatLabel={v => (v * 100).toFixed(2).replace(".", ",") + "%"} year={yr} titleStrong="MARGEM DE CONTRIBUIÇÃO" title="POR MÊS" legend={legend} />;
+};
+
+// ===== Organograma dinâmico (dados da modelagem M do PBI) =====
+const ORG_DATA = [
+  {id:"E0",pid:null,nome:"SKN Prime",cargo:"Contabilidade e Gestão Empresarial",depto:"",tipo:"Empresa"},
+  {id:"E1",pid:"E0",nome:"Anderson Fernandes",cargo:"Sócio-Diretor Comercial e Financeiro",depto:"Diretoria",tipo:"Diretor"},
+  {id:"E2",pid:"E0",nome:"Isaias Santana",cargo:"Sócio-Gerente de Operações Contábil",depto:"Diretoria",tipo:"Diretor"},
+  {id:"E3",pid:"E1",nome:"Financeiro",cargo:"Departamento",depto:"Financeiro",tipo:"Departamento"},
+  {id:"E4",pid:"E2",nome:"Contábil",cargo:"Departamento",depto:"Contábil",tipo:"Departamento"},
+  {id:"E5",pid:"E2",nome:"Legalização",cargo:"Departamento",depto:"Legalização",tipo:"Departamento"},
+  {id:"E6",pid:"E2",nome:"Fiscal",cargo:"Departamento",depto:"Fiscal",tipo:"Departamento"},
+  {id:"E7",pid:"E2",nome:"Pessoal",cargo:"Departamento",depto:"Pessoal",tipo:"Departamento"},
+  {id:"E8",pid:"E2",nome:"Serviços",cargo:"Departamento",depto:"Serviços",tipo:"Departamento"},
+  {id:"E9",pid:"E3",nome:"Carolina",cargo:"Analista Financeiro Sênior",depto:"Financeiro",tipo:"Colaborador"},
+  {id:"E10",pid:"E9",nome:"Naiza",cargo:"Auxiliar Financeiro",depto:"Financeiro",tipo:"Colaborador"},
+  {id:"E11",pid:"E9",nome:"Evellyn",cargo:"Auxiliar Financeiro",depto:"Financeiro",tipo:"Colaborador"},
+  {id:"E13",pid:"E4",nome:"Cristiane (Contábil)",cargo:"Analista Contábil Pleno",depto:"Contábil",tipo:"Colaborador"},
+  {id:"E14",pid:"E13",nome:"Nathali",cargo:"Auxiliar Contábil",depto:"Contábil",tipo:"Colaborador"},
+  {id:"E15",pid:"E5",nome:"Bianca",cargo:"Analista de Legalização Sênior",depto:"Legalização",tipo:"Colaborador"},
+  {id:"E16",pid:"E15",nome:"Wellington",cargo:"Analista Legalização Junior",depto:"Legalização",tipo:"Colaborador"},
+  {id:"E17",pid:"E16",nome:"Nayara",cargo:"Auxiliar de Legalização",depto:"Legalização",tipo:"Colaborador"},
+  {id:"E18",pid:"E16",nome:"Jade",cargo:"Aux. Legalização e Comercial",depto:"Legalização",tipo:"Colaborador"},
+  {id:"E19",pid:"E18",nome:"Emanuele",cargo:"Estagiária",depto:"Legalização",tipo:"Estagiário"},
+  {id:"E20",pid:"E6",nome:"Sheyla",cargo:"Analista Fiscal Sênior",depto:"Fiscal",tipo:"Colaborador"},
+  {id:"E21",pid:"E20",nome:"Laís",cargo:"Analista Fiscal Pleno",depto:"Fiscal",tipo:"Colaborador"},
+  {id:"E22",pid:"E21",nome:"Cristiane (Fiscal)",cargo:"Analista Fiscal Junior",depto:"Fiscal",tipo:"Colaborador"},
+  {id:"E23",pid:"E22",nome:"Renata",cargo:"Assistente Fiscal",depto:"Fiscal",tipo:"Colaborador"},
+  {id:"E24",pid:"E23",nome:"Adriele",cargo:"Auxiliar Fiscal",depto:"Fiscal",tipo:"Colaborador"},
+  {id:"E25",pid:"E7",nome:"Erika",cargo:"Analista Pessoal Sênior",depto:"Pessoal",tipo:"Colaborador"},
+  {id:"E26",pid:"E25",nome:"Beatriz",cargo:"Analista Pessoal Pleno",depto:"Pessoal",tipo:"Colaborador"},
+  {id:"E27",pid:"E26",nome:"Luana",cargo:"Analista Pessoal Junior",depto:"Pessoal",tipo:"Colaborador"},
+  {id:"E28",pid:"E27",nome:"Vitória",cargo:"Assistente Pessoal",depto:"Pessoal",tipo:"Colaborador"},
+  {id:"E29",pid:"E27",nome:"Juliana",cargo:"Auxiliar Pessoal",depto:"Pessoal",tipo:"Colaborador"},
+  {id:"E30",pid:"E8",nome:"Aparecido",cargo:"Zelador",depto:"Serviços",tipo:"Colaborador"},
+  {id:"E31",pid:"E8",nome:"Maria",cargo:"Limpeza",depto:"Serviços",tipo:"Colaborador"},
+  {id:"E32",pid:"E8",nome:"Danielly",cargo:"Recepcionista",depto:"Serviços",tipo:"Colaborador"},
+];
+
+const ORG_COLORS = {
+  Empresa:      { bg: "#1e293b", border: "#475569", text: "#e2e8f0" },
+  Diretor:      { bg: "#1e3a5f", border: "#3b82f6", text: "#93c5fd" },
+  Departamento: { bg: "#374151", border: "#6b7280", text: "#d1d5db" },
+  Financeiro:   { bg: "#7c3aed", border: "#8b5cf6", text: "#fff" },
+  Contábil:     { bg: "#ca8a04", border: "#eab308", text: "#fff" },
+  Legalização:  { bg: "#7e22ce", border: "#a855f7", text: "#fff" },
+  Fiscal:       { bg: "#2563eb", border: "#60a5fa", text: "#fff" },
+  Pessoal:      { bg: "#db2777", border: "#f472b6", text: "#fff" },
+  Serviços:     { bg: "#dc2626", border: "#f87171", text: "#fff" },
+  Estagiário:   { bg: "#ca8a04", border: "#fbbf24", text: "#000" },
+};
+
+const PageOrganograma = () => {
+  const nodeMap = useMemo(() => {
+    const m = {};
+    for (const n of ORG_DATA) m[n.id] = { ...n, children: [] };
+    for (const n of ORG_DATA) { if (n.pid && m[n.pid]) m[n.pid].children.push(m[n.id]); }
+    return m;
+  }, []);
+  const root = nodeMap["E0"];
+
+  const getColor = (node) => {
+    if (node.tipo === "Empresa") return ORG_COLORS.Empresa;
+    if (node.tipo === "Diretor") return ORG_COLORS.Diretor;
+    if (node.tipo === "Departamento") return ORG_COLORS.Departamento;
+    if (node.tipo === "Estagiário") return ORG_COLORS.Estagiário;
+    return ORG_COLORS[node.depto] || ORG_COLORS.Departamento;
+  };
+
+  const OrgNode = ({ node }) => {
+    const c = getColor(node);
+    const children = node.children || [];
+    return (
+      <div className="org-branch">
+        <div className="org-node" style={{ background: c.bg, borderColor: c.border, color: c.text }}>
+          <div className="org-node-name">{node.nome}</div>
+          <div className="org-node-cargo">{node.cargo}</div>
+        </div>
+        {children.length > 0 && (
+          <div className="org-children">
+            {children.map(ch => <OrgNode key={ch.id} node={ch} />)}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="page">
+      <div className="card" style={{ overflow: "auto", padding: 24 }}>
+        <h2 className="card-title" style={{ textAlign: "center", marginBottom: 24 }}>
+          <span style={{ color: "var(--cyan)", fontWeight: 800 }}>ORGANOGRAMA</span> SKN PRIME
+        </h2>
+        <div className="org-tree">
+          <OrgNode node={root} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ===== Folha de Pagamento — donut Receita vs Folha =====
+const PageFolhaPgto = ({ year, month, statusFilter, filters }) => {
+  const dre = useDreCalc(statusFilter, null, year, month, filters);
+  const extras = window.BIT_EXTRAS || {};
+  const custo = extras.custo_depto;
+  const totalFolha = custo ? custo.totalFolha : 0;
+  const receita = dre.receita;
+  const pctFolha = receita > 0 ? (totalFolha / receita) * 100 : 0;
+  const pctReceita = 100 - pctFolha;
+  const fmt = (n) => {
+    const parts = Math.abs(n).toFixed(2).split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return "R$" + parts.join(",");
+  };
+
+  // SVG donut
+  const R = 160, r = 100, cx = 220, cy = 220;
+  const a1 = (pctReceita / 100) * 360;
+  const toRad = (deg) => (deg - 90) * Math.PI / 180;
+  const arcPath = (startDeg, endDeg, radius) => {
+    const s = toRad(startDeg), e = toRad(endDeg);
+    const large = (endDeg - startDeg) > 180 ? 1 : 0;
+    return `M ${cx + radius * Math.cos(s)} ${cy + radius * Math.sin(s)} A ${radius} ${radius} 0 ${large} 1 ${cx + radius * Math.cos(e)} ${cy + radius * Math.sin(e)}`;
+  };
+  const donutArc = (startPct, endPct, color, outerR) => {
+    const s = startPct * 3.6, e = endPct * 3.6;
+    if (endPct - startPct >= 99.9) {
+      return <circle cx={cx} cy={cy} r={outerR} fill="none" stroke={color} strokeWidth={outerR - r} />;
+    }
+    const sRad = toRad(s), eRad = toRad(e);
+    const midR = (outerR + r) / 2;
+    const w = outerR - r;
+    const large = (e - s) > 180 ? 1 : 0;
+    return <path d={`M ${cx + outerR * Math.cos(sRad)} ${cy + outerR * Math.sin(sRad)} A ${outerR} ${outerR} 0 ${large} 1 ${cx + outerR * Math.cos(eRad)} ${cy + outerR * Math.sin(eRad)} L ${cx + r * Math.cos(eRad)} ${cy + r * Math.sin(eRad)} A ${r} ${r} 0 ${large} 0 ${cx + r * Math.cos(sRad)} ${cy + r * Math.sin(sRad)} Z`} fill={color} />;
+  };
+  // Label position on arc
+  const labelPos = (startPct, endPct, radius) => {
+    const midDeg = ((startPct + endPct) / 2) * 3.6;
+    const rad = toRad(midDeg);
+    return { x: cx + (radius + 20) * Math.cos(rad), y: cy + (radius + 20) * Math.sin(rad) };
+  };
+  const folhaLabel = labelPos(0, pctFolha, R);
+  const recLabel = labelPos(pctFolha, 100, R);
+
+  return (
+    <div className="page">
+      <div className="card" style={{ padding: 32 }}>
+        <div style={{ marginBottom: 8 }}>
+          <h2 className="card-title"><span style={{ color: "var(--cyan)", fontWeight: 800 }}>% FOLHA/RECEITA</span> MENSAL</h2>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{ width: 3, height: 24, background: "var(--red)", borderRadius: 2 }} />
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 28, fontWeight: 700, color: "var(--text)" }}>{pctFolha.toFixed(2).replace(".",",")}%</span>
+          </div>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 40, flexWrap: "wrap" }}>
+          <svg viewBox="0 0 440 440" style={{ width: 380, height: 380 }}>
+            {donutArc(0, pctFolha, "#ef4444", R)}
+            {donutArc(pctFolha, 100, "#22ff66", R)}
+            {/* Center text */}
+            <text x={cx} y={cy - 20} textAnchor="middle" fill="var(--text)" fontFamily="var(--font-mono)" fontSize="22" fontWeight="700">{fmt(receita)}</text>
+            <text x={cx} y={cy + 2} textAnchor="middle" fill="var(--mute)" fontSize="12">Soma de receita</text>
+            <line x1={cx - 60} y1={cy + 12} x2={cx + 60} y2={cy + 12} stroke="var(--green)" strokeWidth="2" />
+            <text x={cx} y={cy + 40} textAnchor="middle" fill="var(--text)" fontFamily="var(--font-mono)" fontSize="22" fontWeight="700">{fmt(totalFolha)}</text>
+            <text x={cx} y={cy + 62} textAnchor="middle" fill="var(--mute)" fontSize="12">Folha de Pagamento</text>
+            <line x1={cx - 60} y1={cy + 72} x2={cx + 60} y2={cy + 72} stroke="var(--red)" strokeWidth="2" />
+            {/* Pct labels */}
+            <rect x={folhaLabel.x - 28} y={folhaLabel.y - 10} width={56} height={20} rx={4} fill="rgba(239,68,68,0.9)" />
+            <text x={folhaLabel.x} y={folhaLabel.y + 5} textAnchor="middle" fill="#fff" fontSize="11" fontWeight="700">{pctFolha.toFixed(2).replace(".",",")}%</text>
+            <rect x={recLabel.x - 28} y={recLabel.y - 10} width={56} height={20} rx={4} fill="rgba(34,255,102,0.9)" />
+            <text x={recLabel.x} y={recLabel.y + 5} textAnchor="middle" fill="#000" fontSize="11" fontWeight="700">{pctReceita.toFixed(2).replace(".",",")}%</text>
+          </svg>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ fontWeight: 700, fontSize: 13, color: "var(--text)" }}>oque</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}><span style={{ width: 10, height: 10, borderRadius: "50%", background: "#22ff66", display: "inline-block" }} /><span style={{ fontSize: 13 }}>Receita</span></div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}><span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ef4444", display: "inline-block" }} /><span style={{ fontSize: 13 }}>Folha de Pagamento</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ===== Custos — barras horizontais =====
+const HBarChart = ({ data, title, titleStrong, color }) => {
+  if (!data || !data.length) return null;
+  const max = Math.max(...data.map(d => d.value), 1);
+  const fmt = (n) => {
+    const parts = Math.abs(n).toFixed(2).split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return "R$" + parts.join(",");
+  };
+  return (
+    <div className="card" style={{ padding: "20px 24px" }}>
+      <h2 className="card-title" style={{ marginBottom: 16 }}><span style={{ color: "var(--cyan)", fontWeight: 800 }}>{titleStrong}</span> {title}</h2>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        {data.map((d, i) => {
+          const w = (d.value / max) * 100;
+          return (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ width: 180, textAlign: "right", fontSize: 12, color: "var(--mute)", flexShrink: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{d.name}</div>
+              <div style={{ flex: 1, height: 28, background: "var(--surface-3)", borderRadius: 4, overflow: "hidden" }}>
+                <div style={{ width: `${w}%`, height: "100%", background: color || "#ef4444", borderRadius: 4 }} />
+              </div>
+              <div style={{ width: 120, textAlign: "right", fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 700, color: "var(--text)", flexShrink: 0 }}>{fmt(d.value)}</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const PageCustoDepto = () => {
+  const extras = window.BIT_EXTRAS || {};
+  const custo = extras.custo_depto;
+  if (!custo) return <div className="page"><div className="card" style={{ padding: 40, textAlign: "center", color: "var(--mute)" }}>Dados de custo não disponíveis.</div></div>;
+  return (
+    <div className="page">
+      <div className="row" style={{ gridTemplateColumns: "1fr 1fr" }}>
+        <HBarChart data={custo.custoMensal} titleStrong="CUSTO" title="MENSAL COM FOLHA" color="#ef4444" />
+        <div style={{ display: "grid", gap: 16 }}>
+          <HBarChart data={(custo.custoMensal || []).filter(d => !['Salários, encargos e benefícios','Fgts'].includes(d.name)).slice(0,8).map(d => ({name: d.name.replace('Salários, encargos e benefícios','Salário'), value: d.value}))} titleStrong="CUSTO" title="POR BENEFÍCIO" color="#ef4444" />
+          <HBarChart data={(custo.benefPorFunc || []).map(d => ({ name: d.nome, value: d.valor }))} titleStrong="BENEFÍCIOS" title="POR FUNCIONÁRIO" color="#ef4444" />
+          <HBarChart data={custo.benefPorCargo} titleStrong="BENEFÍCIOS" title="POR CARGO" color="#ef4444" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+Object.assign(window, { PageFaturamentoProduto, PageCurvaABC, PageMarketing, PageValuation, PageInadimplencia, PageQtdClientes, PageReceitaNova, PageMargemContrib, PageOrganograma, PageFolhaPgto, PageCustoDepto });

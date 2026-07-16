@@ -7,6 +7,7 @@ const { useState, useMemo, useEffect } = React;
 
 const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
   const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
+  const dre = useDreCalc(statusFilter, drilldown, year, month, filters);
   const isMobile = useIsMobile();
   const [view, setView] = useState("horizontal");
   const [range, setRange] = useState("12M");
@@ -494,28 +495,28 @@ const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown
 
       <div className="metric-strip">
         <div className="metric">
-          <div className="m-label">Receita total</div>
-          <div className="m-value">{B.fmt(B.TOTAL_RECEITA)}</div>
+          <div className="m-label">Receita operacional</div>
+          <div className="m-value">{B.fmt(dre.receita)}</div>
           <div className="m-pct">100%</div>
           <div className="m-bar"><div style={{ width: `100%` }} /></div>
         </div>
         <div className="metric">
-          <div className="m-label">Despesa total</div>
-          <div className="m-value">{B.fmt(B.TOTAL_DESPESA)}</div>
-          <div className="m-pct">{B.TOTAL_RECEITA > 0 ? `${((B.TOTAL_DESPESA / B.TOTAL_RECEITA) * 100).toFixed(2).replace(".",",")}%` : "—"}</div>
-          <div className="m-bar red"><div style={{ width: `${B.TOTAL_RECEITA > 0 ? Math.min(100, (B.TOTAL_DESPESA / B.TOTAL_RECEITA) * 100) : 0}%` }} /></div>
+          <div className="m-label">Custos e despesas</div>
+          <div className="m-value">{B.fmt(dre.custosEDespesas)}</div>
+          <div className="m-pct">{dre.receita > 0 ? `${((dre.custosEDespesas / dre.receita) * 100).toFixed(2).replace(".",",")}%` : "—"}</div>
+          <div className="m-bar red"><div style={{ width: `${dre.receita > 0 ? Math.min(100, (dre.custosEDespesas / dre.receita) * 100) : 0}%` }} /></div>
         </div>
         <div className="metric">
-          <div className="m-label">Valor líquido</div>
-          <div className="m-value" style={{ color: B.VALOR_LIQUIDO >= 0 ? "var(--green)" : "var(--red)" }}>{B.fmt(B.VALOR_LIQUIDO)}</div>
-          <div className="m-pct">{B.MARGEM_LIQUIDA.toFixed(2).replace(".",",")}%</div>
-          <div className="m-bar cyan"><div style={{ width: `${Math.min(100, Math.max(0, B.MARGEM_LIQUIDA))}%` }} /></div>
+          <div className="m-label">Resultado operacional</div>
+          <div className="m-value" style={{ color: dre.resultadoOp >= 0 ? "var(--green)" : "var(--red)" }}>{B.fmt(dre.resultadoOp)}</div>
+          <div className="m-pct">{dre.resultadoOpPct.toFixed(2).replace(".",",")}%</div>
+          <div className="m-bar cyan"><div style={{ width: `${Math.min(100, Math.max(0, dre.resultadoOpPct))}%` }} /></div>
         </div>
         <div className="metric">
-          <div className="m-label">Margem líquida</div>
-          <div className="m-value">{B.MARGEM_LIQUIDA.toFixed(2).replace(".",",")}%</div>
-          <div className="m-pct">média do período</div>
-          <div className="m-bar"><div style={{ width: `${Math.min(100, Math.max(0, B.MARGEM_LIQUIDA))}%` }} /></div>
+          <div className="m-label">Margem operacional</div>
+          <div className="m-value">{dre.resultadoOpPct.toFixed(2).replace(".",",")}%</div>
+          <div className="m-pct">sobre receita</div>
+          <div className="m-bar"><div style={{ width: `${Math.min(100, Math.max(0, dre.resultadoOpPct))}%` }} /></div>
         </div>
       </div>
 
@@ -705,7 +706,7 @@ const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, dril
             <h2 className="card-title">Pulso de despesas</h2>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               <span className="chip red">Pago · {B.fmt(pago)}</span>
-              <span className="chip" style={{ background: "rgba(245,158,11,0.12)", color: "#fcd34d", borderColor: "rgba(245,158,11,0.28)" }}>A pagar · {B.fmt(aPagar)}</span>
+              <span className="chip" style={{ background: "rgba(245,158,11,0.12)", color: "var(--amber)", borderColor: "rgba(245,158,11,0.28)" }}>A pagar · {B.fmt(aPagar)}</span>
             </div>
           </div>
           <DailyBars values={pagoDiaSeg} color="red"
@@ -714,14 +715,91 @@ const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, dril
         </div>
       </div>
 
+      {/* Detalhamento do dia selecionado */}
+      {drilldown && drilldown.type === "dia" && (function() {
+        const dia = drilldown.value;
+        const allTx = window.ALL_TX || [];
+        const yr = year || (window.REF_YEAR || new Date().getFullYear());
+        // Filtra transações do dia selecionado, mês e ano correntes, status realizado
+        const txDia = allTx.filter(r => {
+          if (!r[1]) return false;
+          if (Number(r[1].slice(0, 4)) !== yr) return false;
+          if (month && month >= 1 && month <= 12) {
+            if (parseInt(r[1].slice(5, 7), 10) !== month) return false;
+          }
+          if (r[2] !== dia) return false;
+          if (statusFilter === 'realizado' && r[6] !== 1) return false;
+          if (statusFilter === 'a_pagar_receber' && r[6] !== 0) return false;
+          return true;
+        });
+        const recDia = txDia.filter(r => r[0] === 'r');
+        const despDia = txDia.filter(r => r[0] === 'd');
+        const totalRecDia = recDia.reduce((s, r) => s + r[5], 0);
+        const totalDespDia = despDia.reduce((s, r) => s + r[5], 0);
+        const MONTHS_SHORT = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+        const mesLabel = month >= 1 ? MONTHS_SHORT[month - 1] : '';
+
+        const TxTable = ({ rows, title, color, isReceita }) => {
+          if (!rows.length) return React.createElement('div', { style: { color: 'var(--mute)', fontSize: 13, padding: '8px 0' } }, `Nenhum lançamento de ${title.toLowerCase()} neste dia.`);
+          // Agrupa por categoria
+          const byCat = new Map();
+          for (const r of rows) {
+            const cat = r[3] || '(sem categoria)';
+            const nome = isReceita ? (r[4] || '') : (r[7] || '');
+            if (!byCat.has(cat)) byCat.set(cat, []);
+            byCat.get(cat).push({ nome, valor: r[5], status: r[6] ? 'PAGO' : 'PENDENTE' });
+          }
+          return React.createElement('div', null,
+            Array.from(byCat.entries()).sort((a,b) => {
+              const sa = a[1].reduce((s,x) => s + x.valor, 0);
+              const sb = b[1].reduce((s,x) => s + x.valor, 0);
+              return sb - sa;
+            }).map(([cat, items]) => {
+              const catTotal = items.reduce((s, x) => s + x.valor, 0);
+              return React.createElement('div', { key: cat, style: { marginBottom: 8 } },
+                React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid var(--border)' } },
+                  React.createElement('span', { style: { fontWeight: 600, fontSize: 12, color: 'var(--text)' } }, cat),
+                  React.createElement('span', { style: { fontFamily: 'var(--font-mono)', fontWeight: 600, fontSize: 12, color } }, B.fmt(catTotal))
+                ),
+                items.sort((a,b) => b.valor - a.valor).map((it, j) =>
+                  React.createElement('div', { key: j, style: { display: 'flex', justifyContent: 'space-between', padding: '3px 0 3px 12px', fontSize: 11, color: 'var(--mute)' } },
+                    React.createElement('span', null, it.nome || '—'),
+                    React.createElement('span', { style: { fontFamily: 'var(--font-mono)', color: 'var(--text)' } }, B.fmt(it.valor))
+                  )
+                )
+              );
+            })
+          );
+        };
+
+        return React.createElement('div', { className: 'row row-1-1' },
+          React.createElement('div', { className: 'card' },
+            React.createElement('div', { className: 'card-title-row' },
+              React.createElement('h2', { className: 'card-title' }, `Recebido dia ${dia} ${mesLabel ? mesLabel + '/' + yr : yr}`),
+              React.createElement('span', { className: 'chip green' }, `Total: ${B.fmt(totalRecDia)}`)
+            ),
+            React.createElement('div', { className: 't-scroll', style: { maxHeight: 400 } },
+              React.createElement(TxTable, { rows: recDia, title: 'receita', color: 'var(--green)', isReceita: true })
+            )
+          ),
+          React.createElement('div', { className: 'card' },
+            React.createElement('div', { className: 'card-title-row' },
+              React.createElement('h2', { className: 'card-title' }, `Pago dia ${dia} ${mesLabel ? mesLabel + '/' + yr : yr}`),
+              React.createElement('span', { className: 'chip red' }, `Total: ${B.fmt(totalDespDia)}`)
+            ),
+            React.createElement('div', { className: 't-scroll', style: { maxHeight: 400 } },
+              React.createElement(TxTable, { rows: despDia, title: 'despesa', color: 'var(--red)', isReceita: false })
+            )
+          )
+        );
+      })()}
+
       {/* Saldo real (planilha de saldos) + projeção futura */}
       {(function() {
         const SALDOS = (window.BIT_EXTRAS && window.BIT_EXTRAS.saldos) || null;
         if (!SALDOS || !SALDOS.last) return null;
         const last = SALDOS.last;
         const contas = Object.entries(last.contas).sort((a, b) => b[1] - a[1]);
-        // Projeção: saldo último + ∑(a receber) − ∑(a pagar) acumulado por mês.
-        // Usa BIT_SEGMENTS.a_pagar_receber pra somar ainda-pendente por mês futuro.
         const seg = (window.BIT_SEGMENTS || {}).a_pagar_receber || { MONTH_DATA: [] };
         const lastDate = new Date(last.data);
         const lastMonthIdx = lastDate.getMonth();
@@ -974,31 +1052,31 @@ const PageComparativo = ({ filters, statusFilter, drilldown, setDrilldown, year,
     return `${mn}/${p.y}`;
   };
 
-  // Filtra ALL_TX por periodo + statusFilter; agrega receitas/despesas por categoria + cliente/fornecedor
+  // Filtra ALL_TX por periodo + statusFilter; agrega por seção DRE (alinhado com PageCapa)
   const aggregate = (p) => {
     const allTx = window.ALL_TX || [];
     const filterTx = window.filterTx;
     const sf = statusFilter || window.BIT_FILTER || "realizado";
-    const txFiltered = filterTx ? filterTx(allTx, sf, null, filters) : allTx;
+    const txFiltered = filterTx ? filterTx(allTx, sf, null, 'caixa', filters) : allTx;
     const { y, mIni, mFim } = periodBounds(p);
     const mIniStr = `${y}-${String(mIni).padStart(2, "0")}`;
     const mFimStr = `${y}-${String(mFim).padStart(2, "0")}`;
-    let totalRec = 0, totalDesp = 0;
+    const bySecao = { receita: 0, custo: 0, despesa: 0, investimento: 0, financiamento: 0 };
     const recCat = new Map(), despCat = new Map();
-    // Sub-agrupamento: Map<"cat", Map<"cliente/fornecedor", valor>>
     const recSub = new Map(), despSub = new Map();
     for (const row of txFiltered) {
       const [kind, mes, , categoria, cliente, valor, , fornecedor] = row;
       if (!mes || mes < mIniStr || mes > mFimStr) continue;
+      const secao = row[11] || (kind === 'r' ? 'receita' : 'despesa');
       if (kind === "r") {
-        totalRec += valor;
+        bySecao[secao] = (bySecao[secao] || 0) + valor;
         recCat.set(categoria, (recCat.get(categoria) || 0) + valor);
         const sub = recSub.get(categoria) || new Map();
         const nome = cliente || "Sem identificação";
         sub.set(nome, (sub.get(nome) || 0) + valor);
         recSub.set(categoria, sub);
       } else {
-        totalDesp += valor;
+        bySecao[secao] = (bySecao[secao] || 0) - valor;
         despCat.set(categoria, (despCat.get(categoria) || 0) + valor);
         const sub = despSub.get(categoria) || new Map();
         const nome = fornecedor || "Sem identificação";
@@ -1006,7 +1084,10 @@ const PageComparativo = ({ filters, statusFilter, drilldown, setDrilldown, year,
         despSub.set(categoria, sub);
       }
     }
-    return { totalRec, totalDesp, liq: totalRec - totalDesp, recCat, despCat, recSub, despSub };
+    const totalRec = bySecao.receita;
+    const totalDesp = Math.abs(bySecao.custo) + Math.abs(bySecao.despesa);
+    const liq = bySecao.receita + bySecao.custo + bySecao.despesa;
+    return { totalRec, totalDesp, liq, recCat, despCat, recSub, despSub };
   };
 
   const a1 = useMemo(() => aggregate(p1), [p1, statusFilter, filters]);
@@ -1254,8 +1335,8 @@ const PageRelatorio = ({ year, statusFilter, filters }) => {
   const [generating, setGenerating] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
 
-  // Cards reativos ao período (year + month) — antes usavam window.BIT global YTD
-  // Mantidos no topo (regra dos hooks) — não chamar dentro de early returns
+  // Cards reativos ao período — TODOS os hooks antes de qualquer early return
+  const dreReport = useDreCalc('realizado', null, periodYear, periodMonth, filters);
   const B = useMemo(
     () => window.getBit('realizado', null, periodYear, periodMonth, filters),
     [periodYear, periodMonth, filters]
@@ -1445,11 +1526,10 @@ const PageRelatorio = ({ year, statusFilter, filters }) => {
     return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
   };
 
-  const k = B.KPIS || B;
-  const recebido = k.TOTAL_RECEITA || 0;
-  const pago = k.TOTAL_DESPESA || 0;
-  const liquido = k.VALOR_LIQUIDO != null ? k.VALOR_LIQUIDO : (recebido - pago);
-  const margem = k.MARGEM_LIQUIDA != null ? k.MARGEM_LIQUIDA : (recebido > 0 ? (liquido / recebido) * 100 : 0);
+  const recebido = dreReport.receita;
+  const pago = dreReport.custosEDespesas;
+  const liquido = dreReport.resultadoOp;
+  const margem = dreReport.resultadoOpPct;
   const aReceber = (Bprev.KPIS && Bprev.KPIS.TOTAL_RECEITA) || 0;
   const aPagar = (Bprev.KPIS && Bprev.KPIS.TOTAL_DESPESA) || 0;
 

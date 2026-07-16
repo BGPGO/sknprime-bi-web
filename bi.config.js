@@ -1,22 +1,23 @@
 module.exports = {
   cliente: {
-    nome: "Ornata Domus",
-    subdomain: "ornatadomus-bi",
-    coolify_app_uuid: "w3rltjp4ch51aqvvo6003onn",
-    cor_primaria: "#8B6914",
+    nome: "SKN Prime",
+    subdomain: "sknprime-bi",
+    coolify_app_uuid: "",
+    cor_primaria: "#22d3ee",
   },
   fontes: {
     adapters: ["nibo-xlsx"],
     nibo_xlsx: {
       base_file: "Base Nibo.xlsx",
-      conta_filter: [],              // [] = todas as contas (Ornata Domus + Outside Box)
+      conta_filter: [],
     },
     drive: {
-      base_path: "G:/Meu Drive/BGP/CLIENTES/BI/479. ORNATA DOMUS/BASES",
+      base_path: "G:/Meu Drive/BGP/CLIENTES/BI/462. SKN PRIME/BASES",
     },
   },
   pages: {
     geral: {
+      capa: "active",
       overview: "active",
       receita: "active",
       despesa: "active",
@@ -38,6 +39,13 @@ module.exports = {
       detalhado: "hidden",
       profunda_cliente: "hidden",
       crm: "hidden",
+      organograma: "active",
+      folha_pgto: "active",
+      custo_depto: "active",
+      inadimplencia: "active",
+      qtd_clientes: "active",
+      receita_nova: "active",
+      margem_contrib: "active",
     },
   },
   meta: {

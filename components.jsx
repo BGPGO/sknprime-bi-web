@@ -1,6 +1,72 @@
 /* BIT/BGP Finance — shared components v2 */
 const { useState, useEffect, useMemo, useRef } = React;
 
+/**
+ * useDreCalc — hook reutilizável para cálculo DRE por seção.
+ * Usa row[11] (secao) do ALL_TX para agrupar em receita/custo/despesa/investimento/financiamento.
+ * Essa é a fonte canônica de valores financeiros do BI (alinhada com a PageCapa).
+ */
+const useDreCalc = (statusFilter, drilldown, year, month, filters) => {
+  const refYear = window.REF_YEAR || new Date().getFullYear();
+  return useMemo(() => {
+    const allTx = window.ALL_TX || [];
+    const sf = statusFilter || 'realizado';
+    const yr = year || refYear;
+    const m = month || 0;
+
+    // Monta drilldown de mês se necessário
+    let dd = drilldown;
+    if (!dd && m >= 1 && m <= 12) {
+      const mm = String(m).padStart(2, '0');
+      dd = { type: 'mes', value: yr + '-' + mm };
+    }
+
+    const txFiltered = window.filterTx ? window.filterTx(allTx, sf, dd, 'caixa', filters) : [];
+    const bySecao = { receita: 0, custo: 0, despesa: 0, investimento: 0, financiamento: 0 };
+    const bySecaoMes = Array.from({ length: 12 }, () => ({ receita: 0, custo: 0, despesa: 0, investimento: 0, financiamento: 0 }));
+
+    for (const row of txFiltered) {
+      if (!row[1]) continue;
+      if (Number(row[1].slice(0, 4)) !== yr) continue;
+      const secao = row[11] || (row[0] === 'r' ? 'receita' : 'despesa');
+      const valor = row[5] || 0;
+      const mIdx = parseInt(row[1].slice(5, 7), 10) - 1;
+      if (row[0] === 'r') {
+        bySecao[secao] = (bySecao[secao] || 0) + valor;
+        if (mIdx >= 0 && mIdx < 12) bySecaoMes[mIdx][secao] = (bySecaoMes[mIdx][secao] || 0) + valor;
+      } else {
+        bySecao[secao] = (bySecao[secao] || 0) - valor;
+        if (mIdx >= 0 && mIdx < 12) bySecaoMes[mIdx][secao] = (bySecaoMes[mIdx][secao] || 0) - valor;
+      }
+    }
+
+    const rec = bySecao.receita;
+    const custo = Math.abs(bySecao.custo);
+    const margem = rec + bySecao.custo; // custo é negativo
+    const desp = Math.abs(bySecao.despesa);
+    const resOp = rec + bySecao.custo + bySecao.despesa;
+    const resGeral = resOp + (bySecao.investimento || 0) + (bySecao.financiamento || 0);
+
+    return {
+      receita: rec,
+      custos: custo,
+      despesas: desp,
+      custosEDespesas: custo + desp,
+      margem: margem,
+      margemPct: rec > 0 ? (margem / rec) * 100 : 0,
+      resultadoOp: resOp,
+      resultadoOpPct: rec > 0 ? (resOp / rec) * 100 : 0,
+      resultadoGeral: resGeral,
+      valorLiquido: rec - custo - desp,
+      margemLiquida: rec > 0 ? ((rec - custo - desp) / rec) * 100 : 0,
+      investimento: bySecao.investimento,
+      financiamento: bySecao.financiamento,
+      bySecaoMes,
+      bySecao,
+    };
+  }, [statusFilter, drilldown, year, month, filters, refYear]);
+};
+
 const Icon = ({ name, ...props }) => {
   const paths = {
     home: <><path d="M3 10l9-7 9 7v10a2 2 0 01-2 2h-4v-7H9v7H5a2 2 0 01-2-2V10z"/></>,
@@ -41,6 +107,7 @@ const Icon = ({ name, ...props }) => {
 
 const Sidebar = ({ active, onSelect, open }) => {
   const general = [
+    { id: "capa", icon: "home", label: "Dashboard" },
     { id: "overview", icon: "home", label: "Visão Geral" },
     { id: "receita", icon: "money", label: "Receita" },
     { id: "despesa", icon: "expense", label: "Despesa" },
@@ -63,6 +130,13 @@ const Sidebar = ({ active, onSelect, open }) => {
     { id: "detalhado", icon: "report", label: "Detalhado" },
     { id: "profunda_cliente", icon: "user", label: "Profunda Cliente" },
     { id: "crm", icon: "money", label: "CRM" },
+    { id: "organograma", icon: "user", label: "Organograma" },
+    { id: "folha_pgto", icon: "money", label: "Folha Pgto" },
+    { id: "custo_depto", icon: "expense", label: "Custos" },
+    { id: "inadimplencia", icon: "chart", label: "Inadimplência" },
+    { id: "qtd_clientes", icon: "user", label: "Clientes & Ticket" },
+    { id: "receita_nova", icon: "money", label: "Receita Nova" },
+    { id: "margem_contrib", icon: "chart", label: "Margem Contribuição" },
     { id: "settings", icon: "settings", label: "Configurações", badge: "EM BREVE" },
   ];
   // Modo da page (active/upsell/hidden) injetado pelo build-jsx.cjs a partir do bi.config.js
@@ -94,7 +168,7 @@ const Sidebar = ({ active, onSelect, open }) => {
   return (
     <aside className={`sidebar ${open ? "open" : ""}`}>
       <div className="sb-brand">
-        <img src="assets/logo.jpg" alt="Ornata Domus" className="sb-logo-img" style={{ height: 56, objectFit: "contain", mixBlendMode: "lighten" }} />
+        <img src="assets/logo.png" alt="SKN Prosper" className="sb-logo-img" style={{ height: 64, objectFit: "contain" }} />
       </div>
       <div className="sb-section">Geral</div>
       {general.map(renderItem)}
@@ -223,6 +297,7 @@ const ContaSelect = ({ filters, setFilters }) => {
 
 // BiExportButton: modal com checkboxes pra exportar telas selecionadas como PDF
 const BI_EXPORT_PAGES = [
+  { id: "capa", label: "00 Dashboard" },
   { id: "overview", label: "01 Visão Geral" },
   { id: "receita", label: "02 Receita" },
   { id: "despesa", label: "03 Despesa" },
@@ -230,6 +305,13 @@ const BI_EXPORT_PAGES = [
   { id: "tesouraria", label: "05 Tesouraria" },
   { id: "comparativo", label: "06 Comparativo" },
   { id: "relatorio", label: "07 Relatório IA" },
+  { id: "organograma", label: "08 Organograma" },
+  { id: "folha_pgto", label: "09 Folha Pgto" },
+  { id: "custo_depto", label: "10 Custos" },
+  { id: "inadimplencia", label: "11 Inadimplência" },
+  { id: "qtd_clientes", label: "12 Clientes & Ticket" },
+  { id: "receita_nova", label: "13 Receita Nova" },
+  { id: "margem_contrib", label: "14 Margem Contribuição" },
 ].filter(p => {
   const mode = window.BI_PAGE_MODE && window.BI_PAGE_MODE[p.id];
   return !mode || mode === 'active';
@@ -295,6 +377,26 @@ const BiExportButton = () => {
 };
 
 // Header: breadcrumb + YearSelect + MonthSelect + StatusFilter
+const ThemeToggle = () => {
+  const [dark, setDark] = useState(() => {
+    try { return localStorage.getItem('bi.theme') !== 'light'; } catch (e) { return true; }
+  });
+  useEffect(() => {
+    if (dark) {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+    try { localStorage.setItem('bi.theme', dark ? 'dark' : 'light'); } catch (e) {}
+  }, [dark]);
+  return (
+    <button className="hd-icon-btn" title={dark ? "Modo claro" : "Modo escuro"} onClick={() => setDark(d => !d)}
+      style={{ fontSize: 18, width: 34, height: 34, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      {dark ? "☀" : "🌙"}
+    </button>
+  );
+};
+
 const Header = ({ page, onToggleSidebar, statusFilter, setStatusFilter, year, setYear, month, setMonth, drilldown, setDrilldown, filters, setFilters }) => {
   return (
     <header className="header">
@@ -311,6 +413,7 @@ const Header = ({ page, onToggleSidebar, statusFilter, setStatusFilter, year, se
       {setYear && <YearSelect value={year} onChange={setYear} available={window.AVAILABLE_YEARS} />}
       {setMonth && <MonthSelect value={month} onChange={setMonth} />}
       {setStatusFilter && <StatusFilterSeg value={statusFilter} onChange={setStatusFilter} />}
+      <ThemeToggle />
       <BiExportButton />
     </header>
   );

@@ -139,7 +139,7 @@ const IndicatorLine = ({ values, labels, height = 240, color = "var(--cyan)", fo
           <stop offset="100%" stopColor={color} stopOpacity="0"/>
         </linearGradient>
       </defs>
-      <line x1={padX} y1={zeroY} x2={w - padX} y2={zeroY} stroke="rgba(255,255,255,0.18)" strokeDasharray="6 5" strokeWidth="1"/>
+      <line x1={padX} y1={zeroY} x2={w - padX} y2={zeroY} stroke="var(--border)" strokeDasharray="6 5" strokeWidth="1"/>
       <path d={`${path} L ${pts[pts.length - 1][0]} ${zeroY} L ${pts[0][0]} ${zeroY} Z`} fill="url(#ind-grad)" />
       <path d={path} fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round"/>
       {pts.map((p, i) => {
@@ -148,9 +148,9 @@ const IndicatorLine = ({ values, labels, height = 240, color = "var(--cyan)", fo
         const showLabel = labelIdxSet ? labelIdxSet.has(i) : true;
         return (
           <g key={i}>
-            <circle cx={p[0]} cy={p[1]} r={isMobile ? 3.5 : 4.5} fill={color} stroke="#0a141a" strokeWidth="2.5"/>
+            <circle cx={p[0]} cy={p[1]} r={isMobile ? 3.5 : 4.5} fill={color} stroke="var(--surface)" strokeWidth="2.5"/>
             {showLabel && (
-              <text x={p[0]} y={above ? p[1] - 12 : p[1] + 22} textAnchor="middle" fill={v >= 0 ? "#e8f6f9" : "#fca5a5"} fontFamily="var(--font-mono)" fontSize={isMobile ? "10" : "11.5"} fontWeight="600">
+              <text x={p[0]} y={above ? p[1] - 12 : p[1] + 22} textAnchor="middle" fill={v >= 0 ? "var(--text)" : "var(--red)"} fontFamily="var(--font-mono)" fontSize={isMobile ? "10" : "11.5"} fontWeight="600">
                 {fmt(v)}
               </text>
             )}
@@ -166,18 +166,180 @@ const IndicatorLine = ({ values, labels, height = 240, color = "var(--cyan)", fo
   );
 };
 
+/* ===== PageCapa — Tela de capa/dashboard com métricas gerais e variação MoM ===== */
+const PageCapa = ({ statusFilter, drilldown, setDrilldown, year, month, filters }) => {
+  // Dados do mês atual (ou YTD se month=0)
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
+
+  // Calcula DRE por seção para o período selecionado
+  const dreData = useMemo(() => {
+    const allTx = window.ALL_TX || [];
+    const sf = statusFilter || 'realizado';
+    const y = year || window.REF_YEAR;
+    const m = month || 0; // 0 = ano inteiro
+
+    // Filtra transações para o mês/ano atual
+    const filterForMonth = (txList, yr, mo) => {
+      let out = window.filterTx(txList, sf, null, 'caixa', filters);
+      out = out.filter(r => {
+        if (!r[1]) return false;
+        const rYear = parseInt(r[1].slice(0, 4), 10);
+        if (rYear !== yr) return false;
+        if (mo > 0) {
+          const rMonth = parseInt(r[1].slice(5, 7), 10);
+          if (rMonth !== mo) return false;
+        }
+        return true;
+      });
+      return out;
+    };
+
+    const currentTx = filterForMonth(allTx, y, m);
+
+    // Calcula DRE por seção: index [11] = secao (receita/custo/despesa/investimento/financiamento)
+    const calcDre = (txList) => {
+      const dre = { receita: 0, custo: 0, despesa: 0, investimento: 0, financiamento: 0 };
+      for (const r of txList) {
+        const secao = r[11] || (r[0] === 'r' ? 'receita' : 'despesa');
+        const valor = r[5] || 0;
+        if (r[0] === 'r') dre[secao] = (dre[secao] || 0) + valor;
+        else dre[secao] = (dre[secao] || 0) - valor;
+      }
+      return dre;
+    };
+
+    const current = calcDre(currentTx);
+
+    // Período anterior para MoM
+    let prevDre = null;
+    if (m > 0) {
+      // Mês anterior
+      const prevMonth = m === 1 ? 12 : m - 1;
+      const prevYear = m === 1 ? y - 1 : y;
+      const prevTx = filterForMonth(allTx, prevYear, prevMonth);
+      if (prevTx.length > 0) prevDre = calcDre(prevTx);
+    } else {
+      // YTD: compara com mesmo período do ano anterior
+      const prevTx = filterForMonth(allTx, y - 1, 0);
+      if (prevTx.length > 0) prevDre = calcDre(prevTx);
+    }
+
+    const receitaLiquida = current.receita;
+    const custosOperacionais = Math.abs(current.custo);
+    const custosEDespesasGerais = custosOperacionais + Math.abs(current.despesa);
+    const despesasOperacionais = Math.abs(current.despesa);
+    const margemContribuicao = current.receita + current.custo;
+    const resultadoOperacional = current.receita + current.custo + current.despesa;
+    const resultadoGeral = current.receita + current.custo + current.despesa + (current.investimento || 0) + (current.financiamento || 0);
+
+    const calcMoM = (currentVal, prevCalc) => {
+      if (!prevCalc || prevCalc === 0) return null;
+      return ((currentVal - prevCalc) / Math.abs(prevCalc)) * 100;
+    };
+
+    let momReceita = null, momCustosGerais = null, momCustos = null, momDespesas = null, momMargem = null, momResultado = null;
+    if (prevDre) {
+      const pReceita = prevDre.receita;
+      const pCustos = Math.abs(prevDre.custo);
+      const pCustosGerais = pCustos + Math.abs(prevDre.despesa);
+      const pDespesas = Math.abs(prevDre.despesa);
+      const pMargem = prevDre.receita + prevDre.custo;
+      const pResultado = prevDre.receita + prevDre.custo + prevDre.despesa;
+
+      momReceita = calcMoM(receitaLiquida, pReceita);
+      momCustosGerais = calcMoM(custosEDespesasGerais, pCustosGerais);
+      momCustos = calcMoM(custosOperacionais, pCustos);
+      momDespesas = calcMoM(despesasOperacionais, pDespesas);
+    }
+
+    // Margem de Contribuição % e Resultado Operacional % = sobre receita (não MoM)
+    const margemContribuicaoPct = receitaLiquida > 0 ? (margemContribuicao / receitaLiquida) * 100 : null;
+    const resultadoOperacionalPct = receitaLiquida > 0 ? (resultadoOperacional / receitaLiquida) * 100 : null;
+
+    return {
+      receitaLiquida, custosEDespesasGerais, custosOperacionais,
+      despesasOperacionais, margemContribuicao, resultadoOperacional, resultadoGeral,
+      margemContribuicaoPct, resultadoOperacionalPct,
+      momReceita, momCustosGerais, momCustos, momDespesas,
+    };
+  }, [statusFilter, drilldown, year, month, filters]);
+
+  const fmt = (v) => B.fmt(v);
+  const fmtPct = (v) => {
+    if (v == null) return "—";
+    const sign = v > 0 ? "+" : "";
+    return sign + v.toFixed(2).replace(".", ",") + "%";
+  };
+  const momColor = (v) => {
+    if (v == null) return "var(--mute)";
+    // Para custos/despesas: aumento é ruim (vermelho), redução é bom (verde)
+    return v >= 0 ? "var(--green)" : "var(--red)";
+  };
+  const momColorInverse = (v) => {
+    if (v == null) return "var(--mute)";
+    // Para custos: aumento é ruim (vermelho), redução é bom (verde)
+    return v <= 0 ? "var(--green)" : "var(--red)";
+  };
+
+  const MONTHS_SHORT = ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  const periodoLabel = month > 0 ? MONTHS_SHORT[month] + " " + year : "Ano " + year;
+
+  const MetricRow = ({ label, value, mom, inverse }) => {
+    const color = inverse ? momColorInverse(mom) : momColor(mom);
+    return (
+      <div className="capa-metric-row">
+        <div className="capa-metric-label">{label}</div>
+        <div className="capa-metric-values">
+          <div className="capa-metric-bar" />
+          <span className="capa-metric-value">{fmt(value)}</span>
+          <div className="capa-metric-bar-sep" />
+          <span className="capa-metric-mom" style={{ color }}>{fmtPct(mom)}</span>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="page-capa">
+      <div className="capa-left">
+        <div className="capa-hero">
+          <h2 className="capa-subtitle">Dashboard</h2>
+          <h1 className="capa-title">BI FINANCEIRO</h1>
+          <p className="capa-desc">Tenha em suas mãos o melhor dashboard de análise financeira do mercado</p>
+        </div>
+        <div className="capa-resultado">
+          <div className="capa-resultado-title">Resultados</div>
+          <div className="capa-resultado-label">RESULTADO GERAL</div>
+          <div className="capa-resultado-values">
+            <div className="capa-metric-bar" />
+            <span className="capa-resultado-value">{fmt(dreData.resultadoGeral)}</span>
+          </div>
+          <div className="capa-resultado-periodo">{periodoLabel}</div>
+        </div>
+      </div>
+      <div className="capa-right">
+        <h3 className="capa-metricas-title">Métricas Gerais</h3>
+        <MetricRow label="RECEITA LÍQUIDA" value={dreData.receitaLiquida} mom={dreData.momReceita} />
+        <MetricRow label="CUSTOS E DESPESAS GERAIS" value={dreData.custosEDespesasGerais} mom={dreData.momCustosGerais} inverse />
+        <MetricRow label="CUSTOS OPERACIONAIS" value={dreData.custosOperacionais} mom={dreData.momCustos} inverse />
+        <MetricRow label="DESPESAS OPERACIONAIS" value={dreData.despesasOperacionais} mom={dreData.momDespesas} inverse />
+        <MetricRow label="MARGEM DE CONTRIBUIÇÃO" value={dreData.margemContribuicao} mom={dreData.margemContribuicaoPct} />
+        <MetricRow label="RESULTADO OPERACIONAL" value={dreData.resultadoOperacional} mom={dreData.resultadoOperacionalPct} />
+      </div>
+    </div>
+  );
+};
+
 const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
   const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
+  // dreCalc: reage ao mês selecionado (KPIs da esquerda)
+  const dreCalc = useDreCalc(statusFilter, drilldown, year, month, filters);
+  // dreAnual: SEMPRE ano inteiro, sem filtro de mês (charts de barras e linhas)
+  const dreAnual = useDreCalc(statusFilter, null, year, 0, filters);
   const [indicator, setIndicator] = useState("Valor líquido");
   const refYear = (B.META && B.META.ref_year) || new Date().getFullYear();
-  // descobre o indice ativo se o drilldown for de mes (pra destacar a barra)
-  const activeMonthIdx = (drilldown && drilldown.type === "mes")
-    ? B.MONTHS_FULL.findIndex(mn => {
-        // drilldown.value formato "YYYY-MM" e MONTHS_FULL e ["janeiro","fevereiro",...]
-        const mm = String(parseInt(drilldown.value.slice(5, 7), 10)).padStart(2, "0");
-        const idx = parseInt(mm, 10) - 1;
-        return B.MONTHS_FULL.indexOf(mn) === idx;
-      })
+  const activeMonthIdx = (month >= 1 && month <= 12) ? month - 1
+    : (drilldown && drilldown.type === "mes") ? parseInt(drilldown.value.slice(5, 7), 10) - 1
     : -1;
   const handleBarMes = (d, i) => {
     const mm = String(i + 1).padStart(2, "0");
@@ -186,132 +348,120 @@ const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilld
     setDrilldown({ type: "mes", value: ym, label: lbl });
   };
 
-  // Indicator series for the toggle chart (derived da MONTH_DATA real)
-  const DRE = B.MONTH_DRE || [];
-  const margemSeries = B.MONTH_DATA.map(m => m.receita > 0 ? ((m.receita - m.despesa) / m.receita) * 100 : 0);
-  const impostosSeries = DRE.map(m => m.imposto || 0);
-  // EBITDA = valor líquido + impostos (antes de juros e impostos)
-  const ebitdaSeries = B.MONTH_DATA.map((m, i) => (m.receita - m.despesa) + (DRE[i] ? DRE[i].imposto || 0 : 0));
-  // Resultado operacional = valor líquido (depois de juros e impostos)
-  const resOpSeries = B.VALOR_LIQ_SERIES;
+  // Impostos: soma categorias fiscais (reage ao mês selecionado)
+  const impostos = useMemo(() => {
+    const allTx = window.ALL_TX || [];
+    const sf = statusFilter || 'realizado';
+    const yr = year || refYear;
+    const m = month || 0;
+    let dd = drilldown;
+    if (!dd && m >= 1 && m <= 12) {
+      const mm = String(m).padStart(2, '0');
+      dd = { type: 'mes', value: yr + '-' + mm };
+    }
+    const txFiltered = window.filterTx ? window.filterTx(allTx, sf, dd, 'caixa', filters) : [];
+    const taxCats = new Set(['Impostos sobre receita / Das', 'Fgts', 'Inss', 'Irrf', 'Fgts rescisório', 'Taxas e contribuições', 'Parcelamento de impostos']);
+    let total = 0;
+    for (const row of txFiltered) {
+      if (!row[1] || Number(row[1].slice(0, 4)) !== yr) continue;
+      if (row[0] === 'd' && taxCats.has(row[3])) total += row[5];
+    }
+    return total;
+  }, [statusFilter, drilldown, year, month, filters, refYear]);
+
+  // Dados das barras e linhas: sempre do dreAnual (12 meses completos)
+  const dreMes = dreAnual.bySecaoMes || [];
+  const MONTHS_FULL = B.MONTHS_FULL || [];
+
+  // Barras DRE: receita por seção vs custos+despesas por seção
+  const barsData = useMemo(() => {
+    return dreMes.map((m, i) => ({
+      m: MONTHS_FULL[i] || '',
+      receita: m.receita,
+      despesa: Math.abs(m.custo) + Math.abs(m.despesa),
+    }));
+  }, [dreMes, MONTHS_FULL]);
+
+  // Séries DRE mensal para gráfico de indicadores (sempre 12 meses)
+  const liqSeries = dreMes.map(m => m.receita + m.custo + m.despesa);
+  const margemContribSeries = dreMes.map(m => m.receita + m.custo);
+  const resOpSeries = liqSeries;
   const indicatorSeries = {
-    "Valor líquido":          { values: B.VALOR_LIQ_SERIES, color: "var(--cyan)", fmt: (v) => B.fmt(v) },
-    "Receita":                { values: B.MONTH_DATA.map(m => m.receita), color: "var(--green)", fmt: (v) => B.fmt(v) },
-    "Despesa":                { values: B.MONTH_DATA.map(m => -m.despesa), color: "var(--red)", fmt: (v) => B.fmt(v) },
-    "Margem Líquida":         { values: margemSeries, color: "var(--cyan)", fmt: (v) => `${v.toFixed(2).replace(".", ",")}%` },
-    "Impostos":               { values: impostosSeries, color: "var(--red-2)", fmt: (v) => B.fmt(v) },
-    "EBITDA":                 { values: ebitdaSeries, color: "var(--green-2)", fmt: (v) => B.fmt(v) },
-    "Resultado operacional":  { values: resOpSeries, color: "var(--amber)", fmt: (v) => B.fmt(v) },
+    "Valor líquido":          { values: liqSeries, color: "var(--cyan)", fmt: (v) => B.fmt(v) },
+    "Margem de contribuição": { values: margemContribSeries, color: "var(--amber)", fmt: (v) => B.fmt(v) },
+    "Resultado operacional":  { values: resOpSeries, color: "var(--green)", fmt: (v) => B.fmt(v) },
   };
   const current = indicatorSeries[indicator];
-  const monthLabels = B.MONTHS_FULL.map(m => `${m.charAt(0).toUpperCase() + m.slice(1, 3)} ${refYear}`);
-
-  // DRE dinâmico — recalcula a partir das transações filtradas (reage a filtro de empresa/conta/mês)
-  const dreCalc = useMemo(() => {
-    // Merge month do header com drilldown (mesmo comportamento do getBit)
-    let dd = drilldown;
-    if (!dd && month && month >= 1 && month <= 12) {
-      const mm = String(month).padStart(2, '0');
-      dd = { type: 'mes', value: `${year || refYear}-${mm}` };
-    }
-    const txFiltered = window.ALL_TX ? window.filterTx(window.ALL_TX, statusFilter, dd, 'caixa', filters) : [];
-    const bySecao = { receita: 0, custo: 0, despesa: 0, investimento: 0, financiamento: 0 };
-    const yr = year || refYear;
-    for (const row of txFiltered) {
-      if (!row[1]) continue;
-      if (Number(row[1].slice(0, 4)) !== yr) continue;
-      if (row[6] !== 1) continue; // só realizado
-      const secao = row[11] || (row[0] === 'r' ? 'receita' : 'despesa');
-      if (row[0] === 'r') bySecao[secao] = (bySecao[secao] || 0) + row[5];
-      else bySecao[secao] = (bySecao[secao] || 0) - row[5];
-    }
-    const rec = bySecao.receita;
-    const custo = Math.abs(bySecao.custo);
-    const margem = rec + bySecao.custo;
-    const desp = Math.abs(bySecao.despesa);
-    const resOp = rec + bySecao.custo + bySecao.despesa;
-    return {
-      receitas_operacionais: rec,
-      custos_operacionais: custo,
-      margem_contribuicao: margem,
-      margem_contribuicao_pct: rec > 0 ? (margem / rec) * 100 : 0,
-      despesas_operacionais: desp,
-      resultado_operacional: resOp,
-      resultado_operacional_pct: rec > 0 ? (resOp / rec) * 100 : 0,
-    };
-  }, [statusFilter, drilldown, year, month, refYear, filters]);
-  const indicadores = [
-    { value: dreCalc.receitas_operacionais, label: "Receitas operacionais", kind: "receita" },
-    { value: dreCalc.custos_operacionais, label: "Custos operacionais", kind: "despesa" },
-    { value: dreCalc.margem_contribuicao, label: "Margem de contribuição", kind: dreCalc.margem_contribuicao >= 0 ? "receita" : "despesa" },
-    { value: dreCalc.despesas_operacionais, label: "Despesas operacionais", kind: "despesa" },
-    { value: dreCalc.resultado_operacional, label: "Resultado operacional", kind: dreCalc.resultado_operacional >= 0 ? "receita" : "despesa" },
-  ];
-
-  const statusLabel = statusFilter === "realizado" ? "realizado (PAGO)" :
-                      statusFilter === "a_pagar_receber" ? "pendente (A vencer/receber)" : "tudo (pago + pendente)";
+  const monthLabels = MONTHS_FULL.map(m => `${(m || '').charAt(0).toUpperCase() + (m || '').slice(1, 3)} ${refYear}`);
 
   return (
     <div className="page">
-      <div className="page-title">
-        <div>
-          <h1>Visão Geral</h1>
-          <div className="status-line">Cliente · ano {refYear} · status <b>{statusLabel}</b></div>
-        </div>
-        <div className="actions">
-        </div>
-      </div>
-
       <DrilldownBadge drilldown={drilldown} onClear={() => setDrilldown(null)} />
 
-      <div className="row" style={{ gridTemplateColumns: "minmax(280px, 3fr) minmax(0, 9fr)" }}>
+      <div className="row" style={{ gridTemplateColumns: "minmax(260px, 3fr) minmax(0, 9fr)" }}>
         {/* LEFT: Indicadores Principais + Resultado Geral */}
         <div style={{ display: "grid", gap: 16, alignContent: "start" }}>
           <div className="card">
             <SectionHeading strong="INDICADORES" soft="PRINCIPAIS" />
             <div className="kpi-stack">
-              {indicadores.map((it, i) => (
-                <div key={i} className={`kpi-stack-item ${it.kind}`}>
-                  <div className="kpi-stack-value">{B.fmt(it.value)}</div>
-                  <div className="kpi-stack-label">{it.label}</div>
-                </div>
-              ))}
+              <div className="kpi-stack-item receita">
+                <div className="kpi-stack-value">{B.fmt(dreCalc.receita)}</div>
+                <div className="kpi-stack-label">Valor líquido</div>
+              </div>
+              <div className="kpi-stack-item despesa">
+                <div className="kpi-stack-value">{B.fmt(dreCalc.custosEDespesas)}</div>
+                <div className="kpi-stack-label">Despesa</div>
+              </div>
+              <div className="kpi-stack-item despesa">
+                <div className="kpi-stack-value">{B.fmt(impostos)}</div>
+                <div className="kpi-stack-label">Impostos</div>
+              </div>
+              <div className={`kpi-stack-item ${dreCalc.margem >= 0 ? "receita" : "despesa"}`}>
+                <div className="kpi-stack-value">{B.fmt(dreCalc.margem)}</div>
+                <div className="kpi-stack-label">Margem de Contribuicao</div>
+              </div>
+              <div className="kpi-stack-item receita">
+                <div className="kpi-stack-value">{dreCalc.margemPct.toFixed(2).replace(".", ",")}%</div>
+                <div className="kpi-stack-label">Margem de contribuicao %</div>
+              </div>
+              <div className={`kpi-stack-item ${dreCalc.resultadoOp >= 0 ? "receita" : "despesa"}`}>
+                <div className="kpi-stack-value">{B.fmt(dreCalc.resultadoOp)}</div>
+                <div className="kpi-stack-label">Resultado operacional</div>
+              </div>
             </div>
           </div>
 
-          <div className={`card resultado-card ${dreCalc.resultado_operacional < 0 ? "negative" : ""}`}>
-            <SectionHeading strong="RESULTADO" soft="OPERACIONAL" />
-            <div className="kpi-stack-value resultado-val">{B.fmt(dreCalc.resultado_operacional)}</div>
+          <div className={`card resultado-card ${dreCalc.resultadoOp < 0 ? "negative" : ""}`}>
+            <SectionHeading strong="RESULTADO" soft="GERAL" />
+            <div className="kpi-stack-value resultado-val">{B.fmt(dreCalc.resultadoOp)}</div>
             <div className="kpi-stack-label">Resultado operacional</div>
-            <div className="kpi-stack-pct">{dreCalc.resultado_operacional_pct.toFixed(2).replace(".", ",")}%</div>
+            <div className="kpi-stack-pct">{dreCalc.resultadoOpPct.toFixed(2).replace(".", ",")}%</div>
             <div className="kpi-stack-label">Margem operacional</div>
           </div>
         </div>
 
-        {/* RIGHT: Receitas e Despesas + Visualização Indicadores */}
+        {/* RIGHT: Entradas e Saídas + Valor Líquido */}
         <div style={{ display: "grid", gap: 16, minWidth: 0 }}>
           <div className="card">
             <div className="card-title-row" style={{ marginBottom: 10 }}>
-              <h2 className="card-title">Receitas e despesas</h2>
+              <SectionHeading strong="ENTRADAS" soft="E SAÍDAS" />
             </div>
             <div className="legend-pills">
               <span className="legend-pill green">
                 <span className="dot" />
                 <span className="lbl">Soma de receita</span>
-                <span className="val">{B.fmtK(B.TOTAL_RECEITA)}</span>
               </span>
               <span className="legend-pill red">
                 <span className="dot" />
-                <span className="lbl">Soma de despesas</span>
-                <span className="val">{B.fmtK(B.TOTAL_DESPESA)}</span>
+                <span className="lbl">despesa new</span>
               </span>
             </div>
-            <OverviewBars data={B.MONTH_DATA} height={220} year={String(refYear)} onBarClick={handleBarMes} activeIdx={activeMonthIdx} />
+            <OverviewBars data={barsData} height={260} year={String(refYear)} onBarClick={handleBarMes} activeIdx={activeMonthIdx} />
           </div>
 
           <div className="card">
             <div className="card-title-row" style={{ marginBottom: 12 }}>
-              <h2 className="card-title">Visualização indicadores</h2>
+              <SectionHeading strong="VALOR" soft="LÍQUIDO" />
               <div className="ind-pills">
                 {Object.keys(indicatorSeries).map(k => (
                   <button key={k} className={`ind-pill ${indicator === k ? "active" : ""}`} onClick={() => setIndicator(k)}>{k}</button>
@@ -319,13 +469,9 @@ const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilld
               </div>
             </div>
             <div className="legend-pills">
-              <span className="legend-pill cyan">
-                <span className="dot" />
-                <span className="lbl">{indicator}</span>
-                <span className="val">{indicator === "Margem Líquida"
-                  ? `${(current.values.reduce((s, v) => s + v, 0) / current.values.length).toFixed(2).replace(".", ",")}%`
-                  : B.fmtK(current.values.reduce((s, v) => s + v, 0))}</span>
-              </span>
+              <span className="legend-pill cyan"><span className="dot" /><span className="lbl">Valor líquido</span></span>
+              <span className="legend-pill" style={{ color: "var(--green)" }}><span className="dot" style={{ background: "var(--green)" }} /><span className="lbl">Resultado operacional</span></span>
+              <span className="legend-pill" style={{ color: "var(--amber)" }}><span className="dot" style={{ background: "var(--amber)" }} /><span className="lbl">Margem de contribuição</span></span>
             </div>
             <IndicatorLine values={current.values} labels={monthLabels} height={240} color={current.color} format={current.fmt} />
           </div>
@@ -337,10 +483,11 @@ const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilld
 
 const PageIndicators = ({ filters, statusFilter, drilldown, setDrilldown, year, month }) => {
   const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
-  const totalReceita = B.TOTAL_RECEITA;
-  const totalDespesa = B.TOTAL_DESPESA;
-  const valorLiq = B.VALOR_LIQUIDO;
-  const margemLiq = B.MARGEM_LIQUIDA;
+  const dre = useDreCalc(statusFilter, drilldown, year, month, filters);
+  const totalReceita = dre.receita;
+  const totalDespesa = dre.custosEDespesas;
+  const valorLiq = dre.resultadoOp;
+  const margemLiq = dre.resultadoOpPct;
   const refYear = (B.META && B.META.ref_year) || new Date().getFullYear();
   // sem segregacao de impostos no Omie sem mapeamento de categorias, deixamos 0 e mostramos "—" se nao houver dado
   const margemSeries = B.MONTH_DATA.map(m => m.receita > 0 ? ((m.receita - m.despesa) / m.receita) * 100 : 0);
@@ -416,10 +563,12 @@ const PageIndicators = ({ filters, statusFilter, drilldown, setDrilldown, year, 
 
 const PageReceita = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
   const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
-  const mediaMes = B.TOTAL_RECEITA / 12;
+  const dre = useDreCalc(statusFilter, drilldown, year, month, filters);
+  const totalReceita = dre.receita;
+  const mediaMes = totalReceita / 12;
   const numClientes = B.RECEITA_CLIENTES.length;
   const numLancRec = (B.EXTRATO_RECEITAS || B.EXTRATO.filter(e => e[4] > 0)).length;
-  const ticket = numLancRec > 0 ? B.TOTAL_RECEITA / numLancRec : 0;
+  const ticket = numLancRec > 0 ? totalReceita / numLancRec : 0;
   const [range, setRange] = useState("12M");
   const refYear = (B.META && B.META.ref_year) || new Date().getFullYear();
 
@@ -433,19 +582,16 @@ const PageReceita = ({ filters, setFilters, onOpenFilters, statusFilter, drilldo
   const handleCategoria = (it) => setDrilldown({ type: "categoria", value: it.name, label: it.name });
   const handleCliente = (it) => setDrilldown({ type: "cliente", value: it.name, label: it.name });
 
-  // Indices ativos para destaque
   const activeMonthIdx = (drilldown && drilldown.type === "mes")
     ? parseInt(drilldown.value.slice(5, 7), 10) - 1 : -1;
   const activeCategoria = (drilldown && drilldown.type === "categoria") ? drilldown.value : null;
   const activeCliente = (drilldown && drilldown.type === "cliente") ? drilldown.value : null;
 
-  // Extrato filtrado de receitas (usa EXTRATO_RECEITAS pre-separado pelo build,
-  // fallback pro filtro inline pra compat com BIT base)
   const extratoReceitas = B.EXTRATO_RECEITAS || B.EXTRATO.filter(e => e[4] > 0);
   const extratoFiltrado = window.applyDrilldown(extratoReceitas, drilldown);
   const totalFiltrado = drilldown
     ? extratoFiltrado.reduce((s, e) => s + e[4], 0)
-    : B.TOTAL_RECEITA;
+    : totalReceita;
 
   return (
     <div className="page">
@@ -461,7 +607,7 @@ const PageReceita = ({ filters, setFilters, onOpenFilters, statusFilter, drilldo
       <DrilldownBadge drilldown={drilldown} onClear={() => setDrilldown(null)} />
 
       <div className="row row-4">
-        <KpiTile label="Receita total" value={B.fmt(B.TOTAL_RECEITA)} sparkValues={B.MONTH_DATA.map(m => m.receita)} sparkColor="var(--green)" tone="green" noPrefix />
+        <KpiTile label="Receita operacional" value={B.fmt(totalReceita)} sparkValues={B.MONTH_DATA.map(m => m.receita)} sparkColor="var(--green)" tone="green" noPrefix />
         <KpiTile label="Média por mês" value={B.fmt(mediaMes)} sparkValues={B.MONTH_DATA.map(m => m.receita)} sparkColor="var(--cyan)" tone="cyan" noPrefix />
         <KpiTile label="Clientes" value={String(numClientes)} sparkValues={B.MONTH_DATA.map(m => m.receita > 0 ? 1 : 0)} sparkColor="var(--cyan)" tone="cyan" nonMonetary />
         <KpiTile label="Ticket médio" value={B.fmt(ticket)} sparkValues={B.MONTH_DATA.map(m => m.receita / 30)} sparkColor="var(--green)" tone="green" noPrefix />
@@ -520,7 +666,8 @@ const PageReceita = ({ filters, setFilters, onOpenFilters, statusFilter, drilldo
 
 const PageDespesa = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
   const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, filters), [statusFilter, drilldown, year, month, filters]);
-  const totalDespesa = B.TOTAL_DESPESA;
+  const dre = useDreCalc(statusFilter, drilldown, year, month, filters);
+  const totalDespesa = dre.custosEDespesas;
   const mediaMes = totalDespesa / 12;
   const numFornec = B.DESPESA_FORNECEDORES.length;
   const numLancDesp = (B.EXTRATO_DESPESAS || B.EXTRATO.filter(e => e[4] < 0)).length;

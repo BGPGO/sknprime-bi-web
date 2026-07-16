@@ -1,5 +1,5 @@
 /**
- * Adapter: Nibo XLSX
+ * Adapter: Nibo XLSX — SKN Prime
  *
  * Lê base exportada do Nibo com 3 sheets:
  *   - Schedules: lançamentos (Credit/Debit)
@@ -41,78 +41,185 @@ function isoDate(v) {
   return null;
 }
 
-// Mapeamento subcategoria → centro de custo (plano de contas Ornata/Outside)
+// Mapeamento subcategoria → centro de custo (plano de contas SKN Prime)
 const CENTRO_CUSTO_MAP = {
-  // Marketing e publicidade
-  'Despesas com ADS': 'Marketing e publicidade',
-  'Bens de consumo com publicidade': 'Marketing e publicidade',
-  'Serviços contratados para marketing': 'Marketing e publicidade',
-  'Outros gastos com publicidade': 'Marketing e publicidade',
-  // Despesas operacionais
-  'Luz, água e outros': 'Despesas operacionais',
-  'Reembolsos por fora de marketplaces': 'Despesas operacionais',
-  // Despesas administrativas
-  'Despesas administrativas': 'Despesas administrativas',
-  'Despesas com alimentação': 'Despesas administrativas',
-  'Material de escritório': 'Despesas administrativas',
-  'Insumos para escritório': 'Despesas administrativas',
-  'Pró-labores': 'Despesas administrativas',
-  'Despesas com benefícios aos sócios e diretores': 'Despesas administrativas',
-  'Despesas com Treinamento e Capacitação': 'Despesas administrativas',
-  'Despesas com materiais de consumo': 'Despesas administrativas',
-  'Despesas com viagens': 'Despesas administrativas',
-  'Materiais de Limpeza e Higiêne': 'Despesas administrativas',
-  'Materiais de Limpeza e Higiêne OP': 'Despesas administrativas',
-  'Instalações ou Equipamentos de Segurança': 'Despesas administrativas',
-  // Despesas com serviços
-  'Serviços de contabilidade': 'Despesas com serviços',
-  'Serviços de sistema de gestão': 'Despesas com serviços',
-  'Despesas com frete para compra de materiais': 'Despesas com serviços',
-  'Despesas com frete para devolução e reenvio': 'Despesas com serviços',
-  'Despesas com outros serviços contratados': 'Despesas com serviços',
-  // Despesas com colaboradores
-  'Salários e encargos': 'Despesas com colaboradores',
-  'Bonificações, Brindes e Festividades': 'Despesas com colaboradores',
-  'Despesas com horas extras setor administrativo': 'Despesas com colaboradores',
-  'Comissões': 'Despesas com colaboradores',
-  'Despesa com férias de funcionário': 'Despesas com colaboradores',
-  'Vestuário de trabalho': 'Despesas com colaboradores',
-  'Despesas com rescisões trabalhistas': 'Despesas com colaboradores',
-  'Vale-Refeição (VR)': 'Despesas com colaboradores',
-  'Despesas com 13° Salário': 'Despesas com colaboradores',
-  'PLR': 'Despesas com colaboradores',
-  // Despesas Financeiras
-  'Taxas e Encargos Bancários': 'Despesas Financeiras',
-  'Impostos e Taxas': 'Despesas Financeiras',
-  'Impostos sobre bens materiais': 'Despesas Financeiras',
-  'Impostos sobre serviços contratados': 'Despesas Financeiras',
-  // Despesas não operacionais
-  'Transferência entre empresas': 'Despesas não operacionais',
-  'Outras despesas (Não considerar DRE)': 'Despesas não operacionais',
-  'Outras despesas': 'Despesas não operacionais',
-  'Outras despesas com Notável Aroma': 'Despesas não operacionais',
-  'Outras despesas com Outside the Box': 'Despesas não operacionais',
-  // Despesas com aluguéis
-  'Despesas com aluguéis para uso': 'Despesas com aluguéis',
-  // Despesas com veículos
-  'Despesas com combustíveis para veículos': 'Despesas com veículos',
-  'Despesas com reparo, manutenção e preventiva': 'Despesas com veículos',
-};
+  // Receitas
+  'Receita com serviços': 'Receita operacional',
+  'Receita com certificado digital': 'Receita operacional',
+  'Receita com legalização': 'Receita operacional',
+  'Receita com inadimplência': 'Receita operacional',
+  'Contas de terceiros': 'Receita operacional',
+  'Receita com adicional anual 13º': 'Receita operacional',
+  'Receita com pessoal': 'Receita operacional',
+  'Receita com fiscal': 'Receita operacional',
+  'Receita  bpo  financeiro': 'Receita operacional',
+  'Receitas outros serviços': 'Receita operacional',
+  'Receita Serviços MEI': 'Receita operacional',
+  'Receita com contábil': 'Receita operacional',
+  'Receita com vendas': 'Receita operacional',
+  'Receita com Irpf': 'Receita não operacional',
+  'Remanescentes lounge beer': 'Receita não operacional',
+  'Rendimento s/ aplicações': 'Receita financeira',
+  'Receitas Com Condominio SKN': 'Receita não operacional',
+  'Receita com rendimentos': 'Receita financeira',
 
-// Override de conta: IDs que o Nibo atribui à conta errada vs o painel de referência.
-// Formato: scheduleId → conta correta
-const CONTA_OVERRIDE = {
-  // Jan/2026: Pró-labores que pertencem à Ornata Domus (não Outside)
-  'b0213518-e4f7-440e-8bb2-17287a2a6496': 'Ornata Domus',
-  'e26c9f08-f011-4238-aa93-604083ee887b': 'Ornata Domus',
-  '64d87b21-f8c8-45e0-8cfe-86b84bab8b22': 'Ornata Domus',
-  '2afc9640-3003-4ee1-9ff0-b2dc6ef3b174': 'Ornata Domus',
-  // Jan/2026: Bonificações que pertencem à Ornata Domus
-  '5ab5e838-030e-4cb3-92b6-03864611f66e': 'Ornata Domus',
-  '10d706c5-a1ce-4153-9010-f67ff8f8fa18': 'Ornata Domus',
-  // Jan/2026: Salários que pertencem à Ornata Domus
-  '225f86f2-8384-47ab-91ba-0f9d68fd0b0c': 'Ornata Domus',
-  '8794a281-be9a-436e-83fe-ee539c4ebdc7': 'Ornata Domus',
+  // Custos operacionais (folha)
+  'Salários, encargos e benefícios': 'Custos com pessoal',
+  'Adiantamento salarial': 'Custos com pessoal',
+  'Vale refeição': 'Custos com pessoal',
+  'Vale transporte': 'Custos com pessoal',
+  'Meta': 'Custos com pessoal',
+  'Férias': 'Custos com pessoal',
+  '13° salário': 'Custos com pessoal',
+  'Adiantamento 13º': 'Custos com pessoal',
+  'Irrf': 'Custos com pessoal',
+  'Rescisão': 'Custos com pessoal',
+  'Inss': 'Custos com pessoal',
+  'Fgts': 'Custos com pessoal',
+  'Fgts rescisório': 'Custos com pessoal',
+  'Salários estágio': 'Custos com pessoal',
+  'Horas extra': 'Custos com pessoal',
+  'Serviços pj - Sheyla': 'Custos com pessoal',
+  'Assistência odontológica': 'Custos com pessoal',
+  'Serviços de Irpf': 'Custos com pessoal',
+  'Estorno (custo)': 'Custos com pessoal',
+
+  // Custos operacionais (outros)
+  'Sistemas Operacionais': 'Custos operacionais',
+  'Impostos sobre receita / Das': 'Impostos',
+
+  // Despesas administrativas
+  'Retirada/pró-Labore - Anderson': 'Pró-labore e sócios',
+  'Retirada/pró-labore - Isaias': 'Pró-labore e sócios',
+  'Retirada/pró-Labore - Anderson (entrada)': 'Pró-labore e sócios',
+  'Grupo skn': 'Despesas administrativas',
+  'Material de escritório': 'Despesas administrativas',
+  'Lanches e refeições': 'Despesas administrativas',
+  'Produtos para copa': 'Despesas administrativas',
+  'Higiene e limpeza': 'Despesas administrativas',
+  'Água': 'Despesas administrativas',
+  'Água (galão)': 'Despesas administrativas',
+  'Energia elétrica': 'Despesas administrativas',
+  'Confraternizações': 'Despesas administrativas',
+  'Brindes': 'Despesas administrativas',
+  'Coffee break': 'Despesas administrativas',
+  'Conservação e decoração': 'Despesas administrativas',
+  'Móveis e utensílios': 'Despesas administrativas',
+  'Material de uso e consumo': 'Despesas administrativas',
+  'Bens de pequeno valor': 'Despesas administrativas',
+  'Gás': 'Despesas administrativas',
+  'Iptu': 'Despesas administrativas',
+  'Uniforme': 'Despesas administrativas',
+  'Doações': 'Despesas administrativas',
+  'Contribuição sindical': 'Despesas administrativas',
+
+  // Despesas com serviços
+  'Telefone e internet': 'Despesas com serviços',
+  'Aluguel de equipamentos': 'Despesas com serviços',
+  'Informática': 'Despesas com serviços',
+  'Segurança e monitoramento': 'Despesas com serviços',
+  'Hospedagem': 'Despesas com serviços',
+  'Domínio sites e e-mails': 'Despesas com serviços',
+  'Serviços contratados': 'Despesas com serviços',
+  'Assessoria e consultoria empresarial': 'Despesas com serviços',
+  'Motoboy': 'Despesas com serviços',
+  'Office boy': 'Despesas com serviços',
+  'Correios': 'Despesas com serviços',
+  'Saúde ocupacional': 'Despesas com serviços',
+  'Frete': 'Despesas com serviços',
+  'Infraestrutura': 'Despesas com serviços',
+
+  // Despesas com pessoal (RH)
+  'Premiações à funcionários': 'Despesas com pessoal',
+  'Cursos e treinamentos': 'Despesas com pessoal',
+  'Assistência médica': 'Despesas com pessoal',
+  'Auxílio Moradia': 'Despesas com pessoal',
+  'Bolsa auxílio': 'Despesas com pessoal',
+  'Pensão alimentícia': 'Despesas com pessoal',
+  'Recarga Bilhete Único': 'Despesas com pessoal',
+
+  // Marketing
+  'Marketing': 'Marketing e publicidade',
+  'Marketing digital': 'Marketing e publicidade',
+  'Materiais gráficos': 'Marketing e publicidade',
+  'Publicidade e propaganda': 'Marketing e publicidade',
+  'BNI': 'Marketing e publicidade',
+  'Eventos': 'Marketing e publicidade',
+
+  // Despesas financeiras
+  'Despesas financeiras': 'Despesas financeiras',
+  'Taxas e contribuições': 'Despesas financeiras',
+  'Juros, multa e encargos': 'Despesas financeiras',
+  'Tarifa bancária': 'Despesas financeiras',
+  'Parcelamento de impostos': 'Despesas financeiras',
+  'Prorrogação de impostos': 'Despesas financeiras',
+  'Seguros': 'Despesas financeiras',
+  'Taxas e despesas de legalização': 'Custos operacionais',
+  'Certificado digital': 'Custos operacionais',
+  'Certificado (vouchers)': 'Custos operacionais',
+
+  // Despesas com imóvel
+  'Imóvel sede - skn prime contabilidade': 'Despesas com imóvel',
+  'Reforma': 'Despesas com imóvel',
+  'Conserto e manutenção': 'Despesas com imóvel',
+
+  // Despesas com veículos
+  'Combustível': 'Despesas com veículos',
+  'Combustível motoboy': 'Despesas com veículos',
+  'Veículos': 'Despesas com veículos',
+  'Estacionamento': 'Despesas com veículos',
+  'Pedágio': 'Despesas com veículos',
+  'Condução': 'Despesas com veículos',
+
+  // Empréstimos e financiamentos
+  'Empréstimo caixa': 'Empréstimos e financiamentos',
+  'Empréstimos itaú': 'Empréstimos e financiamentos',
+  'Empréstimos itaú - juros': 'Empréstimos e financiamentos',
+  'Empréstimo inter': 'Empréstimos e financiamentos',
+  'Empréstimos pronampe': 'Empréstimos e financiamentos',
+  'Cartão  bndes': 'Empréstimos e financiamentos',
+  'Cartão empresarial ourocard': 'Empréstimos e financiamentos',
+  'Consórcio': 'Empréstimos e financiamentos',
+  'Emprestimos Irene': 'Empréstimos e financiamentos',
+
+  // Não operacional / investimento
+  'Despesas - prejuízo de clientes': 'Despesas não operacionais',
+  'Compra de ativo fixo': 'Investimentos',
+  'Marcas e patentes': 'Investimentos',
+  'Cartório': 'Despesas administrativas',
+  'Estorno (despesa)': 'Estornos',
+  'Estorno': 'Estornos',
+  'Estorno (despesas estornadas)': 'Estornos',
+  'Devolução de cheques': 'Estornos',
+  'Repasses': 'Repasses',
+  'Custo irpf': 'Custos operacionais',
+  'Luz': 'Despesas administrativas',
+
+  // Atividades de investimento
+  'Cheirinho de pet': 'Investimentos',
+  'Meta compartilhada': 'Investimentos',
+  'Quitação de empréstimo': 'Empréstimos e financiamentos',
+  'Rescisão (parcelada)': 'Custos com pessoal',
+  'Obtenção de empréstimo': 'Empréstimos e financiamentos',
+  'Venda de ativo fixo': 'Investimentos',
+  'Anderson (arua)': 'Investimentos',
+  'Empréstimo sócio': 'Empréstimos e financiamentos',
+  'Custo aquis emprestimo': 'Empréstimos e financiamentos',
+
+  // Atividades de financiamento
+  'Retirada - caragua': 'Distribuição e retiradas',
+  'Retirada caragua (entrada)': 'Distribuição e retiradas',
+  'Distribuição skn': 'Distribuição e retiradas',
+  'Distribuição de lucros': 'Distribuição e retiradas',
+  'Distribuições anos anteriores anderson pf': 'Distribuição e retiradas',
+  'Serviços  irpf': 'Custos operacionais',
+  'Ferias (prorrogação)': 'Custos com pessoal',
+  'Curso gestão de pessoas': 'Despesas com pessoal',
+  'Regularização de imóveis': 'Despesas com imóvel',
+  'Eventos Pde': 'Marketing e publicidade',
+  'Adiantamento salarios (n op)': 'Custos com pessoal',
+  'Empréstimos à funcionários': 'Empréstimos e financiamentos',
+  'Outras despesas ñ operacionais': 'Despesas não operacionais',
 };
 
 module.exports = {
@@ -141,7 +248,6 @@ module.exports = {
     const nx = config.fontes['nibo_xlsx'];
     const baseFile = path.join(drive, nx.base_file || 'Base Nibo.xlsx');
     const contaFilter = nx.conta_filter || [];
-    const isOrnataBase = (nx.base_file || '').indexOf('Notável Aroma') === -1;
 
     console.log('=== Nibo XLSX pull ===');
     console.log('Lendo:', baseFile);
@@ -213,8 +319,7 @@ module.exports = {
 
       const cliente = String(r['Cliente/Fornecedor'] || '').trim();
       const descricao = String(r.Descricao || r['Descrição'] || '').trim();
-      const schedId = String(r.scheduleId || r.id || '');
-      const conta = (isOrnataBase && CONTA_OVERRIDE[schedId]) || String(r.Conta || '').trim();
+      const conta = String(r.Conta || '').trim();
 
       movimentos.push({
         id: String(r.scheduleId || r.id || ''),
@@ -240,51 +345,6 @@ module.exports = {
         regime: 'caixa',
       });
     }
-
-    // Ajustes de reconciliação: só para Base Nibo.xlsx (Ornata Domus + Outside)
-    const ADJUSTMENTS = !isOrnataBase ? [] : [
-      // Receitas
-      {conta:"Ornata Domus",cat:"Outras receitas",sec:"Receitas operacionais",m:2,diff:1078.02},
-      {conta:"Ornata Domus",cat:"Outras receitas",sec:"Receitas operacionais",m:3,diff:20000},
-      {conta:"Ornata Domus",cat:"Juros Recebidos",sec:"Receitas operacionais",m:4,diff:156.34},
-      // Custos
-      {conta:"Ornata Domus",cat:"Compra de mercadorias",sec:"Custos operacionais",m:1,diff:-19430.5},
-      {conta:"Ornata Domus",cat:"Compra de mercadorias",sec:"Custos operacionais",m:4,diff:-4486.66},
-      {conta:"Ornata Domus",cat:"Compra de mercadorias",sec:"Custos operacionais",m:5,diff:4486.66},
-      {conta:"Ornata Domus",cat:"Compra de insumos para expedição",sec:"Custos operacionais",m:5,diff:-727.2},
-      // Despesas — categorias específicas
-      {conta:"Ornata Domus",cat:"Pró-labores",sec:"Despesas operacionais e outras receitas",m:1,diff:14000},
-      {conta:"Ornata Domus",cat:"Despesas com outros serviços contratados",sec:"Despesas operacionais e outras receitas",m:1,diff:-250},
-      {conta:"Ornata Domus",cat:"Despesas com outros serviços contratados",sec:"Despesas operacionais e outras receitas",m:2,diff:250},
-      {conta:"Ornata Domus",cat:"Salários e encargos",sec:"Despesas operacionais e outras receitas",m:1,diff:31647.58},
-      {conta:"Ornata Domus",cat:"Bonificações, Brindes e Festividades",sec:"Despesas operacionais e outras receitas",m:1,diff:4208},
-      {conta:"Ornata Domus",cat:"Vale-Refeição (VR)",sec:"Despesas operacionais e outras receitas",m:5,diff:-1000},
-      // Investimento
-      {conta:"Ornata Domus",cat:"Venda de ativo imobilizado",sec:"Atividades de investimento",m:2,diff:1917.65},
-      {conta:"Ornata Domus",cat:"Venda de ativo imobilizado",sec:"Atividades de investimento",m:3,diff:8011.25},
-      {conta:"Ornata Domus",cat:"Venda de ativo imobilizado",sec:"Atividades de investimento",m:4,diff:1843.66},
-      {conta:"Ornata Domus",cat:"Venda de ativo imobilizado",sec:"Atividades de investimento",m:5,diff:3200},
-      // Outside — Despesas administrativas e Outras despesas
-    ];
-    for (const adj of ADJUSTMENTS) {
-      const mo = String(adj.m).padStart(2, '0');
-      const dateStr = `2026-${mo}-15`;
-      const isPositive = adj.diff > 0;
-      movimentos.push({
-        id: `adj-${adj.conta.slice(0,3)}-${adj.cat.replace(/\s/g,'').slice(0,8)}-m${adj.m}`,
-        fonte: 'nibo-xlsx-ajuste',
-        natureza: isPositive ? 'R' : 'P',
-        status: 'PAGO',
-        realizado: true,
-        data_emissao: dateStr, data_vencimento: dateStr, data_pagamento: dateStr, data_competencia: dateStr,
-        valor_total: Math.abs(adj.diff), valor_pago: Math.abs(adj.diff), valor_aberto: 0,
-        categoria: adj.cat, secao_dre: adj.sec,
-        centro_custo: CENTRO_CUSTO_MAP[adj.cat] || '',
-        cliente: 'Ajuste reconciliação', conta_corrente: adj.conta,
-        codigo_banco: '', observacao: 'Ajuste painel DRE', tags: ['ajuste'], regime: 'caixa',
-      });
-    }
-    console.log(`  Ajustes reconciliação: ${ADJUSTMENTS.length}`);
 
     fs.writeFileSync(path.join(dataDir, 'movimentos.json'), JSON.stringify(movimentos, null, 2));
 
