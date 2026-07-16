@@ -27,3 +27,4 @@ Thumbs.db
 #   data.js, data-extras.js, app.bundle.js são committados (Docker COPY)
 #   bi.config.js é committado (config do cliente sem credenciais)
 #   report*.json são committados (relatórios IA pré-gerados)
+.github/
