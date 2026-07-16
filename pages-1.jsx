@@ -360,7 +360,7 @@ const PageOverview = ({ filters, setFilters, onOpenFilters, statusFilter, drilld
       dd = { type: 'mes', value: yr + '-' + mm };
     }
     const txFiltered = window.filterTx ? window.filterTx(allTx, sf, dd, 'caixa', filters) : [];
-    const taxCats = new Set(['Impostos sobre receita / Das', 'Fgts', 'Inss', 'Irrf', 'Fgts rescisório', 'Taxas e contribuições', 'Parcelamento de impostos']);
+    const taxCats = new Set(['Impostos sobre receita / Das']);
     let total = 0;
     for (const row of txFiltered) {
       if (!row[1] || Number(row[1].slice(0, 4)) !== yr) continue;
