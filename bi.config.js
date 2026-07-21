@@ -2,7 +2,7 @@ module.exports = {
   cliente: {
     nome: "SKN Prime",
     subdomain: "sknprime-bi",
-    coolify_app_uuid: "",
+    coolify_app_uuid: "gx6mqzy4m08gp9rfxpq60sp1",
     cor_primaria: "#22d3ee",
   },
   fontes: {
