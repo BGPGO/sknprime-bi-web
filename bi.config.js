@@ -36,6 +36,7 @@ module.exports = {
       curva_abc: "hidden",
       marketing: "hidden",
       hierarquia: "hidden",
+      comercial: "active",
       detalhado: "hidden",
       profunda_cliente: "hidden",
       crm: "hidden",

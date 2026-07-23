@@ -166,6 +166,21 @@ const custoDepto = (function() {
   }
 })();
 
+// Resultados Comerciais (funil de leads) — hoje vem do JSON estático extraído do PPTX.
+// Futuro: substituir por leitura da pasta de .xlsx-base do Drive.
+let comercial = null;
+try {
+  const COM = path.join(__dirname, 'comercial-data.json');
+  if (fs.existsSync(COM)) {
+    comercial = JSON.parse(fs.readFileSync(COM, 'utf8'));
+    console.log('comercial-data.json OK');
+  } else {
+    console.log('comercial-data.json ausente — pulando tela Resultados Comerciais');
+  }
+} catch (e) {
+  console.warn('falha lendo comercial-data.json:', e.message);
+}
+
 const out = {
   fetched_at: new Date().toISOString(),
   inadimplencia: inadim,
@@ -177,6 +192,7 @@ const out = {
   faturamento: null,
   ads: null,
   crm: null,
+  comercial: comercial,
   saldos: { daily: [], last: null, contas: [] },
 };
 

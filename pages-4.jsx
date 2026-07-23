@@ -1049,9 +1049,368 @@ const PageCRM = ({ statusFilter, year, month, drilldown, setDrilldown }) => {
   );
 };
 
+// ============================================================
+// PageComercial — Resultados Comerciais (funil de leads / CRM)
+// Fonte: comercial-data.json (extraído do PPTX) → window.BIT_EXTRAS.comercial
+// KPIs do topo são CALCULADOS ao vivo a partir dos gráficos (não chumbados).
+// ============================================================
+
+// helpers de formato (comercial)
+const _comInt = (n) => _fmtInt4(n);
+const _comBRL = (n, dec = 0) => "R$ " + _fmtBR4(n, dec);
+const _comPct = (n, dec = 1) => _fmtBR4(n, dec) + "%";
+const _comKBRL = (n) => "R$ " + _fmtK4(n);
+
+// Barras verticais agrupadas (N séries) com legenda clicável + rótulos + hover
+const _ComGroupedBars = ({ meses, series, height = 250, fmt }) => {
+  const [hidden, setHidden] = useState({});
+  const [hoverCol, setHoverCol] = useState(null);
+  const active = series.filter((s) => !hidden[s.key]);
+  const max = Math.max(1, ...active.flatMap((s) => s.values));
+  const scaleMax = max * 1.15;
+  const ticks = 4;
+  const fmtV = fmt || ((v) => _comInt(v));
+  return (
+    <div>
+      <div style={{ display: "flex", gap: 18, flexWrap: "wrap", marginBottom: 16 }}>
+        {series.map((s) => {
+          const off = !!hidden[s.key];
+          return (
+            <button key={s.key} onClick={() => setHidden((h) => ({ ...h, [s.key]: !h[s.key] }))}
+              style={{ display: "flex", alignItems: "center", gap: 7, background: "none", border: "none",
+                cursor: "pointer", opacity: off ? 0.38 : 1, color: "var(--fg-2)", fontSize: 12.5, fontWeight: 600, padding: 0, transition: "opacity .15s" }}
+              title={off ? `Mostrar ${s.label}` : `Ocultar ${s.label}`}>
+              <span style={{ width: 12, height: 12, borderRadius: 3, background: s.color, display: "inline-block" }} />
+              {s.label}
+            </button>
+          );
+        })}
+      </div>
+      <div style={{ position: "relative", height, paddingLeft: 40 }}>
+        {Array.from({ length: ticks + 1 }).map((_, i) => {
+          const top = (i / ticks) * 100;
+          const val = (scaleMax / ticks) * (ticks - i);
+          return (
+            <div key={i} style={{ position: "absolute", left: 40, right: 0, top: `${top}%`, borderTop: "1px dashed var(--border-2)" }}>
+              <span style={{ position: "absolute", left: -8, top: -7, fontSize: 10, color: "var(--fg-3)", transform: "translateX(-100%)" }}>{fmtV(Math.round(val))}</span>
+            </div>
+          );
+        })}
+        <div style={{ position: "absolute", inset: 0, left: 40, display: "flex", alignItems: "flex-end" }}>
+          {meses.map((m, mi) => {
+            const dim = hoverCol != null && hoverCol !== mi;
+            return (
+              <div key={mi} onMouseEnter={() => setHoverCol(mi)} onMouseLeave={() => setHoverCol(null)}
+                style={{ flex: 1, display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 5, height: "100%",
+                  opacity: dim ? 0.5 : 1, transition: "opacity .15s" }}>
+                {active.map((s) => {
+                  const v = s.values[mi];
+                  const h = (v / scaleMax) * 100;
+                  return (
+                    <div key={s.key} title={`${m} · ${s.label}: ${fmtV(v)}`}
+                      style={{ width: 18, height: `${h}%`, background: s.color, borderRadius: "4px 4px 0 0", position: "relative", minHeight: 2 }}>
+                      <span style={{ position: "absolute", top: -15, left: "50%", transform: "translateX(-50%)", fontSize: 9.5, color: "var(--fg-2)", fontWeight: 700, whiteSpace: "nowrap" }}>{fmtV(v)}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div style={{ display: "flex", paddingLeft: 40, marginTop: 8 }}>
+        {meses.map((m, mi) => (
+          <div key={mi} style={{ flex: 1, textAlign: "center", fontSize: 11.5, color: "var(--fg-2)", fontWeight: 600 }}>{m}</div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Barras verticais de série única (MRR, Marketing) — rótulos + destaque do maior mês
+const _ComSingleBars = ({ meses, values, color, fmt, height = 230 }) => {
+  const [hover, setHover] = useState(null);
+  const max = Math.max(1, ...values);
+  const scaleMax = max * 1.18;
+  const maxIdx = values.indexOf(max);
+  const ticks = 4;
+  const fmtV = fmt || ((v) => _comKBRL(v));
+  return (
+    <div>
+      <div style={{ position: "relative", height, paddingLeft: 46 }}>
+        {Array.from({ length: ticks + 1 }).map((_, i) => {
+          const top = (i / ticks) * 100;
+          const val = (scaleMax / ticks) * (ticks - i);
+          return (
+            <div key={i} style={{ position: "absolute", left: 46, right: 0, top: `${top}%`, borderTop: "1px dashed var(--border-2)" }}>
+              <span style={{ position: "absolute", left: -8, top: -7, fontSize: 10, color: "var(--fg-3)", transform: "translateX(-100%)" }}>{fmtV(val)}</span>
+            </div>
+          );
+        })}
+        <div style={{ position: "absolute", inset: 0, left: 46, display: "flex", alignItems: "flex-end" }}>
+          {values.map((v, i) => {
+            const h = (v / scaleMax) * 100;
+            const isMax = i === maxIdx;
+            const dim = hover != null && hover !== i;
+            return (
+              <div key={i} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
+                style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "flex-end", height: "100%", opacity: dim ? 0.5 : 1, transition: "opacity .15s" }}>
+                <div title={`${meses[i]}: ${fmtV(v)}`}
+                  style={{ width: 34, height: `${h}%`, background: color, borderRadius: "5px 5px 0 0", position: "relative", minHeight: 2,
+                    boxShadow: isMax ? "0 0 0 2px var(--surface), 0 0 0 3px " + color : "none" }}>
+                  <span style={{ position: "absolute", top: -17, left: "50%", transform: "translateX(-50%)", fontSize: 10, color: isMax ? color : "var(--fg-2)", fontWeight: 800, whiteSpace: "nowrap" }}>{fmtV(v)}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div style={{ display: "flex", paddingLeft: 46, marginTop: 8 }}>
+        {meses.map((m, mi) => (
+          <div key={mi} style={{ flex: 1, textAlign: "center", fontSize: 11.5, color: mi === maxIdx ? "var(--fg)" : "var(--fg-2)", fontWeight: mi === maxIdx ? 800 : 600 }}>{m}</div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Barras horizontais (conversão por origem, motivos) — hover destaca a linha
+const _ComHBars = ({ items, color }) => {
+  const [hover, setHover] = useState(null);
+  const max = Math.max(1, ...items.map((it) => it.barValue));
+  return (
+    <div className="bar-list with-bars">
+      {items.map((it, i) => {
+        const w = (it.barValue / max) * 100;
+        const dim = hover != null && hover !== i;
+        return (
+          <div key={i} className={"bar-row" + (dim ? " dimmed" : "")}
+            onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
+            style={{ cursor: "default" }}>
+            <div className="row-meta">
+              <span className="label">{it.name}</span>
+              <span className="val">{it.valText}</span>
+            </div>
+            <div className="track"><div className={`fill ${color}`} style={{ width: `${w}%` }} /></div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+const PageComercial = ({ year, month }) => {
+  const E = (typeof window !== "undefined" && window.BIT_EXTRAS) || null;
+  const D = E && E.comercial;
+  const hasData = D && Array.isArray(D.status_lead) && D.status_lead.length > 0;
+
+  if (!hasData) {
+    return (
+      <div className="page">
+        <div className="page-title"><div><h1>Resultados Comerciais</h1></div></div>
+        <div className="card">
+          <h2 className="card-title">Sem dados comerciais</h2>
+          <p>Rode <code>node build-data-extras.cjs</code> pra gerar <code>window.BIT_EXTRAS.comercial</code> a partir de <code>comercial-data.json</code>.</p>
+        </div>
+      </div>
+    );
+  }
+
+  // ---- KPIs calculados a partir dos próprios gráficos (o "segredo" do slide de Indicadores) ----
+  const K = useMemo(() => {
+    const status = {};
+    D.status_lead.forEach((s) => { status[s.label] = s.value; });
+    const quente = status["Lead Quente"] || 0;
+    const frio = status["Lead Frio"] || 0;
+    const sum = (a) => a.reduce((x, y) => x + y, 0);
+    const totalLeads = quente + frio;                       // 236 + 110 = 346
+    const qualificados = quente;                            // = soma Leads Válidos = 236
+    const propostas = sum(D.evolucao_mensal.propostas);     // 155
+    const fechados = sum(D.evolucao_mensal.fechados);        // 53
+    const mrr = sum(D.mrr_mensal);                          // 29.153
+    const taxaGeral = totalLeads ? (fechados / totalLeads) * 100 : 0;   // 15,3%
+    const convPropostas = propostas ? (fechados / propostas) * 100 : 0; // 34,2%
+    const pctQualif = totalLeads ? (qualificados / totalLeads) * 100 : 0;
+    const pctPropQualif = qualificados ? (propostas / qualificados) * 100 : 0;
+    const ticket = fechados ? mrr / fechados : 0;           // 550,06
+    return { totalLeads, qualificados, propostas, fechados, mrr, taxaGeral, convPropostas, pctQualif, pctPropQualif, ticket };
+  }, [D]);
+
+  const meses = D.meses;
+  const totalStatus = D.status_lead.reduce((s, x) => s + x.value, 0);
+  const donutColors = { "Lead Quente": "var(--amber)", "Lead Frio": "var(--cyan)", "Fechado": "var(--green)" };
+  const donutSegs = D.status_lead.map((s) => ({ value: s.value, color: donutColors[s.label] || "var(--fg-3)" }));
+
+  const totalMkt = D.marketing_mensal.reduce((s, x) => s + x, 0);
+
+  return (
+    <div className="page">
+      <div className="page-title">
+        <div>
+          <h1>Resultados Comerciais</h1>
+          <div className="status-line">Funil comercial · {D.periodo} · {_comInt(K.totalLeads)} leads · {K.fechados} vendas</div>
+        </div>
+      </div>
+
+      {/* ===== Indicadores Gerais (8 KPIs, calculados) ===== */}
+      <div className="kpi-row">
+        <_MiniKpi4 tone="cyan" nonMonetary label="Total de Leads" value={_comInt(K.totalLeads)} hint="Registros no período" />
+        <_MiniKpi4 tone="green" nonMonetary label="Leads Qualificados" value={_comInt(K.qualificados)} hint={`${_comPct(K.pctQualif)} · leads quentes`} />
+        <_MiniKpi4 tone="cyan" nonMonetary label="Propostas Enviadas" value={_comInt(K.propostas)} hint={`${_comPct(K.pctPropQualif)} dos qualificados`} />
+        <_MiniKpi4 tone="green" nonMonetary label="Fechados (Vendas)" value={_comInt(K.fechados)} hint="Contratos fechados" />
+        <_MiniKpi4 tone="amber" nonMonetary label="Taxa de Conversão Geral" value={_comPct(K.taxaGeral)} hint="Fechados / Total de leads" />
+        <_MiniKpi4 tone="amber" nonMonetary label="Conversão sobre Propostas" value={_comPct(K.convPropostas)} hint="Fechados / Propostas enviadas" />
+        <_MiniKpi4 tone="green" label="Nova Receita Recorrente (MRR)" value={_fmtBR4(K.mrr, 0)} hint="Soma das mensalidades fechadas" />
+        <_MiniKpi4 tone="green" label="Ticket Médio" value={_fmtBR4(K.ticket, 2)} hint="Receita / Fechados" />
+      </div>
+
+      {/* ===== Distribuição por Status do Lead (rosca) ===== */}
+      <div className="card" style={{ marginTop: 16 }}>
+        <h2 className="card-title">Distribuição por Status do Lead</h2>
+        <div className="status-line" style={{ marginBottom: 12 }}>Como os {_comInt(K.totalLeads)} leads estão classificados</div>
+        <div style={{ display: "flex", gap: 32, alignItems: "center", flexWrap: "wrap" }}>
+          <div style={{ position: "relative", width: 190, height: 190 }}>
+            <Donut segments={donutSegs} size={190} thickness={26} />
+            <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ fontSize: 26, fontWeight: 800, color: "var(--fg)", fontFamily: "var(--font-mono)" }}>{_comInt(K.totalLeads)}</div>
+              <div style={{ fontSize: 11, color: "var(--fg-3)", letterSpacing: "0.04em" }}>LEADS</div>
+            </div>
+          </div>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <table className="t" style={{ width: "100%" }}>
+              <thead>
+                <tr><th>Status</th><th className="num">Qtde</th><th className="num">% do Total</th></tr>
+              </thead>
+              <tbody>
+                {D.status_lead.map((s, i) => (
+                  <tr key={i}>
+                    <td><span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ width: 10, height: 10, borderRadius: 3, background: donutColors[s.label], display: "inline-block" }} />{s.label}
+                    </span></td>
+                    <td className="num">{_comInt(s.value)}</td>
+                    <td className="num">{_comPct((s.value / K.totalLeads) * 100)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      {/* ===== Evolução Mensal (3 séries agrupadas) ===== */}
+      <div className="card" style={{ marginTop: 16 }}>
+        <h2 className="card-title">Evolução Mensal {year || 2026}</h2>
+        <div className="status-line" style={{ marginBottom: 6 }}>Leads válidos, propostas enviadas e fechados por mês · clique na legenda pra filtrar</div>
+        <_ComGroupedBars meses={meses} fmt={(v) => _comInt(v)} series={[
+          { key: "leads", label: "Leads Válidos", color: "var(--cyan)", values: D.evolucao_mensal.leads_validos },
+          { key: "prop", label: "Propostas", color: "var(--amber)", values: D.evolucao_mensal.propostas },
+          { key: "fech", label: "Fechados", color: "var(--green)", values: D.evolucao_mensal.fechados },
+        ]} />
+      </div>
+
+      {/* ===== MRR mensal ===== */}
+      <div className="card" style={{ marginTop: 16 }}>
+        <h2 className="card-title">Receita Mensal Recorrente Fechada</h2>
+        <div className="status-line" style={{ marginBottom: 12 }}>Soma das mensalidades dos contratos fechados por mês (R$) · total {_comBRL(K.mrr)}</div>
+        <_ComSingleBars meses={meses} values={D.mrr_mensal} color="var(--green)" fmt={(v) => _comKBRL(v)} />
+      </div>
+
+      {/* ===== Conversão por Origem + Top Motivos ===== */}
+      <div className="row" style={{ gridTemplateColumns: "1fr 1fr", marginTop: 16 }}>
+        <div className="card">
+          <h2 className="card-title">Conversão por Origem do Lead</h2>
+          <div className="status-line" style={{ marginBottom: 12 }}>Taxa de fechamento por canal</div>
+          <_ComHBars color="cyan" items={D.conversao_origem.map((o) => ({
+            name: o.origem, barValue: o.conv, valText: `${_comInt(o.leads)} leads · ${_comPct(o.conv)}` }))} />
+        </div>
+        <div className="card">
+          <h2 className="card-title">Top Motivos de Contato</h2>
+          <div className="status-line" style={{ marginBottom: 12 }}>Principais razões que levam os leads a entrar em contato</div>
+          <_ComHBars color="amber" items={D.motivos_contato.map((m) => ({
+            name: m.motivo, barValue: m.qtd, valText: `${_comInt(m.qtd)}` }))} />
+        </div>
+      </div>
+
+      {/* ===== Top Indicações + Ranking Clientes ===== */}
+      <div className="row" style={{ gridTemplateColumns: "1fr 1fr", marginTop: 16 }}>
+        <div className="card">
+          <h2 className="card-title">Top 10 Indicações</h2>
+          <div className="status-line" style={{ marginBottom: 12 }}>Quem mais indicou e a taxa de conversão gerada</div>
+          <div className="t-scroll" style={{ maxHeight: 420 }}>
+            <table className="t" style={{ width: "100%" }}>
+              <thead>
+                <tr><th style={{ width: 34 }}>#</th><th>Indicador</th><th className="num">Indicações</th><th className="num">Fechados</th><th className="num">Conv.</th></tr>
+              </thead>
+              <tbody>
+                {D.top_indicacoes.map((r, i) => (
+                  <tr key={i}>
+                    <td style={{ color: "var(--fg-3)", fontWeight: 700 }}>{i + 1}</td>
+                    <td style={{ fontWeight: 600 }}>{r.nome}</td>
+                    <td className="num">{_comInt(r.indicacoes)}</td>
+                    <td className="num">{_comInt(r.fechados)}</td>
+                    <td className="num" style={{ color: r.conv >= 40 ? "var(--green)" : r.conv > 0 ? "var(--fg-2)" : "var(--fg-3)", fontWeight: 700 }}>{_comPct(r.conv)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div className="card">
+          <h2 className="card-title">Ranking de Clientes por Mensalidade</h2>
+          <div className="status-line" style={{ marginBottom: 12 }}>Top 15 contratos fechados, por valor de mensalidade</div>
+          <div className="t-scroll" style={{ maxHeight: 420 }}>
+            <table className="t" style={{ width: "100%" }}>
+              <thead>
+                <tr><th style={{ width: 34 }}>#</th><th>Cliente</th><th>Mês</th><th className="num">Mensalidade</th></tr>
+              </thead>
+              <tbody>
+                {D.ranking_clientes.map((r, i) => (
+                  <tr key={i}>
+                    <td style={{ color: "var(--fg-3)", fontWeight: 700 }}>{i + 1}</td>
+                    <td style={{ fontWeight: 600 }}>{r.cliente}</td>
+                    <td style={{ color: "var(--fg-2)" }}>{r.mes}</td>
+                    <td className="num green" style={{ fontWeight: 700 }}>{_comBRL(r.mensalidade)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      {/* ===== Despesas com Marketing Digital ===== */}
+      <div className="card" style={{ marginTop: 16 }}>
+        <h2 className="card-title">Despesas com Marketing Digital</h2>
+        <div className="status-line" style={{ marginBottom: 12 }}>Investimento em mídia paga por mês (R$) · total {_comBRL(totalMkt)}</div>
+        <_ComSingleBars meses={meses} values={D.marketing_mensal} color="var(--amber)" fmt={(v) => _comKBRL(v)} />
+      </div>
+
+      {/* ===== Principais Conclusões ===== */}
+      <div className="card" style={{ marginTop: 16 }}>
+        <h2 className="card-title">Principais Conclusões</h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14, marginTop: 6 }}>
+          {D.conclusoes.map((c, i) => (
+            <div key={i} style={{ display: "flex", gap: 12, padding: 14, background: "var(--surface-2)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)" }}>
+              <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: "50%", background: "var(--cyan-glow)", color: "var(--cyan-3)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 13 }}>{i + 1}</div>
+              <div>
+                <div style={{ fontWeight: 700, color: "var(--fg)", marginBottom: 4, fontSize: 13.5 }}>{c.titulo}</div>
+                <div style={{ fontSize: 12.5, color: "var(--fg-2)", lineHeight: 1.5 }}>{c.texto}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="status-line" style={{ marginTop: 12, fontSize: 11, color: "var(--fg-3)" }}>
+        Fonte: apresentação <code>Resultados Comerciais</code> · os 8 indicadores acima são calculados a partir dos gráficos abaixo. Atualize via <code>comercial-data.json</code> + <code>node build-data-extras.cjs</code>.
+      </div>
+    </div>
+  );
+};
+
 // Stubs para pages hidden (definições removidas por não se aplicarem ao SKN Prime)
 const PageOrcamento = () => <div className="page-content"><p>Página não disponível.</p></div>;
 const PageLojas = () => <div className="page-content"><p>Página não disponível.</p></div>;
 const PageRisco = () => <div className="page-content"><p>Página não disponível.</p></div>;
 
-Object.assign(window, { PageHierarquia, PageDetalhado, PageProfundaCliente, PageCRM, PageOrcamento, PageLojas, PageRisco });
+Object.assign(window, { PageHierarquia, PageDetalhado, PageProfundaCliente, PageCRM, PageComercial, PageOrcamento, PageLojas, PageRisco });

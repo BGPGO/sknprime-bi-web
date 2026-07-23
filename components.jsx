@@ -130,6 +130,7 @@ const Sidebar = ({ active, onSelect, open }) => {
     { id: "detalhado", icon: "report", label: "Detalhado" },
     { id: "profunda_cliente", icon: "user", label: "Profunda Cliente" },
     { id: "crm", icon: "money", label: "CRM" },
+    { id: "comercial", icon: "chart", label: "Resultados Comerciais" },
     { id: "organograma", icon: "user", label: "Organograma" },
     { id: "folha_pgto", icon: "money", label: "Folha Pgto" },
     { id: "custo_depto", icon: "expense", label: "Custos" },
@@ -206,6 +207,7 @@ const PAGE_TITLES = {
   detalhado: "Detalhado",
   profunda_cliente: "Profunda Cliente",
   crm: "CRM",
+  comercial: "Resultados Comerciais",
 };
 
 const DATE_RANGES = [
@@ -312,6 +314,7 @@ const BI_EXPORT_PAGES = [
   { id: "qtd_clientes", label: "12 Clientes & Ticket" },
   { id: "receita_nova", label: "13 Receita Nova" },
   { id: "margem_contrib", label: "14 Margem Contribuição" },
+  { id: "comercial", label: "15 Resultados Comerciais" },
 ].filter(p => {
   const mode = window.BI_PAGE_MODE && window.BI_PAGE_MODE[p.id];
   return !mode || mode === 'active';

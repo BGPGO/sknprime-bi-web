@@ -1,0 +1,82 @@
+{
+  "_fonte": "Resultados Comerciais - 1º Semestre 2026.pptx (extraído dos gráficos embutidos)",
+  "periodo": "Janeiro a Junho de 2026",
+  "meses": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
+  "status_lead": [
+    { "label": "Lead Quente", "value": 236 },
+    { "label": "Lead Frio", "value": 110 },
+    { "label": "Fechado", "value": 53 }
+  ],
+  "evolucao_mensal": {
+    "leads_validos": [48, 35, 45, 34, 46, 28],
+    "propostas": [32, 22, 37, 22, 30, 12],
+    "fechados": [7, 10, 10, 5, 12, 9]
+  },
+  "mrr_mensal": [4596, 4898, 5821, 1848, 7145, 4845],
+  "conversao_origem": [
+    { "origem": "Instagram", "leads": 112, "conv": 32.4 },
+    { "origem": "Facebook", "leads": 83, "conv": 24.0 },
+    { "origem": "Indicação", "leads": 59, "conv": 17.1 },
+    { "origem": "Google", "leads": 53, "conv": 15.3 },
+    { "origem": "Cliente Atual", "leads": 27, "conv": 7.8 },
+    { "origem": "Presencial", "leads": 6, "conv": 1.7 },
+    { "origem": "Ex-cliente", "leads": 6, "conv": 1.7 }
+  ],
+  "motivos_contato": [
+    { "motivo": "Nada a Ver (Não é Lead)", "qtd": 113 },
+    { "motivo": "Transferência", "qtd": 70 },
+    { "motivo": "Abertura de CNPJ", "qtd": 68 },
+    { "motivo": "Desenquadramento", "qtd": 42 },
+    { "motivo": "Regularização (Geral)", "qtd": 24 },
+    { "motivo": "Abertura de MEI", "qtd": 17 },
+    { "motivo": "Cancelamento", "qtd": 12 }
+  ],
+  "marketing_mensal": [850.62, 581.92, 600.70, 997.64, 1002.10, 1350.54],
+  "top_indicacoes": [
+    { "nome": "Anderson", "indicacoes": 13, "fechados": 7, "conv": 53.8 },
+    { "nome": "Isaias", "indicacoes": 3, "fechados": 1, "conv": 33.3 },
+    { "nome": "Ramon", "indicacoes": 3, "fechados": 1, "conv": 33.3 },
+    { "nome": "Dna Copos", "indicacoes": 2, "fechados": 0, "conv": 0.0 },
+    { "nome": "Neide Heneva", "indicacoes": 2, "fechados": 0, "conv": 0.0 },
+    { "nome": "Luciano 463", "indicacoes": 2, "fechados": 0, "conv": 0.0 },
+    { "nome": "Evellyn", "indicacoes": 2, "fechados": 0, "conv": 0.0 },
+    { "nome": "Edcarlos", "indicacoes": 2, "fechados": 0, "conv": 0.0 },
+    { "nome": "Mora Proximo", "indicacoes": 2, "fechados": 0, "conv": 0.0 },
+    { "nome": "Ex Conversa Dani", "indicacoes": 2, "fechados": 1, "conv": 50.0 }
+  ],
+  "ranking_clientes": [
+    { "cliente": "Claudia", "mes": "Maio/2026", "mensalidade": 2199 },
+    { "cliente": "Jucelino", "mes": "Janeiro/2026", "mensalidade": 1950 },
+    { "cliente": "Eguimar", "mes": "Maio/2026", "mensalidade": 1200 },
+    { "cliente": "Vital", "mes": "Março/2026", "mensalidade": 989 },
+    { "cliente": "Rafaela", "mes": "Março/2026", "mensalidade": 989 },
+    { "cliente": "Fernando", "mes": "Maio/2026", "mensalidade": 949 },
+    { "cliente": "Helbert", "mes": "Maio/2026", "mensalidade": 859 },
+    { "cliente": "Elizeu-188", "mes": "Janeiro/2026", "mensalidade": 799 },
+    { "cliente": "Hugo", "mes": "Fevereiro/2026", "mensalidade": 700 },
+    { "cliente": "Douglas", "mes": "Maio/2026", "mensalidade": 699 },
+    { "cliente": "Camila", "mes": "Março/2026", "mensalidade": 649 },
+    { "cliente": "Marcos V", "mes": "Fevereiro/2026", "mensalidade": 599 },
+    { "cliente": "Itallo", "mes": "Junho/2026", "mensalidade": 559 },
+    { "cliente": "Ismailton-GSG Sports", "mes": "Abril/2026", "mensalidade": 500 },
+    { "cliente": "Alex", "mes": "Janeiro/2026", "mensalidade": 500 }
+  ],
+  "conclusoes": [
+    {
+      "titulo": "Funil saudável, com oportunidade de aumentar o fechamento de propostas",
+      "texto": "68,2% dos leads são qualificados · 65,7% dos qualificados recebem proposta · 34,2% das propostas são convertidas em vendas."
+    },
+    {
+      "titulo": "Maio foi o melhor mês do ano",
+      "texto": "12 contratos fechados e R$ 7.145,00 em nova receita recorrente."
+    },
+    {
+      "titulo": "Indicação e clientes atuais convertem melhor",
+      "texto": "Instagram e Facebook foram os canais mais eficientes na conversão de leads em clientes, com taxas de 32,4% e 24,0%. Indicação (17,1%) e Google (15,3%) tiveram desempenho intermediário; Cliente Atual (7,8%), Presencial (1,7%) e Ex-cliente (1,7%) tiveram menor conversão."
+    },
+    {
+      "titulo": "Uma indicadora concentra resultado",
+      "texto": "Anderson responde por 13 indicações e 7 fechamentos — mais que o dobro do próximo colocado. Vale mapear o que motiva esse engajamento e replicar."
+    }
+  ]
+}
