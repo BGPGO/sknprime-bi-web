@@ -1062,13 +1062,15 @@ const _comPct = (n, dec = 1) => _fmtBR4(n, dec) + "%";
 const _comKBRL = (n) => "R$ " + _fmtK4(n);
 
 // Barras verticais agrupadas (N séries) com legenda clicável + rótulos + hover
-const _ComGroupedBars = ({ meses, series, height = 250, fmt }) => {
+// Clique num mês → onBarClick(idx); activeIdx destaca a coluna selecionada e escurece as demais.
+const _ComGroupedBars = ({ meses, series, height = 250, fmt, activeIdx, onBarClick }) => {
   const [hidden, setHidden] = useState({});
   const [hoverCol, setHoverCol] = useState(null);
   const active = series.filter((s) => !hidden[s.key]);
   const max = Math.max(1, ...active.flatMap((s) => s.values));
   const scaleMax = max * 1.15;
   const ticks = 4;
+  const sel = activeIdx != null;
   const fmtV = fmt || ((v) => _comInt(v));
   return (
     <div>
@@ -1098,11 +1100,14 @@ const _ComGroupedBars = ({ meses, series, height = 250, fmt }) => {
         })}
         <div style={{ position: "absolute", inset: 0, left: 40, display: "flex", alignItems: "flex-end" }}>
           {meses.map((m, mi) => {
-            const dim = hoverCol != null && hoverCol !== mi;
+            const isSel = sel && activeIdx === mi;
+            const dim = sel ? activeIdx !== mi : (hoverCol != null && hoverCol !== mi);
             return (
               <div key={mi} onMouseEnter={() => setHoverCol(mi)} onMouseLeave={() => setHoverCol(null)}
+                onClick={onBarClick ? () => onBarClick(mi) : undefined}
                 style={{ flex: 1, display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 5, height: "100%",
-                  opacity: dim ? 0.5 : 1, transition: "opacity .15s" }}>
+                  opacity: dim ? 0.32 : 1, transition: "opacity .15s", cursor: onBarClick ? "pointer" : "default",
+                  background: isSel ? "var(--surface-2)" : "transparent", borderRadius: "6px 6px 0 0" }}>
                 {active.map((s) => {
                   const v = s.values[mi];
                   const h = (v / scaleMax) * 100;
@@ -1120,20 +1125,23 @@ const _ComGroupedBars = ({ meses, series, height = 250, fmt }) => {
       </div>
       <div style={{ display: "flex", paddingLeft: 40, marginTop: 8 }}>
         {meses.map((m, mi) => (
-          <div key={mi} style={{ flex: 1, textAlign: "center", fontSize: 11.5, color: "var(--fg-2)", fontWeight: 600 }}>{m}</div>
+          <div key={mi} onClick={onBarClick ? () => onBarClick(mi) : undefined}
+            style={{ flex: 1, textAlign: "center", fontSize: 11.5, cursor: onBarClick ? "pointer" : "default",
+              color: sel && activeIdx === mi ? "var(--fg)" : "var(--fg-2)", fontWeight: sel && activeIdx === mi ? 800 : 600 }}>{m}</div>
         ))}
       </div>
     </div>
   );
 };
 
-// Barras verticais de série única (MRR, Marketing) — rótulos + destaque do maior mês
-const _ComSingleBars = ({ meses, values, color, fmt, height = 230 }) => {
+// Barras verticais de série única (MRR, Marketing) — rótulos + destaque do maior mês + seleção por clique
+const _ComSingleBars = ({ meses, values, color, fmt, height = 230, activeIdx, onBarClick }) => {
   const [hover, setHover] = useState(null);
   const max = Math.max(1, ...values);
   const scaleMax = max * 1.18;
   const maxIdx = values.indexOf(max);
   const ticks = 4;
+  const sel = activeIdx != null;
   const fmtV = fmt || ((v) => _comKBRL(v));
   return (
     <div>
@@ -1150,15 +1158,17 @@ const _ComSingleBars = ({ meses, values, color, fmt, height = 230 }) => {
         <div style={{ position: "absolute", inset: 0, left: 46, display: "flex", alignItems: "flex-end" }}>
           {values.map((v, i) => {
             const h = (v / scaleMax) * 100;
-            const isMax = i === maxIdx;
-            const dim = hover != null && hover !== i;
+            const isSel = sel && activeIdx === i;
+            const showRing = isSel || (!sel && i === maxIdx);
+            const dim = sel ? activeIdx !== i : (hover != null && hover !== i);
             return (
               <div key={i} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
-                style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "flex-end", height: "100%", opacity: dim ? 0.5 : 1, transition: "opacity .15s" }}>
+                onClick={onBarClick ? () => onBarClick(i) : undefined}
+                style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "flex-end", height: "100%", opacity: dim ? 0.32 : 1, transition: "opacity .15s", cursor: onBarClick ? "pointer" : "default" }}>
                 <div title={`${meses[i]}: ${fmtV(v)}`}
                   style={{ width: 34, height: `${h}%`, background: color, borderRadius: "5px 5px 0 0", position: "relative", minHeight: 2,
-                    boxShadow: isMax ? "0 0 0 2px var(--surface), 0 0 0 3px " + color : "none" }}>
-                  <span style={{ position: "absolute", top: -17, left: "50%", transform: "translateX(-50%)", fontSize: 10, color: isMax ? color : "var(--fg-2)", fontWeight: 800, whiteSpace: "nowrap" }}>{fmtV(v)}</span>
+                    boxShadow: showRing ? "0 0 0 2px var(--surface), 0 0 0 3px " + color : "none" }}>
+                  <span style={{ position: "absolute", top: -17, left: "50%", transform: "translateX(-50%)", fontSize: 10, color: showRing ? color : "var(--fg-2)", fontWeight: 800, whiteSpace: "nowrap" }}>{fmtV(v)}</span>
                 </div>
               </div>
             );
@@ -1167,26 +1177,32 @@ const _ComSingleBars = ({ meses, values, color, fmt, height = 230 }) => {
       </div>
       <div style={{ display: "flex", paddingLeft: 46, marginTop: 8 }}>
         {meses.map((m, mi) => (
-          <div key={mi} style={{ flex: 1, textAlign: "center", fontSize: 11.5, color: mi === maxIdx ? "var(--fg)" : "var(--fg-2)", fontWeight: mi === maxIdx ? 800 : 600 }}>{m}</div>
+          <div key={mi} onClick={onBarClick ? () => onBarClick(mi) : undefined}
+            style={{ flex: 1, textAlign: "center", fontSize: 11.5, cursor: onBarClick ? "pointer" : "default",
+              color: (sel ? activeIdx === mi : mi === maxIdx) ? "var(--fg)" : "var(--fg-2)", fontWeight: (sel ? activeIdx === mi : mi === maxIdx) ? 800 : 600 }}>{m}</div>
         ))}
       </div>
     </div>
   );
 };
 
-// Barras horizontais (conversão por origem, motivos) — hover destaca a linha
+// Barras horizontais (conversão por origem, motivos) — hover destaca; clique trava o foco
 const _ComHBars = ({ items, color }) => {
   const [hover, setHover] = useState(null);
+  const [locked, setLocked] = useState(null);
   const max = Math.max(1, ...items.map((it) => it.barValue));
+  const focus = locked != null ? locked : hover;
   return (
     <div className="bar-list with-bars">
       {items.map((it, i) => {
         const w = (it.barValue / max) * 100;
-        const dim = hover != null && hover !== i;
+        const dim = focus != null && focus !== i;
+        const isLocked = locked === i;
         return (
-          <div key={i} className={"bar-row" + (dim ? " dimmed" : "")}
+          <div key={i} className={"bar-row" + (dim ? " dimmed" : "") + (isLocked ? " active" : "")}
             onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
-            style={{ cursor: "default" }}>
+            onClick={() => setLocked((l) => (l === i ? null : i))}
+            style={{ cursor: "pointer" }} title={isLocked ? "Clique pra soltar o foco" : "Clique pra focar"}>
             <div className="row-meta">
               <span className="label">{it.name}</span>
               <span className="val">{it.valText}</span>
@@ -1203,6 +1219,8 @@ const PageComercial = ({ year, month }) => {
   const E = (typeof window !== "undefined" && window.BIT_EXTRAS) || null;
   const D = E && E.comercial;
   const hasData = D && Array.isArray(D.status_lead) && D.status_lead.length > 0;
+  const [selMonth, setSelMonth] = useState(null); // índice do mês em foco (clique nos gráficos mensais)
+  const pickMonth = (i) => setSelMonth((m) => (m === i ? null : i));
 
   if (!hasData) {
     return (
@@ -1243,12 +1261,33 @@ const PageComercial = ({ year, month }) => {
 
   const totalMkt = D.marketing_mensal.reduce((s, x) => s + x, 0);
 
+  // Resumo do mês em foco (só usa dados que existem por mês)
+  const MS = selMonth == null ? null : {
+    mes: meses[selMonth],
+    leadsValidos: D.evolucao_mensal.leads_validos[selMonth],
+    propostas: D.evolucao_mensal.propostas[selMonth],
+    fechados: D.evolucao_mensal.fechados[selMonth],
+    mrr: D.mrr_mensal[selMonth],
+    marketing: D.marketing_mensal[selMonth],
+  };
+  const msConv = MS && MS.propostas ? (MS.fechados / MS.propostas) * 100 : 0;
+
   return (
     <div className="page">
       <div className="page-title">
         <div>
           <h1>Resultados Comerciais</h1>
           <div className="status-line">Funil comercial · {D.periodo} · {_comInt(K.totalLeads)} leads · {K.fechados} vendas</div>
+        </div>
+        <div className="actions">
+          {selMonth != null && (
+            <button onClick={() => setSelMonth(null)}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 12px", borderRadius: "var(--radius-sm)",
+                border: "1px solid var(--cyan-3)", background: "var(--cyan-glow)", color: "var(--cyan-3)", fontWeight: 700, fontSize: 12.5, cursor: "pointer" }}
+              title="Limpar o filtro de mês">
+              Mês: {meses[selMonth]} · limpar ✕
+            </button>
+          )}
         </div>
       </div>
 
@@ -1263,6 +1302,31 @@ const PageComercial = ({ year, month }) => {
         <_MiniKpi4 tone="green" label="Nova Receita Recorrente (MRR)" value={_fmtBR4(K.mrr, 0)} hint="Soma das mensalidades fechadas" />
         <_MiniKpi4 tone="green" label="Ticket Médio" value={_fmtBR4(K.ticket, 2)} hint="Receita / Fechados" />
       </div>
+
+      {/* ===== Resumo do mês em foco (aparece ao clicar num gráfico mensal) ===== */}
+      {MS && (
+        <div className="card" style={{ marginTop: 16, borderColor: "var(--cyan-3)", background: "var(--cyan-glow)" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+            <h2 className="card-title" style={{ margin: 0 }}>Foco: {MS.mes}/{year || 2026}</h2>
+            <button onClick={() => setSelMonth(null)} style={{ background: "none", border: "none", color: "var(--cyan-3)", fontWeight: 700, cursor: "pointer", fontSize: 12.5 }}>limpar ✕</button>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: 16, marginTop: 12 }}>
+            {[
+              { l: "Leads Válidos", v: _comInt(MS.leadsValidos) },
+              { l: "Propostas", v: _comInt(MS.propostas) },
+              { l: "Fechados", v: _comInt(MS.fechados) },
+              { l: "Conv. Propostas", v: _comPct(msConv) },
+              { l: "MRR", v: _comBRL(MS.mrr) },
+              { l: "Marketing", v: _comBRL(MS.marketing, 2) },
+            ].map((s, i) => (
+              <div key={i}>
+                <div style={{ fontSize: 11, color: "var(--fg-3)", letterSpacing: "0.03em", marginBottom: 3 }}>{s.l}</div>
+                <div style={{ fontSize: 19, fontWeight: 800, color: "var(--fg)", fontFamily: "var(--font-mono)" }}>{s.v}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* ===== Distribuição por Status do Lead (rosca) ===== */}
       <div className="card" style={{ marginTop: 16 }}>
@@ -1300,8 +1364,8 @@ const PageComercial = ({ year, month }) => {
       {/* ===== Evolução Mensal (3 séries agrupadas) ===== */}
       <div className="card" style={{ marginTop: 16 }}>
         <h2 className="card-title">Evolução Mensal {year || 2026}</h2>
-        <div className="status-line" style={{ marginBottom: 6 }}>Leads válidos, propostas enviadas e fechados por mês · clique na legenda pra filtrar</div>
-        <_ComGroupedBars meses={meses} fmt={(v) => _comInt(v)} series={[
+        <div className="status-line" style={{ marginBottom: 6 }}>Leads válidos, propostas enviadas e fechados por mês · clique num mês pra focar · clique na legenda pra ligar/desligar série</div>
+        <_ComGroupedBars meses={meses} fmt={(v) => _comInt(v)} activeIdx={selMonth} onBarClick={pickMonth} series={[
           { key: "leads", label: "Leads Válidos", color: "var(--cyan)", values: D.evolucao_mensal.leads_validos },
           { key: "prop", label: "Propostas", color: "var(--amber)", values: D.evolucao_mensal.propostas },
           { key: "fech", label: "Fechados", color: "var(--green)", values: D.evolucao_mensal.fechados },
@@ -1311,8 +1375,8 @@ const PageComercial = ({ year, month }) => {
       {/* ===== MRR mensal ===== */}
       <div className="card" style={{ marginTop: 16 }}>
         <h2 className="card-title">Receita Mensal Recorrente Fechada</h2>
-        <div className="status-line" style={{ marginBottom: 12 }}>Soma das mensalidades dos contratos fechados por mês (R$) · total {_comBRL(K.mrr)}</div>
-        <_ComSingleBars meses={meses} values={D.mrr_mensal} color="var(--green)" fmt={(v) => _comKBRL(v)} />
+        <div className="status-line" style={{ marginBottom: 12 }}>Soma das mensalidades dos contratos fechados por mês (R$) · total {_comBRL(K.mrr)} · clique num mês pra focar</div>
+        <_ComSingleBars meses={meses} values={D.mrr_mensal} color="var(--green)" fmt={(v) => _comKBRL(v)} activeIdx={selMonth} onBarClick={pickMonth} />
       </div>
 
       {/* ===== Conversão por Origem + Top Motivos ===== */}
@@ -1381,8 +1445,8 @@ const PageComercial = ({ year, month }) => {
       {/* ===== Despesas com Marketing Digital ===== */}
       <div className="card" style={{ marginTop: 16 }}>
         <h2 className="card-title">Despesas com Marketing Digital</h2>
-        <div className="status-line" style={{ marginBottom: 12 }}>Investimento em mídia paga por mês (R$) · total {_comBRL(totalMkt)}</div>
-        <_ComSingleBars meses={meses} values={D.marketing_mensal} color="var(--amber)" fmt={(v) => _comKBRL(v)} />
+        <div className="status-line" style={{ marginBottom: 12 }}>Investimento em mídia paga por mês (R$) · total {_comBRL(totalMkt)} · clique num mês pra focar</div>
+        <_ComSingleBars meses={meses} values={D.marketing_mensal} color="var(--amber)" fmt={(v) => _comKBRL(v)} activeIdx={selMonth} onBarClick={pickMonth} />
       </div>
 
       {/* ===== Principais Conclusões ===== */}
